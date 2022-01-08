@@ -33,6 +33,7 @@ gem "redis", "~> 4.0"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -68,3 +69,4 @@ end
 gem "react_on_rails", "= 12.0.4"
 
 gem "webpacker", "~> 5.4"
+gem "mini_racer", platforms: :ruby

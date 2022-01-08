@@ -1,6 +1,6 @@
 class HerosController < ApplicationController
   before_action :set_hero, only: %i[ show edit update destroy ]
-
+  layout 'application'
   # GET /heros or /heros.json
   def index
     @heros = Hero.all
@@ -8,6 +8,7 @@ class HerosController < ApplicationController
 
   # GET /heros/1 or /heros/1.json
   def show
+    @hero = Hero.find params[:id]
   end
 
   # GET /heros/new
@@ -17,6 +18,7 @@ class HerosController < ApplicationController
 
   # GET /heros/1/edit
   def edit
+    @hero = Hero.find params[:id]
   end
 
   # POST /heros or /heros.json
