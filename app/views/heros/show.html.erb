@@ -6,5 +6,9 @@
   <%= link_to "Edit this hero", edit_hero_path(@hero) %> |
   <%= link_to "Back to heros", heros_path %>
 
+
+  <%= react_component("HeroShow", props: @hero, prerender: true, trace: true, id: "hero-#{@hero.id}") %>
+
+
   <%= button_to "Destroy this hero", @hero, method: :delete %>
 </div>

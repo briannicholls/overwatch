@@ -64,3 +64,7 @@ group :development do
   # gem "spring"
 end
 
+
+gem "react_on_rails", "= 12.0.4"
+
+gem "webpacker", "~> 5.4"
