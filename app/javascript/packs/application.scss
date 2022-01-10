@@ -1,0 +1,13 @@
+// inside app/frontend/packs/application.scss  
+  
+// Just a quick ugly style to see if our CSS works  
+// h1  {  
+//   text-decoration: underline;
+//   color: green;
+// }  
+  
+// Import Bootstrap v5  
+@import "~bootstrap/scss/bootstrap";  
+
+// Custom SCSS
+@import "../css/custom.scss"
