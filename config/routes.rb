@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  get 'hello_world', to: 'hello_world#index'
+
   root to: 'overwatch#index'
   resources :roles
   resources :heros
+
+  resources :hard_counters
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

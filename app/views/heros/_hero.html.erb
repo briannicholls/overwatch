@@ -1,14 +1,14 @@
-<div id="<%= dom_id hero %>">
-  <p>
-    <strong>Name:</strong>
+<tr id="<%= dom_id hero %>">
+  <td>
     <%= hero.name %>
-  </p>
+  </td>
 
-  <p>
-    <strong>Role:</strong>
+  <td>
     <%= hero.role.name %>
-  </p>
+  </td>
 
+  <td>
+    <%= link_to "Show", hero %>
+  </td>
   
-
-</div>
+</tr>

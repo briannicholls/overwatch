@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @hero %>
+<h1><%= @hero.name %></h1>
 
 <div>
   <%= link_to "Edit this hero", edit_hero_path(@hero) %> |
@@ -10,3 +10,33 @@
 
   <%= button_to "Destroy this hero", @hero, method: :delete %>
 </div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hard Counters</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hero.hard_counters.each do |hero| %>
+      <%= render hero %>
+    <% end %>
+    
+  </tbody>
+  <tr>
+    <td>
+
+    <%= form_with model: @hero do |f| %>
+      <% Hero.all.map do |hero| %>
+        <%= f.check_box :advantage_hero %>
+        <%= f.label :advantage_hero, "#{hero.name}" %>
+      <% end %>
+      
+        <%= f.submit %>
+    <% end %>
+    </td>
+  </tr>
+</table>
+
+
