@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: overwatch_production
-  username: overwatch
+  username: <%= ENV["OVERWATCH_DATABASE_USER"] %>
   password: <%= ENV["OVERWATCH_DATABASE_PASSWORD"] %>

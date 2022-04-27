@@ -1,14 +1,9 @@
-<tr id="<%= dom_id hero %>">
-  <td>
-    <%= hero.name %>
-  </td>
-
-  <td>
-    <%= hero.role.name %>
-  </td>
-
-  <td>
-    <%= link_to "Show", hero %>
-  </td>
+<div id="<%= dom_id hero %>" class="col-xs-4">
   
-</tr>
+  <%= hero.name %>
+
+  <%= hero.role.name %>
+  
+  <%= link_to "Show", hero %>
+
+</div>

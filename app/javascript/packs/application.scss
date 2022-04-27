@@ -1,4 +1,8 @@
 // Import Bootstrap v5  
 @import "~bootstrap/scss/bootstrap";
+
+// import bootstrap according to doc: https://github.com/twbs/bootstrap-rubygem
+@import "bootstrap";
+
 // Custom SCSS
 @import "../css/custom.scss"
