@@ -1,9 +1,15 @@
 <div id="<%= dom_id hero %>" class="col-xs-4">
-  
-  <%= hero.name %>
 
   <%= hero.role.name %>
   
-  <%= link_to "Show", hero %>
+  <%= link_to hero.name, hero %>
+
+  <button type="button" 
+        class="btn btn-lg btn-danger" 
+        data-bs-toggle="popover" 
+        title="Popover title" 
+        data-bs-content="Amazing content, right ?">
+        Click to toggle popover
+  </button>  
 
 </div>
