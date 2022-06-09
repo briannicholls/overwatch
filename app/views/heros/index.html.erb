@@ -3,20 +3,9 @@
 <h1>Heros</h1>
 
 <%= link_to 'Manage Hard Counters', '/hard_counters' %>
-
-<div id="heros">
-  <table class='table'>
-  <tr>
-    <th>Name</th>
-    <th>Role</th>
-    <th></th>
-    </tr>
-
+<div class="row">
   <% @heros.each do |hero| %>
     <%= render hero %>
   <% end %>
-
-  </table>
 </div>
-
 <%= link_to "New hero", new_hero_path %>

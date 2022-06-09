@@ -1,15 +1,3 @@
-<div id="<%= dom_id hero %>" class="col-xs-4">
-
-  <%= hero.role.name %>
-  
-  <%= link_to hero.name, hero %>
-
-  <button type="button" 
-        class="btn btn-lg btn-danger" 
-        data-bs-toggle="popover" 
-        title="Popover title" 
-        data-bs-content="Amazing content, right ?">
-        Click to toggle popover
-  </button>  
-
+<div class="col col-3">
+  <%= link_to image_tag("/images/#{hero.name.downcase.underscore.gsub(' ', '_')}.png", alt: hero.name), hero %>
 </div>
