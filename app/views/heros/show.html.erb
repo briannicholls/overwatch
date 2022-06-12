@@ -4,25 +4,25 @@
 
 <div>
   <%= link_to "Edit this hero", edit_hero_path(@hero) %> |
-  <%= link_to "Back to heros", heros_path %>
-
-  <%= react_component("Hero") %>
-
-  <%= button_to "Destroy this hero", @hero, method: :delete %>
+  <%= link_to "Back to heros", heros_path %> | 
+  <%= link_to "Destroy this hero", @hero, method: :delete %>
 </div>
 
 <th>Hard Counters:</th>
-
-<% @hero.hard_counters.each do |hero| %>
-      <%= render hero %>
-<% end %>
+<ul class="list-group">
+  <% @hero.hard_counters.each do |hero| %>
+    <li class="list-group-item"><%= render hero %></li>
+  <% end %>
+</ul>
 
 <%= form_with model: @hero do |f| %>
-  <% Hero.all.map do |hero| %>
-    <%= f.check_box :advantage_hero %>
-    <%= f.label :advantage_hero, "#{hero.name}" %>
-  <% end %>
-  
-    <%= f.submit %>
+  <div class='row'>
+    <% @heros.map do |hero| %>
+      <div class='col-3'>
+        <%= f.check_box :advantage_hero %>
+        <%= f.label :advantage_hero, "#{hero.name}" %>
+      </div>
+    <% end %>
+  </div>
+  <%= f.submit %>
 <% end %>
-

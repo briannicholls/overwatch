@@ -1,9 +1,9 @@
 class HerosController < ApplicationController
   before_action :set_hero, only: %i[ show edit update destroy ]
+  before_action :set_heros, only: [:show, :index]
   layout 'application'
   # GET /heros or /heros.json
   def index
-    @heros = Hero.all
   end
 
   # GET /heros/1 or /heros/1.json
@@ -63,6 +63,10 @@ class HerosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_hero
       @hero = Hero.find(params[:id])
+    end
+
+    def set_heros
+      @heros = Hero.all.order(:name)
     end
 
     # Only allow a list of trusted parameters through.
