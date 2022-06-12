@@ -1,8 +1,8 @@
-import ReactOnRails from 'react-on-rails';
+// import ReactOnRails from 'react-on-rails';
 
-import App from '../bundles/Overwatch/components/App.jsx';
+// import App from '../bundles/Overwatch/components/App.jsx';
 
-// This is how react_on_rails can see the HelloWorld in the browser.
-ReactOnRails.register({
-  App,
-});
+// // This is how react_on_rails can see the HelloWorld in the browser.
+// ReactOnRails.register({
+//   App,
+// });
