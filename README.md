@@ -1,24 +1,8 @@
-# README
+# Overwatch Wizard
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+DB is configured to use Postgres, so make sure it is installed. Optionally you can fork the project and use a DB of your choice
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Clone the repo locally
+2. Run `rails s`
