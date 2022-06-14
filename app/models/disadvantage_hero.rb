@@ -1,0 +1,3 @@
+class DisadvantageHero < Hero
+  
+end

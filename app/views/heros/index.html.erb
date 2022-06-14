@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Heros</h1>
+
+<%= link_to 'Manage Hard Counters', '/hard_counters' %>
+<div class="row">
+  <% @heros.each do |hero| %>
+    <%= render hero %>
+  <% end %>
+</div>
+<%= link_to "New hero", new_hero_path %>

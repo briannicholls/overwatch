@@ -1,0 +1,2 @@
+class AdvantageHero < Hero
+end
