@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= @hero.name %></h1>
+
+<div>
+  <%= link_to "Edit this hero", edit_hero_path(@hero) %> |
+  <%= link_to "Back to heros", heros_path %> | 
+  <%= link_to "Destroy this hero", @hero, method: :delete %>
+</div>
+
+<th>Hard Counters:</th>
+<ul class="list-group">
+  <% @hero.hard_counters.each do |hero| %>
+    <li class="list-group-item"><%= render hero %></li>
+  <% end %>
+</ul>
+
+<%= form_with model: @hero do |f| %>
+  <div class='row'>
+    <% @heros.map do |hero| %>
+      <div class='col-3'>
+        <%= f.check_box :advantage_hero %>
+        <%= f.label :advantage_hero, "#{hero.name}" %>
+      </div>
+    <% end %>
+  </div>
+  <%= f.submit %>
+<% end %>

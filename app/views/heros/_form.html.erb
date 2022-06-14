@@ -1,0 +1,27 @@
+<%= form_with(model: hero) do |form| %>
+  <% if hero.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(hero.errors.count, "error") %> prohibited this hero from being saved:</h2>
+
+      <ul>
+        <% hero.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :role_id, style: "display: block" %>
+    <%= form.text_field :role_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
