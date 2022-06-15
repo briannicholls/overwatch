@@ -8,7 +8,7 @@
   <%= link_to "Destroy this hero", @hero, method: :delete %>
 </div>
 
-<th>Hard Counters:</th>
+<th>Heros that counter <%= @hero.name %>:</th>
 <ul class="list-group">
   <% @hero.hard_counters.each do |hero| %>
     <li class="list-group-item"><%= render hero %></li>
