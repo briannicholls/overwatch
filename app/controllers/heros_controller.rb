@@ -38,6 +38,11 @@ class HerosController < ApplicationController
 
   # PATCH/PUT /heros/1 or /heros/1.json
   def update
+    hero_id = params[:id]
+    advantage_hero_ids = params[:hero][:advantage_hero_ids].reject!(&:empty?)
+    Hero.find_by(id: hero_id)
+    .update(advantage_hero_ids: advantage_hero_ids)
+
     respond_to do |format|
       if @hero.update(hero_params)
         format.html { redirect_to hero_url(@hero), notice: "Hero was successfully updated." }
@@ -71,6 +76,6 @@ class HerosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hero_params
-      params.require(:hero).permit(:name, :role_id)
+      params.require(:hero).permit(:name, :role_id, :advantage_hero_ids, hard_counters_attributes: [:advantage_hero_ids])
     end
 end

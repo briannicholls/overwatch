@@ -16,6 +16,8 @@
 </ul>
 
 <%= form_for @hero do |f| %>
+  
   <%= f.collection_check_boxes :advantage_hero_ids, @heros, :id, :name %>
+  
   <%= f.submit %>
 <% end %>
