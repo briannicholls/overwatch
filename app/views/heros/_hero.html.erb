@@ -1,4 +1,7 @@
 <div class="col col-3">
   <%= link_to image_tag("/images/#{hero.name.downcase.underscore.gsub(/[\. ]/, '_')}.png", alt: hero.name), hero %>
-  <p><%= render "icon_#{hero.role.name.downcase}" %><%= hero.name %></p>
+  <h2 class="hero-title">
+    <div>&nbsp;<%= render "icon_#{hero.role.name.downcase}" %></div>
+    <div style="text-align: right;"><%= hero.name %>&nbsp;</div>
+  </h2>
 </div>
