@@ -15,14 +15,7 @@
   <% end %>
 </ul>
 
-<%= form_with model: @hero do |f| %>
-  <div class='row'>
-    <% @heros.map do |hero| %>
-      <div class='col-3'>
-        <%= f.check_box :advantage_hero %>
-        <%= f.label :advantage_hero, "#{hero.name}" %>
-      </div>
-    <% end %>
-  </div>
+<%= form_for @hero do |f| %>
+  <%= f.collection_check_boxes :advantage_hero_ids, @heros, :id, :name %>
   <%= f.submit %>
 <% end %>
