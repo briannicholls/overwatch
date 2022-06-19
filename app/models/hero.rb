@@ -7,9 +7,6 @@ class Hero < ApplicationRecord
 
   accepts_nested_attributes_for :hard_counters
 
-  DVA = Hero.find(7)
-  MEI = Hero.find(23)
-
   def advantage_hero_ids=(ids)
     ids.each do |id|
       HardCounter.find_or_create_by(hero_id: self.id, advantage_hero_id: id)
