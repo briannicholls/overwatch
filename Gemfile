@@ -67,6 +67,7 @@ group :development do
   # gem "spring"
 
   gem 'pry'
+  gem 'pry-nav'
 end
 
 group :test do
