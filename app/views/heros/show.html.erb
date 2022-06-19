@@ -1,6 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<h1><%= @hero.name %></h1>
+<div class="row" style="display: flex; justify-content: space-around; align-items: center;">
+
+  <div class="col-2">
+    <%= render @hero %>
+  </div>
+
+  <div class="col-2">
+    <ul>
+      <li>Hello</li>
+      <li>Hello</li>
+      <li>Hello</li>
+      <li>Hello</li>
+      <li>Hello</li>
+      <li>Hello</li>
+    </ul>
+  </div>
+
+</div>
 
 <div>
   <%= link_to "Edit this hero", edit_hero_path(@hero) %> |
