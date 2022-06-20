@@ -1,4 +1,21 @@
 # json.array! @heros, partial: "heros/hero", as: :hero
 json.array! @heros do |hero|
-  json.extract! hero, :id, :name, :role_name, :countered_by_heroes, :counters_heroes
+  json.extract! hero, :id, :name, :role_name, :countered_by_heroes, :counters_heroes, :has_cc, :can_heal_self,
+  :hp,
+  :shield,
+  :armor,
+  :has_shield,
+  :shield_hp,
+  :melee_primary_fire,
+  :cc_range,
+  :aoe_heal,
+  :aoe_primary,
+  :has_escape_ability,
+  :movement_speed,
+  :can_fly,
+  :provides_shield,
+  :provides_damage_boost,
+  :provides_speed_boost,
+  :provides_armor,
+  :is_hitscan,
 end
