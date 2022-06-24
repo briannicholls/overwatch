@@ -1,15 +1,4 @@
 hero_names = [
-  "Zenyatta",
-  "Moira",
-  "Mercy",
-  "Lúcio",
-  "Brigitte",
-  "Baptiste",
-  "Ana",
-  "Roadhog",
-  "Bastion",
-  "Mei",
-  "Reaper",
   "Soldier: 76",
 ]
 [
@@ -515,28 +504,331 @@ hero_names = [
     is_hitscan: true
   },
   {
-    name: "Winston",
-    role_id: 1,
+    name: "Zenyatta",
+    role_id: 3,
     can_heal_self: false,
     # heal_self_strength: nil,
     has_cc: false,
     # cc_strength: 800, # milliseconds duration
     # cc_range: 25, # meters
-    hp: 350,
+    hp: 50,
     shield: 150,
     armor: 0,
-    has_shield: true,
-    shield_hp: 700,
+    has_shield: false,
+    shield_hp: 0,
     melee_primary_fire: false,
     aoe_heal: false,
+    aoe_primary: false,
+    has_escape_ability: false,
+    # movement_speed: 
+    can_fly: false,
+    provides_shield: false,
+    provides_damage_boost: true,
+    provides_speed_boost: false,
+    provides_armor: false,
+    is_hitscan: false
+  },
+  {
+    name: "Moira",
+    role_id: 3,
+    can_heal_self: true,
+    # heal_self_strength: ,
+    has_cc: false,
+    # cc_strength: 800, # milliseconds duration
+    # cc_range: 25, # meters
+    hp: 200,
+    shield: 0,
+    armor: 0,
+    has_shield: false,
+    shield_hp: 0,
+    melee_primary_fire: false,
+    aoe_heal: true,
+    aoe_primary: false,
+    has_escape_ability: true,
+    # movement_speed: 
+    can_fly: false,
+    provides_shield: false,
+    provides_damage_boost: true,
+    provides_speed_boost: false,
+    provides_armor: false,
+    is_hitscan: true
+  },
+  {
+    name: "Mercy",
+    role_id: 3,
+    can_heal_self: true,
+    heal_self_strength: 20, # hp/sec
+    has_cc: false,
+    # cc_strength: 800, # milliseconds duration
+    # cc_range: 25, # meters
+    hp: 200,
+    shield: 0,
+    armor: 0,
+    has_shield: false,
+    shield_hp: 0,
+    melee_primary_fire: false,
+    aoe_heal: false,
+    aoe_primary: false,
+    has_escape_ability: true,
+    # movement_speed: 
+    can_fly: true,
+    provides_shield: false,
+    provides_damage_boost: true,
+    provides_speed_boost: false,
+    provides_armor: false,
+    is_hitscan: false
+  },
+  {
+    name: "Lúcio",
+    role_id: 3,
+    can_heal_self: true,
+    # heal_self_strength: nil,
+    has_cc: true,
+    # cc_strength: 800, # milliseconds duration
+    # cc_range: 25, # meters
+    hp: 200,
+    shield: 0,
+    armor: 0,
+    has_shield: false,
+    shield_hp: 0,
+    melee_primary_fire: false,
+    aoe_heal: true,
+    aoe_primary: false,
+    has_escape_ability: true,
+    # movement_speed: 
+    can_fly: false,
+    provides_shield: false,
+    provides_damage_boost: false,
+    provides_speed_boost: false,
+    provides_armor: false,
+    is_hitscan: false,
+    has_secondary_fire: true
+  },
+  {
+    name: "Brigitte",
+    role_id: 3,
+    can_heal_self: false,
+    # heal_self_strength: nil,
+    has_cc: true,
+    # cc_strength: 800, # milliseconds duration
+    # cc_range: 25, # meters
+    hp: 150,
+    shield: 0,
+    armor: 50,
+    has_shield: true,
+    shield_hp: 250,
+    melee_primary_fire: true,
+    aoe_heal: true,
     aoe_primary: true,
     has_escape_ability: true,
     # movement_speed: 
     can_fly: false,
-    provides_shield: true,
+    provides_shield: false,
     provides_damage_boost: false,
     provides_speed_boost: false,
     provides_armor: false,
     is_hitscan: false
+  },
+  {
+    name: "Baptiste",
+    role_id: 3,
+    can_heal_self: true,
+    # heal_self_strength: nil,
+    has_cc: false,
+    # cc_strength: 800, # milliseconds duration
+    # cc_range: 25, # meters
+    hp: 200,
+    shield: 0,
+    armor: 0,
+    has_shield: false,
+    shield_hp: 0,
+    melee_primary_fire: false,
+    aoe_heal: true,
+    aoe_primary: false,
+    has_escape_ability: false,
+    # movement_speed: 
+    can_fly: false,
+    provides_shield: false,
+    provides_damage_boost: false,
+    provides_speed_boost: false,
+    provides_armor: false,
+    is_hitscan: true
+  },
+  {
+    name: "Zenyatta",
+    role_id: 3,
+    can_heal_self: false,
+    # heal_self_strength: nil,
+    has_cc: false,
+    # cc_strength: 800, # milliseconds duration
+    # cc_range: 25, # meters
+    hp: 50,
+    shield: 150,
+    armor: 0,
+    has_shield: false,
+    shield_hp: 0,
+    melee_primary_fire: false,
+    aoe_heal: false,
+    aoe_primary: false,
+    has_escape_ability: false,
+    # movement_speed: 
+    can_fly: false,
+    provides_shield: false,
+    provides_damage_boost: true,
+    provides_speed_boost: false,
+    provides_armor: false,
+    is_hitscan: false
+  },
+  {
+    name: "Ana",
+    role_id: 3,
+    can_heal_self: true,
+    # heal_self_strength: nil,
+    has_cc: true,
+    # cc_strength: 800, # milliseconds duration
+    # cc_range: 25, # meters
+    hp: 200,
+    shield: 0,
+    armor: 0,
+    has_shield: false,
+    shield_hp: 0,
+    melee_primary_fire: false,
+    aoe_heal: false,
+    aoe_primary: false,
+    has_escape_ability: false,
+    # movement_speed: 
+    can_fly: false,
+    provides_shield: false,
+    provides_damage_boost: false,
+    provides_speed_boost: false,
+    provides_armor: false,
+    is_hitscan: true
+  },
+  {
+    name: "Roadhog",
+    role_id: 1,
+    can_heal_self: true,
+    heal_self_strength: 37.5, # amount of healing per second (rename?)
+    has_cc: true,
+    # cc_strength: 800, # milliseconds duration
+    # cc_range: 25, # meters
+    hp: 600,
+    shield: 0,
+    armor: 0,
+    has_shield: false,
+    shield_hp: 0,
+    melee_primary_fire: false,
+    aoe_heal: false,
+    aoe_primary: false,
+    has_escape_ability: false,
+    # movement_speed: 
+    can_fly: false,
+    provides_shield: false,
+    provides_damage_boost: false,
+    provides_speed_boost: false,
+    provides_armor: false,
+    is_hitscan: false,
+    has_secondary_fire: true
+  },
+  {
+    name: "Bastion",
+    role_id: 2,
+    can_heal_self: true,
+    # heal_self_strength: nil,
+    has_cc: false,
+    # cc_strength: 800, # milliseconds duration
+    # cc_range: 25, # meters
+    hp: 200,
+    shield: 0,
+    armor: 100,
+    has_shield: false,
+    shield_hp: 0,
+    melee_primary_fire: false,
+    aoe_heal: false,
+    aoe_primary: false,
+    has_escape_ability: false,
+    # movement_speed: 
+    can_fly: false,
+    provides_shield: false,
+    provides_damage_boost: false,
+    provides_speed_boost: false,
+    provides_armor: false,
+    is_hitscan: true
+  },
+  {
+    name: "Mei",
+    role_id: 2,
+    can_heal_self: true,
+    # heal_self_strength: nil,
+    has_cc: true,
+    # cc_strength: 800, # milliseconds duration
+    # cc_range: 25, # meters
+    hp: 250,
+    shield: 0,
+    armor: 0,
+    has_shield: false,
+    shield_hp: 0,
+    melee_primary_fire: false,
+    aoe_heal: false,
+    aoe_primary: false,
+    has_escape_ability: true,
+    # movement_speed: 
+    can_fly: false,
+    provides_shield: false,
+    provides_damage_boost: false,
+    provides_speed_boost: false,
+    provides_armor: false,
+    is_hitscan: false,
+    has_secondary_fire: true
+  },
+  {
+    name: "Reaper",
+    role_id: 2,
+    can_heal_self: true,
+    # heal_self_strength: nil,
+    has_cc: false,
+    # cc_strength: 800, # milliseconds duration
+    # cc_range: 25, # meters
+    hp: 250,
+    shield: 0,
+    armor: 0,
+    has_shield: false,
+    shield_hp: 0,
+    melee_primary_fire: false,
+    aoe_heal: false,
+    aoe_primary: false,
+    has_escape_ability: true,
+    # movement_speed: 
+    can_fly: false,
+    provides_shield: false,
+    provides_damage_boost: false,
+    provides_speed_boost: false,
+    provides_armor: false,
+    is_hitscan: true,
+  },
+  {
+    name: "Soldier: 76",
+    role_id: 2,
+    can_heal_self: true,
+    # heal_self_strength: nil,
+    has_cc: false,
+    # cc_strength: 800, # milliseconds duration
+    # cc_range: 25, # meters
+    hp: 200,
+    shield: 0,
+    armor: 0,
+    has_shield: false,
+    shield_hp: 0,
+    melee_primary_fire: false,
+    aoe_heal: true,
+    aoe_primary: false,
+    has_escape_ability: true,
+    # movement_speed: 
+    can_fly: false,
+    provides_shield: false,
+    provides_damage_boost: false,
+    provides_speed_boost: false,
+    provides_armor: false,
+    is_hitscan: true
   },
 ]
