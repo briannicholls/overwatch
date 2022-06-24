@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_24_164524) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_24_221506) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_24_164524) do
     t.boolean "provides_armor", default: false
     t.boolean "is_hitscan", default: false
     t.integer "cc_strength", default: 0
+    t.integer "reload_time"
+    t.boolean "has_secondary_fire", default: false
     t.index ["role_id"], name: "index_heros_on_role_id"
   end
 
