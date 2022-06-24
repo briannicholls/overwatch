@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_20_013815) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_24_164524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abilities", force: :cascade do |t|
+    t.bigint "hero_id", null: false
+    t.string "keybinding"
+    t.integer "cooldown"
+    t.integer "duration"
+    t.boolean "has_aoe_effect"
+    t.integer "aoe_effect_radius"
+    t.integer "hit_damage"
+    t.boolean "applies_burn"
+    t.boolean "applies_speed_boost"
+    t.boolean "applies_stun"
+    t.boolean "applies_shield"
+    t.integer "cast_time"
+    t.boolean "applies_headshot_damage"
+    t.integer "burn_damage_per_second"
+    t.boolean "is_projectile"
+    t.integer "projectile_speed"
+    t.integer "damage_per_projectile"
+    t.float "projectiles_fired_per_second"
+    t.float "max_range"
+    t.integer "hp"
+    t.boolean "is_ultimate"
+    t.integer "ultimate_cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hero_id"], name: "index_abilities_on_hero_id"
+  end
 
   create_table "hard_counters", force: :cascade do |t|
     t.bigint "advantage_hero_id", null: false
@@ -58,6 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_20_013815) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "abilities", "heros"
   add_foreign_key "hard_counters", "heros", column: "advantage_hero_id"
   add_foreign_key "heros", "roles"
 end
