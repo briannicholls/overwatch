@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_24_235217) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_25_004350) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,6 +88,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_24_235217) do
     t.integer "cc_strength", default: 0
     t.integer "reload_time"
     t.boolean "has_secondary_fire", default: false
+    t.bigint "game_id", null: false
+    t.index ["game_id"], name: "index_heros_on_game_id"
     t.index ["role_id"], name: "index_heros_on_role_id"
   end
 
@@ -99,5 +101,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_24_235217) do
 
   add_foreign_key "abilities", "heros"
   add_foreign_key "hard_counters", "heros", column: "advantage_hero_id"
+  add_foreign_key "heros", "games"
   add_foreign_key "heros", "roles"
 end
