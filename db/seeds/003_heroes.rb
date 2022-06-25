@@ -864,5 +864,9 @@ heroes = [
 ]
 
 heroes.each do |hero|
-  existing_hero = Hero.find_or_create_by(hero)
+  # for production
+  # existing_hero = Hero.find_or_create_by(hero)
+
+  existing_hero = Hero.find_by(name: hero[:name])
+  existing_hero.update(hero)
 end
