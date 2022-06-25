@@ -1,6 +1,7 @@
 class Hero < ApplicationRecord
   belongs_to :role
   belongs_to :game
+  has_many :teams
   has_many :hard_counters
   has_many :advantage_heros,    class_name: 'Hero', foreign_key: :advantage_hero_id, through: :hard_counters
   has_many :disadvantage_heros, class_name: 'Hero', foreign_key: :hero_id , through: :hard_counters
@@ -26,4 +27,17 @@ class Hero < ApplicationRecord
   def role_name
     role.name
   end
+
+  def self.total_ultimate_cost
+    sum(:ultimate_cost)
+  end
+
+  def ultimate_ability
+    abilities.find_by is_ultimate: true
+  end
+
+  def ultimate_cost
+    ultimate_ability.ultimate_cost
+  end
+  
 end
