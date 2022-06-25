@@ -13,7 +13,7 @@ class Team < ApplicationRecord
   def total_damage_per_second
   end
 
-  def heroes_with_cc
+  def count_heroes_with_cc
   end
 
   def total_hp
