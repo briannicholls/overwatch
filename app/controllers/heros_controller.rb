@@ -64,6 +64,20 @@ class HerosController < ApplicationController
     end
   end
 
+  # For now, only work with OW1 heroes
+  def self.all
+    from_version('1')
+  end
+
+  # Returns heros from version. Returns latest by default
+  def self.from_version(version)
+    latest_version = Game.all.order('version desc').pluck(:version)[0]
+    Hero.all
+    .joins(:game)
+    .order(:version)
+    .where('version = ?', latest_version)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_hero
