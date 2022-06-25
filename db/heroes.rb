@@ -1,8 +1,6 @@
-hero_names = [
-  "Soldier: 76",
-]
-[
+heroes = [
   {
+    game_id: 1,
     name: "D.Va",
     role_id: 1,
     can_heal_self: false,
@@ -28,6 +26,7 @@ hero_names = [
     is_hitscan: true
   },
   {
+    game_id: 1,
     name: "Orisa",
     role_id: 1,
     can_heal_self: false,
@@ -53,6 +52,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Reinhardt",
     role_id: 1,
     can_heal_self: false,
@@ -78,6 +78,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Sigma",
     role_id: 1,
     can_heal_self: false,
@@ -103,6 +104,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Winston",
     role_id: 1,
     can_heal_self: false,
@@ -128,6 +130,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Wrecking Ball",
     role_id: 1,
     can_heal_self: false,
@@ -153,6 +156,7 @@ hero_names = [
     is_hitscan: true
   },
   {
+    game_id: 1,
     name: "Zarya",
     role_id: 1,
     can_heal_self: false,
@@ -178,6 +182,7 @@ hero_names = [
     is_hitscan: true
   },
   {
+    game_id: 1,
     name: "Ashe",
     role_id: 2,
     can_heal_self: false,
@@ -203,6 +208,7 @@ hero_names = [
     is_hitscan: true
   },
   {
+    game_id: 1,
     name: "Cassidy",
     role_id: 2,
     can_heal_self: false,
@@ -228,6 +234,7 @@ hero_names = [
     is_hitscan: true
   },
   {
+    game_id: 1,
     name: "Doomfist",
     role_id: 2,
     can_heal_self: false,
@@ -253,6 +260,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Echo",
     role_id: 2,
     can_heal_self: false,
@@ -278,6 +286,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Genji",
     role_id: 2,
     can_heal_self: false,
@@ -303,6 +312,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Hanzo",
     role_id: 2,
     can_heal_self: false,
@@ -328,6 +338,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Junkrat",
     role_id: 2,
     can_heal_self: false,
@@ -353,6 +364,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Pharah",
     role_id: 2,
     can_heal_self: false,
@@ -378,6 +390,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Sombra",
     role_id: 2,
     can_heal_self: false,
@@ -403,6 +416,7 @@ hero_names = [
     is_hitscan: true
   },
   {
+    game_id: 1,
     name: "Symmetra",
     role_id: 2,
     can_heal_self: false,
@@ -429,6 +443,7 @@ hero_names = [
     has_secondary_fire: true
   },
   {
+    game_id: 1,
     name: "Torbjörn",
     role_id: 2,
     can_heal_self: false,
@@ -454,6 +469,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Tracer",
     role_id: 2,
     can_heal_self: false,
@@ -479,6 +495,7 @@ hero_names = [
     is_hitscan: true
   },
   {
+    game_id: 1,
     name: "Widowmaker",
     role_id: 2,
     can_heal_self: false,
@@ -504,6 +521,7 @@ hero_names = [
     is_hitscan: true
   },
   {
+    game_id: 1,
     name: "Zenyatta",
     role_id: 3,
     can_heal_self: false,
@@ -529,6 +547,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Moira",
     role_id: 3,
     can_heal_self: true,
@@ -554,6 +573,7 @@ hero_names = [
     is_hitscan: true
   },
   {
+    game_id: 1,
     name: "Mercy",
     role_id: 3,
     can_heal_self: true,
@@ -579,6 +599,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Lúcio",
     role_id: 3,
     can_heal_self: true,
@@ -605,6 +626,7 @@ hero_names = [
     has_secondary_fire: true
   },
   {
+    game_id: 1,
     name: "Brigitte",
     role_id: 3,
     can_heal_self: false,
@@ -630,6 +652,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Baptiste",
     role_id: 3,
     can_heal_self: true,
@@ -655,6 +678,7 @@ hero_names = [
     is_hitscan: true
   },
   {
+    game_id: 1,
     name: "Zenyatta",
     role_id: 3,
     can_heal_self: false,
@@ -680,6 +704,7 @@ hero_names = [
     is_hitscan: false
   },
   {
+    game_id: 1,
     name: "Ana",
     role_id: 3,
     can_heal_self: true,
@@ -705,6 +730,7 @@ hero_names = [
     is_hitscan: true
   },
   {
+    game_id: 1,
     name: "Roadhog",
     role_id: 1,
     can_heal_self: true,
@@ -731,6 +757,7 @@ hero_names = [
     has_secondary_fire: true
   },
   {
+    game_id: 1,
     name: "Bastion",
     role_id: 2,
     can_heal_self: true,
@@ -756,6 +783,7 @@ hero_names = [
     is_hitscan: true
   },
   {
+    game_id: 1,
     name: "Mei",
     role_id: 2,
     can_heal_self: true,
@@ -782,6 +810,7 @@ hero_names = [
     has_secondary_fire: true
   },
   {
+    game_id: 1,
     name: "Reaper",
     role_id: 2,
     can_heal_self: true,
@@ -807,6 +836,7 @@ hero_names = [
     is_hitscan: true,
   },
   {
+    game_id: 1,
     name: "Soldier: 76",
     role_id: 2,
     can_heal_self: true,
