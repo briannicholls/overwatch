@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_27_014348) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_27_045213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_014348) do
     t.integer "burn_damage_per_second"
     t.boolean "is_projectile", default: false
     t.float "projectile_speed"
-    t.integer "damage_per_projectile"
+    t.integer "max_damage_per_projectile"
     t.float "projectiles_fired_per_second"
     t.float "max_range"
     t.integer "hp"
@@ -48,6 +48,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_014348) do
     t.integer "reload_time"
     t.float "fire_rate"
     t.float "beam_width"
+    t.boolean "applies_self_movement_penalty", default: false
+    t.float "initial_falloff_distance"
+    t.float "spread_angle"
+    t.float "final_falloff_disance"
+    t.float "min_damage_per_projectile"
+    t.boolean "applies_boop", default: false
+    t.float "boop_distance"
+    t.integer "melee_damage"
+    t.boolean "applies_splash_damage", default: false
+    t.float "splash_radius"
+    t.integer "max_aoe_damage"
+    t.integer "min_aoe_damage"
+    t.integer "ammo"
     t.index ["hero_id"], name: "index_abilities_on_hero_id"
   end
 
