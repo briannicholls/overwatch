@@ -36,6 +36,14 @@ class Hero < ApplicationRecord
     abilities.find_by is_ultimate: true
   end
 
+  def primary_fire
+    abilities.find_by is_primary_fire: true
+  end
+
+  def secondary_fire
+    abilities.find_by is_secondary_fire: true
+  end
+
   def ultimate_cost
     ultimate_ability.ultimate_cost
   end

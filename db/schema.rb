@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_26_224459) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_27_014348) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_26_224459) do
     t.integer "duration"
     t.boolean "has_aoe_effect", default: false
     t.integer "aoe_effect_radius"
-    t.integer "hit_damage"
+    t.integer "base_beam_damage"
     t.boolean "applies_burn", default: false
     t.boolean "applies_speed_boost", default: false
     t.boolean "applies_stun", default: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_26_224459) do
     t.boolean "applies_headshot_damage", default: false
     t.integer "burn_damage_per_second"
     t.boolean "is_projectile", default: false
-    t.integer "projectile_speed"
+    t.float "projectile_speed"
     t.integer "damage_per_projectile"
     t.float "projectiles_fired_per_second"
     t.float "max_range"
@@ -41,6 +41,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_26_224459) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.boolean "is_passive", default: false
+    t.boolean "is_primary_fire"
+    t.boolean "is_secondary_fire", default: false
+    t.boolean "is_beam", default: false
+    t.integer "max_beam_damage"
+    t.integer "reload_time"
+    t.float "fire_rate"
+    t.float "beam_width"
     t.index ["hero_id"], name: "index_abilities_on_hero_id"
   end
 

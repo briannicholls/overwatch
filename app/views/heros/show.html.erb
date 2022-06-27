@@ -7,14 +7,9 @@
   </div>
 
   <div class="col-2">
-    <ul>
-      <li>Hello</li>
-      <li>Hello</li>
-      <li>Hello</li>
-      <li>Hello</li>
-      <li>Hello</li>
-      <li>Hello</li>
-    </ul>
+      <% @hero.attributes.each do |att, ddd| %>
+        <p><%=  "#{att.titleize}: #{ddd}" %></p>
+      <% end %>
   </div>
 
 </div>
@@ -34,7 +29,6 @@
 </ul>
 
 <%= form_for @hero do |f| %>
-  
   <%= f.collection_check_boxes :advantage_hero_ids, @heros, :id, :name do |checkbox| %>
     <%= checkbox.label class:"col-3" do %>
       <%= checkbox.check_box + ' ' + checkbox.text%>
