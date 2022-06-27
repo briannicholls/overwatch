@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_27_045213) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_27_052546) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,12 +55,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_045213) do
     t.float "min_damage_per_projectile"
     t.boolean "applies_boop", default: false
     t.float "boop_distance"
-    t.integer "melee_damage"
+    t.integer "min_melee_damage"
     t.boolean "applies_splash_damage", default: false
     t.float "splash_radius"
     t.integer "max_aoe_damage"
     t.integer "min_aoe_damage"
     t.integer "ammo"
+    t.boolean "applies_self_damage_reduction", default: false
+    t.boolean "applies_damage_boost"
+    t.float "percent_damage_reduction_self"
+    t.float "percent_damage_boost_self"
+    t.float "percent_damage_boost_aoe"
+    t.integer "max_melee_damage"
+    t.integer "stun_duration"
     t.index ["hero_id"], name: "index_abilities_on_hero_id"
   end
 
