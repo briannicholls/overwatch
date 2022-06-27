@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  resources :abilities
+  resources :teams
 
   root to: 'overwatch#index'
   resources :roles
-  resources :heros
+
+  resources :heros do 
+    resources :abilities
+  end
 
   resources :hard_counters
   

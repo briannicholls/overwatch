@@ -7,19 +7,15 @@
   </div>
 
   <div class="col-2">
-    <ul>
-      <li>Hello</li>
-      <li>Hello</li>
-      <li>Hello</li>
-      <li>Hello</li>
-      <li>Hello</li>
-      <li>Hello</li>
-    </ul>
+      <% @hero.attributes.each do |att, ddd| %>
+        <p><%=  "#{att.titleize}: #{ddd}" %></p>
+      <% end %>
   </div>
 
 </div>
 
 <div>
+  <%= link_to "View abilities", hero_abilities_path(@hero) %> |
   <%= link_to "Edit this hero", edit_hero_path(@hero) %> |
   <%= link_to "Back to heros", heros_path %> | 
   <%= link_to "Destroy this hero", @hero, method: :delete %>
@@ -33,7 +29,6 @@
 </ul>
 
 <%= form_for @hero do |f| %>
-  
   <%= f.collection_check_boxes :advantage_hero_ids, @heros, :id, :name do |checkbox| %>
     <%= checkbox.label class:"col-3" do %>
       <%= checkbox.check_box + ' ' + checkbox.text%>

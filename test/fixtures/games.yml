@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  version: MyString
+  heroes_per_team: 1
+  release_date: 2022-06-24 19:52:17
+
+two:
+  name: MyString
+  version: MyString
+  heroes_per_team: 1
+  release_date: 2022-06-24 19:52:17
