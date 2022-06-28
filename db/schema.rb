@@ -69,7 +69,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_010955) do
     t.integer "max_melee_damage"
     t.integer "stun_duration"
     t.boolean "is_barrier"
-    t.boolean "applies_speed_penalty", default: false
+    t.boolean "applies_speed_penalty_self", default: false
+    t.boolean "applies_speed_penalty_enemy", default: false
     t.index ["hero_id"], name: "index_abilities_on_hero_id"
   end
 
