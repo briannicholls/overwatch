@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_28_010955) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_28_011356) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_010955) do
     t.float "final_falloff_disance"
     t.float "min_damage_per_projectile"
     t.boolean "applies_boop", default: false
-    t.float "boop_distance"
+    t.float "max_boop_distance"
     t.integer "min_melee_damage"
     t.boolean "applies_splash_damage", default: false
     t.float "splash_radius"
@@ -71,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_010955) do
     t.boolean "is_barrier"
     t.boolean "applies_speed_penalty_self", default: false
     t.boolean "applies_speed_penalty_enemy", default: false
+    t.float "min_boop_distance"
     t.index ["hero_id"], name: "index_abilities_on_hero_id"
   end
 
