@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_27_052546) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_28_010228) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_052546) do
     t.float "percent_damage_boost_aoe"
     t.integer "max_melee_damage"
     t.integer "stun_duration"
+    t.boolean "is_barrier"
     t.index ["hero_id"], name: "index_abilities_on_hero_id"
   end
 
