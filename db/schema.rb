@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_28_011356) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_30_064004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,13 +22,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_011356) do
     t.boolean "has_aoe_effect", default: false
     t.integer "aoe_effect_radius"
     t.integer "base_beam_damage"
-    t.boolean "applies_burn", default: false
+    t.boolean "applies_damage_over_time", default: false
     t.boolean "applies_speed_boost", default: false
     t.boolean "applies_stun", default: false
     t.boolean "applies_shield", default: false
     t.integer "cast_time"
     t.boolean "applies_headshot_damage", default: false
-    t.integer "burn_damage_per_second"
+    t.integer "damage_over_time"
     t.boolean "is_projectile", default: false
     t.float "projectile_speed"
     t.integer "max_damage_per_projectile"
@@ -72,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_011356) do
     t.boolean "applies_speed_penalty_self", default: false
     t.boolean "applies_speed_penalty_enemy", default: false
     t.float "min_boop_distance"
+    t.boolean "shares_ammo_with_primary"
     t.index ["hero_id"], name: "index_abilities_on_hero_id"
   end
 
