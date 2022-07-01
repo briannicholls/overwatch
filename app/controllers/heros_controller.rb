@@ -8,7 +8,6 @@ class HerosController < ApplicationController
 
   # GET /heros/1 or /heros/1.json
   def show
-    @hero = Hero.find params[:id]
     @attributes_to_display = @hero.attributes.symbolize_keys.slice(:name, :hp, :shield, :armor,)
   end
 
@@ -19,7 +18,6 @@ class HerosController < ApplicationController
 
   # GET /heros/1/edit
   def edit
-    @hero = Hero.find params[:id]
   end
 
   # POST /heros or /heros.json
