@@ -4527,7 +4527,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -4804,7 +4803,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: 70,
         max_aoe_damage: 350,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -5053,7 +5051,7 @@ heroes = [
         duration: 15000,
         has_aoe_effect: true,
         aoe_effect_radius: -1,
-        aoe_effect_types: [ 'revealed' ]
+        aoe_effect_types: [ 'revealed' ],
         applies_speed_penalty_enemy: false,
         applies_self_movement_penalty: false,
         applies_boop: false,
