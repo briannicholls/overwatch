@@ -5365,7 +5365,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -5473,7 +5472,7 @@ heroes = [
         fire_rate: nil,
         recovery_rate: nil,
         beam_width: nil,
-        time_to_charge: nil
+        time_to_charge: nil,
         applies_self_movement_penalty: false,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
@@ -5693,7 +5692,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -5976,7 +5974,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -6086,7 +6083,7 @@ heroes = [
         fire_rate: nil,
         recovery_rate: nil,
         beam_width: nil,
-        time_to_charge: nil
+        time_to_charge: nil,
         applies_self_movement_penalty: false,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
@@ -6350,7 +6347,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -6461,8 +6457,8 @@ heroes = [
         # projectiles_per_shot: 4,
         beam_width: nil,
         applies_self_movement_penalty: false,
-        min_aoe_damage: nil,
-        max_aoe_damage: nil,
+        # min_aoe_damage: nil,
+        # max_aoe_damage: nil,
         min_aoe_damage: 35,
         max_aoe_damage: 35,
         # ammo: 20,
@@ -6508,7 +6504,7 @@ heroes = [
         fire_rate: nil,
         recovery_rate: nil,
         beam_width: nil,
-        time_to_charge: nil
+        time_to_charge: nil,
         applies_self_movement_penalty: false,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
@@ -6644,7 +6640,7 @@ heroes = [
         fire_rate: nil,
         recovery_rate: nil,
         beam_width: nil,
-        time_to_charge: nil
+        time_to_charge: nil,
         applies_self_movement_penalty: false,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
@@ -6732,7 +6728,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -6814,7 +6809,7 @@ heroes = [
         # single_charge_regeneration_duration: 6000,
         # duration: 2000,
         has_aoe_effect: true,
-        aoe_effect_types: [ 'healing' ]
+        aoe_effect_types: [ 'healing' ],
         aoe_effect_radius: 3,
         # base_beam_damage: 50,
         applies_burn: false,
@@ -6939,7 +6934,7 @@ heroes = [
         fire_rate: nil,
         recovery_rate: nil,
         beam_width: nil,
-        time_to_charge: nil
+        time_to_charge: nil,
         applies_self_movement_penalty: false,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
@@ -7027,7 +7022,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -7282,7 +7276,7 @@ heroes = [
         fire_rate: nil,
         recovery_rate: nil,
         beam_width: nil,
-        time_to_charge: nil
+        time_to_charge: nil,
         applies_self_movement_penalty: false,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
@@ -7370,7 +7364,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -7627,7 +7620,7 @@ heroes = [
         fire_rate: nil,
         recovery_rate: nil,
         beam_width: nil,
-        time_to_charge: nil
+        time_to_charge: nil,
         applies_self_movement_penalty: false,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
@@ -7684,7 +7677,6 @@ heroes = [
         # aoe_effect_radius: 8.5,
         applies_speed_penalty_enemy: false,
         applies_self_movement_penalty: false,
-        applies_boop: false,
         # base_beam_damage: 70,
         applies_damage_over_time: false,
         damage_over_time: nil,
@@ -7718,7 +7710,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -8020,7 +8011,7 @@ heroes = [
         fire_rate: nil,
         recovery_rate: nil,
         beam_width: nil,
-        time_to_charge: nil
+        time_to_charge: nil,
         applies_self_movement_penalty: false,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
@@ -8077,7 +8068,6 @@ heroes = [
         aoe_effect_radius: 4,
         applies_speed_penalty_enemy: false,
         applies_self_movement_penalty: false,
-        applies_boop: false,
         # base_beam_damage: 70,
         applies_damage_over_time: false,
         damage_over_time: nil,
@@ -8111,7 +8101,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: 42,
         max_aoe_damage: 140,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -8369,7 +8358,7 @@ heroes = [
         fire_rate: nil,
         recovery_rate: nil,
         beam_width: nil,
-        time_to_charge: nil
+        time_to_charge: nil,
         applies_self_movement_penalty: false,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
@@ -8460,7 +8449,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: 20,
         max_aoe_damage: 85,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -8717,7 +8705,7 @@ heroes = [
         fire_rate: nil,
         recovery_rate: nil,
         beam_width: nil,
-        time_to_charge: nil
+        time_to_charge: nil,
         applies_self_movement_penalty: false,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
@@ -9064,7 +9052,7 @@ heroes = [
         fire_rate: nil,
         recovery_rate: nil,
         beam_width: nil,
-        time_to_charge: nil
+        time_to_charge: nil,
         applies_self_movement_penalty: false,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
