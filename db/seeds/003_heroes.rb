@@ -2141,7 +2141,7 @@ heroes = [
         projectile_speed: nil,
         min_damage_per_projectile: nil,
         max_damage_per_projectile: nil,
-        projectiles_fired_per_second: nil``,
+        projectiles_fired_per_second: nil,
         max_range: nil,
         hp: nil,
         is_ultimate: false,
@@ -2589,7 +2589,6 @@ heroes = [
         is_passive: false,
         is_primary_fire: false,
         is_secondary_fire: false,
-        is_beam: false,
         reload_time: nil,
         fire_rate: nil,
         beam_width: nil,
@@ -2862,7 +2861,6 @@ heroes = [
         is_passive: false,
         is_primary_fire: false,
         is_secondary_fire: false,
-        is_beam: false,
         reload_time: nil,
         fire_rate: nil,
         beam_width: nil,
@@ -3141,7 +3139,6 @@ heroes = [
         is_passive: false,
         is_primary_fire: false,
         is_secondary_fire: false,
-        is_beam: false,
         reload_time: nil,
         fire_rate: nil,
         beam_width: nil,
@@ -3491,7 +3488,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: 50,
         max_aoe_damage: 600,
-        applies_self_movement_penalty: true
       },
     ]
   },
@@ -3724,7 +3720,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: 9,
         max_aoe_damage: 30,
-        applies_self_movement_penalty: true
       },
     ]
   },
@@ -3990,7 +3985,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: 0,
         max_aoe_damage: 10000,
-        applies_self_movement_penalty: true
       },
     ]
   },
@@ -4260,7 +4254,6 @@ heroes = [
         min_melee_damage: nil,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
-        applies_self_movement_penalty: false
       },
     ]
   },
