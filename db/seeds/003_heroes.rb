@@ -9152,5 +9152,6 @@ heroes.each do |hero|
   # existing_hero = Hero.find_or_create_by(hero)
 
   existing_hero = Hero.find_by(name: hero[:name])
+  Ability.where(hero_id: existing_hero.id).delete_all
   existing_hero.update(hero)
 end
