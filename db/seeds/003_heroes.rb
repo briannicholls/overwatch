@@ -5086,7 +5086,6 @@ heroes = [
         min_melee_damage: nil,
         # min_aoe_damage: 70,
         # max_aoe_damage: 350,
-        applies_self_movement_penalty: false
       },
     ]
   },
@@ -5193,7 +5192,7 @@ heroes = [
         fire_rate: 9,
         recovery_rate: nil,
         beam_width: nil,
-        time_to_charge: 4680
+        time_to_charge: 4680,
         applies_self_movement_penalty: false,
         min_aoe_damage: nil,
         max_aoe_damage: nil,
