@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_16_002324) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_23_220532) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_16_002324) do
     t.boolean "shares_ammo_with_primary"
     t.integer "number_of_projectiles"
     t.boolean "ignores_barriers", default: false
+    t.boolean "is_hitscan", default: false
     t.index ["hero_id"], name: "index_abilities_on_hero_id"
   end
 
