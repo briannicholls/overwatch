@@ -7,8 +7,8 @@
   </div>
 
   <div class="col-2">
-      <% @hero.attributes.each do |att, ddd| %>
-        <p><%=  "#{att.titleize}: #{ddd}" %></p>
+      <% @attributes_to_display.each do |att, ddd| %>
+        <p><%=  "#{att.to_s.titleize}: #{ddd}" %></p>
       <% end %>
   </div>
 

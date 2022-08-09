@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_27_052546) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_09_005015) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,13 +22,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_052546) do
     t.boolean "has_aoe_effect", default: false
     t.integer "aoe_effect_radius"
     t.integer "base_beam_damage"
-    t.boolean "applies_burn", default: false
+    t.boolean "applies_damage_over_time", default: false
     t.boolean "applies_speed_boost", default: false
     t.boolean "applies_stun", default: false
     t.boolean "applies_shield", default: false
     t.integer "cast_time"
     t.boolean "applies_headshot_damage", default: false
-    t.integer "burn_damage_per_second"
+    t.integer "damage_over_time"
     t.boolean "is_projectile", default: false
     t.float "projectile_speed"
     t.integer "max_damage_per_projectile"
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_052546) do
     t.float "final_falloff_disance"
     t.float "min_damage_per_projectile"
     t.boolean "applies_boop", default: false
-    t.float "boop_distance"
+    t.float "max_boop_distance"
     t.integer "min_melee_damage"
     t.boolean "applies_splash_damage", default: false
     t.float "splash_radius"
@@ -68,6 +68,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_052546) do
     t.float "percent_damage_boost_aoe"
     t.integer "max_melee_damage"
     t.integer "stun_duration"
+    t.boolean "is_barrier"
+    t.boolean "applies_speed_penalty_self", default: false
+    t.boolean "applies_speed_penalty_enemy", default: false
+    t.float "min_boop_distance"
+    t.boolean "shares_ammo_with_primary"
+    t.boolean "ignores_barriers", default: false
+    t.boolean "is_hitscan", default: false
+    t.integer "shields"
+    t.boolean "obeys_gravity"
+    t.integer "recovery_rate"
+    t.boolean "is_turret", default: false
+    t.boolean "applies_armor", default: false
+    t.integer "armor_provided"
+    t.integer "charges"
+    t.boolean "applies_invulnerability", default: false
+    t.text "aoe_effect_types", default: [], array: true
+    t.integer "single_charge_regeneration_duration"
+    t.boolean "applies_healing", default: false
+    t.boolean "applies_healing_self"
+    t.float "projectiles_per_shot"
     t.index ["hero_id"], name: "index_abilities_on_hero_id"
   end
 
@@ -137,4 +157,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_052546) do
   add_foreign_key "hard_counters", "heros", column: "advantage_hero_id"
   add_foreign_key "heros", "games"
   add_foreign_key "heros", "roles"
+
+  create_view "heros_by_primary_weapon_dps", sql_definition: <<-SQL
+      SELECT heros.name
+     FROM (heros
+       LEFT JOIN abilities ON ((abilities.hero_id = heros.id)))
+    ORDER BY abilities.fire_rate DESC;
+  SQL
 end

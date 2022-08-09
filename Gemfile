@@ -76,3 +76,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# custom gems
+
+# generate SQL views [https://github.com/scenic-views/scenic]
+gem "scenic"
