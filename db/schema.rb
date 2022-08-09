@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_23_223542) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_09_005015) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,7 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_23_223542) do
     t.boolean "applies_speed_penalty_enemy", default: false
     t.float "min_boop_distance"
     t.boolean "shares_ammo_with_primary"
-    t.integer "number_of_projectiles"
     t.boolean "ignores_barriers", default: false
     t.boolean "is_hitscan", default: false
     t.integer "shields"
@@ -158,4 +157,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_23_223542) do
   add_foreign_key "hard_counters", "heros", column: "advantage_hero_id"
   add_foreign_key "heros", "games"
   add_foreign_key "heros", "roles"
+
+  create_view "heros_by_primary_weapon_dps", sql_definition: <<-SQL
+      SELECT heros.name
+     FROM (heros
+       LEFT JOIN abilities ON ((abilities.hero_id = heros.id)))
+    ORDER BY abilities.fire_rate DESC;
+  SQL
 end

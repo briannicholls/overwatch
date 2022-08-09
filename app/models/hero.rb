@@ -9,6 +9,10 @@ class Hero < ApplicationRecord
   accepts_nested_attributes_for :hard_counters
   accepts_nested_attributes_for :abilities
 
+  def max_dps_primary_fire
+    primary_fire.dps
+  end
+
   def advantage_hero_ids=(ids)
     ids.each do |id|
       HardCounter.find_or_create_by(hero_id: self.id, advantage_hero_id: id)
