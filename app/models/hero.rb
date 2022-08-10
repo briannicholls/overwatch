@@ -9,6 +9,8 @@ class Hero < ApplicationRecord
   accepts_nested_attributes_for :hard_counters
   accepts_nested_attributes_for :abilities
 
+  # validates
+
   def max_dps_primary_fire
     primary_fire.dps
   end
