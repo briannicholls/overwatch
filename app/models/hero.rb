@@ -1,7 +1,7 @@
 class Hero < ApplicationRecord
   belongs_to :role
   belongs_to :game
-  has_many :teams
+  has_many :teams, through: :hero_teams
   has_many :hard_counters
   has_many :advantage_heros,    class_name: 'Hero', foreign_key: :advantage_hero_id, through: :hard_counters
   has_many :disadvantage_heros, class_name: 'Hero', foreign_key: :hero_id , through: :hard_counters

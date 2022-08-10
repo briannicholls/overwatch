@@ -1,5 +1,5 @@
 class Team < ApplicationRecord
-  has_many :heros
+  has_many :heros, through: :hero_teams
 
   def total_ultimate_cost
     heros

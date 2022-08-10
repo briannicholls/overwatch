@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_09_005015) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_10_020119) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,6 +109,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_09_005015) do
     t.index ["hero_id"], name: "index_hard_counters_on_hero_id"
   end
 
+  create_table "hero_teams", force: :cascade do |t|
+    t.bigint "hero_id", null: false
+    t.bigint "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hero_id"], name: "index_hero_teams_on_hero_id"
+    t.index ["team_id"], name: "index_hero_teams_on_team_id"
+  end
+
   create_table "heros", force: :cascade do |t|
     t.string "name"
     t.bigint "role_id", null: false
@@ -151,10 +160,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_09_005015) do
   create_table "teams", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "role_limit", default: true
   end
 
   add_foreign_key "abilities", "heros"
   add_foreign_key "hard_counters", "heros", column: "advantage_hero_id"
+  add_foreign_key "hero_teams", "heros"
+  add_foreign_key "hero_teams", "teams"
   add_foreign_key "heros", "games"
   add_foreign_key "heros", "roles"
 
