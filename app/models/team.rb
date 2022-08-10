@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+  has_many :hero_teams
   has_many :heros, through: :hero_teams
 
   def total_ultimate_cost
@@ -22,4 +23,18 @@ class Team < ApplicationRecord
   def standard_comp
     # todo
   end
+
+  # returns Team of Heroes that counter this team
+  def optimal_counter_composition
+
+    # get counters for each hero
+    # array of arrays
+    all_hero_counters = heros.map(&:advantage_heros)
+    
+
+    # sample the hero counters and return a Team
+
+    
+  end
+  
 end

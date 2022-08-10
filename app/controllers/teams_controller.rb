@@ -9,14 +9,15 @@ class TeamsController < ApplicationController
 
   # returns a team
   def get_optimal_counter_composition
-
+    
   end
 
   private
 
   def set_team
     @team = Team.first_or_create_by(
-      heros_ids: params[:hero_ids]
+      heros_ids: params[:hero_ids],
+      role_limit: params[:role_limit]
     )
   end
 
