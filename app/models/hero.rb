@@ -23,12 +23,12 @@ class Hero < ApplicationRecord
   def get_advantage_heros
     Hero.all.select{ |hero| hero.is_advantage_hero(self) }
   end
-
+  
   # return true if this hero instance counters given hero
   def is_advantage_hero(hero)
     # todo: calculate an advantage hero based on several factors
 
-    #
+    # 
     # 1. If this hero uses a beam weapon and other hero has no shield (if tank)
   end
 
