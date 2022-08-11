@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_10_020119) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_11_003351) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,6 +88,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_10_020119) do
     t.boolean "applies_healing", default: false
     t.boolean "applies_healing_self"
     t.float "projectiles_per_shot"
+    t.boolean "can_target_self"
+    t.boolean "applies_invulnerability_self"
+    t.boolean "applies_speed_boost_self"
     t.index ["hero_id"], name: "index_abilities_on_hero_id"
   end
 

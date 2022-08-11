@@ -2,6 +2,8 @@ class Team < ApplicationRecord
   has_many :hero_teams
   has_many :heros, through: :hero_teams
 
+  accepts_nested_attributes_for :heros
+
   def total_ultimate_cost
     heros
     .joins(:abilities)
@@ -34,6 +36,8 @@ class Team < ApplicationRecord
 
     # sample the hero counters and return a Team
 
+    # TEMP: remove
+    return Hero.all.slice(0,6)
     
   end
   
