@@ -3,6 +3,10 @@ class Ability < ApplicationRecord
 
   validates_presence_of :name
 
+  def is_escape_move
+    applies_speed_boost_self && applies_invulnerability_self
+  end
+
   # Damage per second. For non-primary fire, returns DPS for the duration they are active.
   def dps
     if is_projectile
