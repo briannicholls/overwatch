@@ -3,23 +3,27 @@ class Ability < ApplicationRecord
 
   validates_presence_of :name
 
+  def is_escape_move
+    applies_speed_boost_self && applies_invulnerability_self
+  end
+
   # Damage per second. For non-primary fire, returns DPS for the duration they are active.
   def dps
     if is_projectile
-      calculate_projectile_dps
+      calculate_max_projectile_dps
     elsif is_beam
-      calculate_beam_dps
+      max_beam_damage
     end
   end
 
   private
 
-  def calculate_beam_dps
+  def average_beam_dps
     [base_beam_damage, max_beam_damage].sum / 2.0
   end
 
-  def calculate_projectile_dps
-    
+  def calculate_max_projectile_dps
+    max_damage_per_projectile * projectiles_per_shot * fire_rate
   end
   
 end

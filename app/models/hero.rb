@@ -1,7 +1,8 @@
 class Hero < ApplicationRecord
   belongs_to :role
   belongs_to :game
-  has_many :teams
+  has_many :hero_teams
+  has_many :teams, through: :hero_teams
   has_many :hard_counters
   has_many :advantage_heros,    class_name: 'Hero', foreign_key: :advantage_hero_id, through: :hard_counters
   has_many :disadvantage_heros, class_name: 'Hero', foreign_key: :hero_id , through: :hard_counters
@@ -9,8 +10,26 @@ class Hero < ApplicationRecord
   accepts_nested_attributes_for :hard_counters
   accepts_nested_attributes_for :abilities
 
+  # validates
+
+  def has_escape_move
+    abilities.where(is_ultimate: false).any?(&:is_escape_move)
+  end
+
   def max_dps_primary_fire
     primary_fire.dps
+  end
+
+  def get_advantage_heros
+    Hero.all.select{ |hero| hero.is_advantage_hero(self) }
+  end
+  
+  # return true if this hero instance counters given hero
+  def is_advantage_hero(hero)
+    # todo: calculate an advantage hero based on several factors
+
+    # 
+    # 1. If this hero uses a beam weapon and other hero has no shield (if tank)
   end
 
   def advantage_hero_ids=(ids)

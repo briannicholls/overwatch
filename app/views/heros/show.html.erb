@@ -1,7 +1,16 @@
+<% display_flex_center = "display: flex; justify-content: center;"%>
+<% div_center_content_style = "display: flex; justify-content: space-around; align-items: center; text-align: center;" %>
+
 <p style="color: green"><%= notice %></p>
 
-<div class="row" style="display: flex; justify-content: space-around; align-items: center;">
+<div style="<%= div_center_content_style %>">
+  <%= link_to "View abilities", hero_abilities_path(@hero) %> |
+  <%= link_to "Edit this hero", edit_hero_path(@hero) %> |
+  <%= link_to "Back to heros", heros_path %> 
+  <% #link_to "Destroy this hero", @hero, method: :delete %>
+</div>
 
+<div class="row" style="<%= div_center_content_style %>">
   <div class="col-2">
     <%= render @hero %>
   </div>
@@ -11,29 +20,24 @@
         <p><%=  "#{att.to_s.titleize}: #{ddd}" %></p>
       <% end %>
   </div>
+</div>
 
+<div style="text-align: center; flex-direction: column;">
+  <h2>Abilities</h2>
+  <ul class="list-group">
+    <% @hero.abilities.each do |ability| %>
+      <li class="list-group-item"><%= render ability %></li>
+    <% end %>
+  </ul>
 </div>
 
 <div>
-  <%= link_to "View abilities", hero_abilities_path(@hero) %> |
-  <%= link_to "Edit this hero", edit_hero_path(@hero) %> |
-  <%= link_to "Back to heros", heros_path %> | 
-  <%= link_to "Destroy this hero", @hero, method: :delete %>
+  <strong>Heros that counter <%= @hero.name %>:</strong>
+  <ul class="list-group">
+    <% @hero.hard_counters.each do |hero| %>
+      <li class="list-group-item"><%= render hero %></li>
+    <% end %>
+  </ul>
 </div>
 
-<th>Heros that counter <%= @hero.name %>:</th>
-<ul class="list-group">
-  <% @hero.hard_counters.each do |hero| %>
-    <li class="list-group-item"><%= render hero %></li>
-  <% end %>
-</ul>
-
-<%= form_for @hero do |f| %>
-  <%= f.collection_check_boxes :advantage_hero_ids, @heros, :id, :name do |checkbox| %>
-    <%= checkbox.label class:"col-3" do %>
-      <%= checkbox.check_box + ' ' + checkbox.text%>
-    <%end%>
-  <% end %>
-  <br />
-  <%= f.submit %>
-<% end %>
+<%= render 'hero_form' %>

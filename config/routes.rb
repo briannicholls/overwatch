@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'teams/new'
+  get 'teams/create'
+  get 'teams/show'
   resources :abilities
   resources :teams
 
