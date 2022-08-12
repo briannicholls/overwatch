@@ -1,8 +1,12 @@
 class TeamsController < ApplicationController
-  before_action :set_team
+  before_action :set_team, except: [:counter, :index, :new]
 
   def index
     
+  end
+
+  def counter
+    @team = Team.new
   end
 
   def create
