@@ -84,3 +84,8 @@ end
 
 # generate SQL views [https://github.com/scenic-views/scenic]
 gem "scenic"
+
+# React
+gem 'react-rails'
+
+gem "importmap-rails", "~> 1.1"
