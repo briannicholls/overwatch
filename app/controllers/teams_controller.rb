@@ -1,5 +1,13 @@
 class TeamsController < ApplicationController
-  before_action :set_team
+  before_action :set_team, except: [:counter, :index, :new]
+
+  def index
+    
+  end
+
+  def counter
+    @team = Team.new
+  end
 
   def create
   end
@@ -15,10 +23,17 @@ class TeamsController < ApplicationController
   private
 
   def set_team
-    @team = Team.first_or_create_by(
-      heros_ids: params[:hero_ids],
-      role_limit: params[:role_limit]
-    )
+    # binding.pry
+    if !params[:hero_ids]
+      # render json: status: 404
+      return
+    else
+      heros = Hero.where(id: params[:hero_ids])
+      @team = Team.find_or_create_by(
+        heros: heros,
+        role_limit: params[:role_limit]
+      )
+    end
   end
 
 end

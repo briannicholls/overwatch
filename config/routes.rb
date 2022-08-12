@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  get 'teams/new'
-  get 'teams/create'
-  get 'teams/show'
+  root to: 'overwatch#index'
+  
   resources :abilities
+
+  # Teams
+  get 'teams/counter', to: 'teams#counter'
   resources :teams
 
-  root to: 'overwatch#index'
   resources :roles
 
   resources :heros do 
