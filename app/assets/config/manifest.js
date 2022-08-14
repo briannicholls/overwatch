@@ -2,5 +2,7 @@
 //= link_tree ../builds
 //= link application.css
 //= link custom.css
-//= link_tree ../../javascript .js
-//= link_tree ../../../vendor/javascript .js
+
+//= link components/TeamKeypad.js
+//= link heroKeypad
+//= link components/heroKeypad

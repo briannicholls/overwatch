@@ -6,7 +6,8 @@ class TeamsController < ApplicationController
   end
 
   def counter
-    @team = Team.new
+    @team ||= Team.new
+    @heros = Hero.all.sort_by(&:name)
   end
 
   def create
