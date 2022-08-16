@@ -4,3 +4,14 @@
 <%= react_component('TeamKeypad', {team: @team}) %>
 
 <%= render 'hero_keypad', locals: @heros %>
+
+<%= form_with model: @team do |(f, i)| %>
+  <%#= f.label "Hero #{i}" %>
+  <%#= collection_select(:hero_team, :hero_id, @heros, :id, :name) %>
+  <%= collection_check_boxes(:hero_team, :hero_id, @heros, :id, :name, {}, { class: 'container'}) do |checkbox| %>
+    <%= checkbox.label class: "col hero-checkbox", :"data-value" => checkbox.value do %>
+      <%= checkbox.check_box + checkbox.text%>
+    <%end%>
+  <% end %>
+  
+<% end %>

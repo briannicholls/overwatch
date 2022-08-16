@@ -1,11 +1,1 @@
 <%= javascript_include_tag 'components/heroKeypad' %>
-
-<select multiple
- name='hero_1'
- id='hero-team-select'
->
-  <% @heros.each do |hero| %>
-    <option value=<%=hero.id%>><%= hero.name %></option>
-  <% end %>
-  
-</select>

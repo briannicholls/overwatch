@@ -30,4 +30,9 @@ img {
   width: 300px;
 }
 
+.hero-checkbox{
+  min-width: 50px;
+  height: 100px
+}
+
 /* * {background-color: red;} */

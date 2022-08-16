@@ -1,1 +1,0 @@
-console.log('** Loaded heroKeypad copy.js **')
