@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # Teams
   get 'teams/counter', to: 'teams#counter'
+  # post 'teams/counter', to: 'teams#calculate_counters'
   resources :teams
 
   resources :roles

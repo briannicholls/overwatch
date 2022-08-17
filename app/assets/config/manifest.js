@@ -4,4 +4,5 @@
 //= link custom.css
 
 //= link components/TeamKeypad.js
-//= link components/heroKeypad
+
+//= link components/heroKeypad.js

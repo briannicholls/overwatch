@@ -12,6 +12,10 @@ class Hero < ApplicationRecord
 
   # validates
 
+  def file_friendly_name
+    name.downcase.underscore.gsub(/[\. ]/, '_')
+  end
+
   def has_escape_move
     abilities.where(is_ultimate: false).any?(&:is_escape_move)
   end

@@ -1,17 +1,24 @@
 
-<h1>Counter Wizard</h1>
-
-<%= react_component('TeamKeypad', {team: @team}) %>
-
-<%= render 'hero_keypad', locals: @heros %>
+<h1>Team Counter Wizard</h1>
 
 <%= form_with model: @team do |(f, i)| %>
-  <%#= f.label "Hero #{i}" %>
-  <%#= collection_select(:hero_team, :hero_id, @heros, :id, :name) %>
-  <%= collection_check_boxes(:hero_team, :hero_id, @heros, :id, :name, {}, { class: 'container'}) do |checkbox| %>
+  <%= collection_check_boxes(:team, :hero_ids, @heros, :id, :name, {}, { class: 'container hero-checkboxes-container'}) do |checkbox| %>
     <%= checkbox.label class: "col hero-checkbox", :"data-value" => checkbox.value do %>
-      <%= checkbox.check_box + checkbox.text%>
+      
+      <% this_hero = @heros.find{ |hero| hero.id == checkbox.value } %>
+      
+      <% if this_hero %>
+        <%= image_tag "#{this_hero.file_friendly_name}.png", class: 'hero-image'  %>
+      <% end %>
+<!--
+      <h2 class="hero-title hero-title-keypad">
+        <div style="text-align: right;"><%#= this_hero.name %>&nbsp;</div>
+      </h2>
+-->
+
+      <%# Actual checkbox may not be needed? %>
+      <%= checkbox.check_box %>
     <%end%>
   <% end %>
-  
+  <%= f.submit "Submit"%>
 <% end %>
