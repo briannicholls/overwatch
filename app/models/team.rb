@@ -5,6 +5,13 @@ class Team < ApplicationRecord
   accepts_nested_attributes_for :hero_teams
   accepts_nested_attributes_for :heros
 
+  # TODO: with_hero (singular)
+  scope :with_heros, -> (hero_ids) { joins(:hero_teams).where('hero_teams.hero_id in (?)',  hero_ids).group('teams.id') }
+  scope :with_heros_count, -> (hero_ids) { joins(:hero_teams).where('hero_teams.hero_id in (?)',  hero_ids).group('teams.id').count('hero_teams.hero_id') }
+
+  joins(:hero_teams).where('hero_teams.hero_id in (?)',  hero_ids).where('C
+    OUNT(hero_teams.hero_id = ?', 5).group('teams.id').count('hero_teams.hero_id')
+
   # ToDo: fix this. it will always return a team no matter what. fix hero id filters
   def self.first_or_create_by_heros(hero_ids)
     matching_hero_team = joins(:hero_teams).where('hero_teams.hero_id' => hero_ids).uniq

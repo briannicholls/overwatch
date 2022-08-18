@@ -17,17 +17,17 @@ class TeamsController < ApplicationController
   end
 
   def create
-    # binding.pry
+    binding.pry
     hero_ids = params[:team][:hero_ids].compact_blank
-    team = Team.first_or_create_by_heros(hero_ids)
+    @team = Team.joins(:hero_teams).where(hero_ids: hero_ids).first_or_create_by_heros(hero_ids)
     
     respond_to do |format|
-      if team.persisted?
-        format.html { redirect_to team_url(team), notice: "Team counter found." }
-        format.json { render :show, status: :created, location: team }
+      if @team.persisted?
+        format.html { redirect_to @team, notice: "Team counter found." }
+        format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: team.errors, status: :unprocessable_entity }
+        format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end
 
