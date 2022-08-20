@@ -5,18 +5,13 @@
   <%= collection_check_boxes(:team, :hero_ids, @heros, :id, :name, {}, { class: 'container hero-checkboxes-container'}) do |checkbox| %>
     <%= checkbox.label class: "col hero-checkbox", :"data-value" => checkbox.value do %>
       
+      <%# Hero portrait image %>
       <% this_hero = @heros.find{ |hero| hero.id == checkbox.value } %>
-      
       <% if this_hero %>
         <%= image_tag "#{this_hero.file_friendly_name}.png", class: 'hero-image'  %>
       <% end %>
-<!--
-      <h2 class="hero-title hero-title-keypad">
-        <div style="text-align: right;"><%#= this_hero.name %>&nbsp;</div>
-      </h2>
--->
 
-      <%# Actual checkbox may not be needed? %>
+      <%# Actual check box: may not be needed? %>
       <%= checkbox.check_box %>
     <%end%>
   <% end %>
