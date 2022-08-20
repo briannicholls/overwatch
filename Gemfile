@@ -88,4 +88,8 @@ gem "scenic"
 # React
 gem 'react-rails'
 
+# todo: perhaps not needed in rails 7?
 gem "importmap-rails", "~> 1.1"
+
+# Record DB changes
+gem 'paper_trail'

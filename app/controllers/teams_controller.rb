@@ -17,9 +17,9 @@ class TeamsController < ApplicationController
   end
 
   def create
-    binding.pry
     hero_ids = params[:team][:hero_ids].compact_blank
-    @team = Team.joins(:hero_teams).where(hero_ids: hero_ids).first_or_create_by_heros(hero_ids)
+    @team = Team.first_or_create_by_heros(hero_ids)
+    # binding.pry
     
     respond_to do |format|
       if @team.persisted?

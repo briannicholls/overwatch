@@ -1,30 +1,24 @@
 class Team < ApplicationRecord
-  has_many :hero_teams
+  has_many :hero_teams, dependent: :destroy
   has_many :heros, through: :hero_teams
 
   accepts_nested_attributes_for :hero_teams
   accepts_nested_attributes_for :heros
 
   # TODO: with_hero (singular)
-  scope :with_heros, -> (hero_ids) { joins(:hero_teams).where('hero_teams.hero_id in (?)',  hero_ids).group('teams.id') }
-  scope :with_heros_count, -> (hero_ids) { joins(:hero_teams).where('hero_teams.hero_id in (?)',  hero_ids).group('teams.id').count('hero_teams.hero_id') }
-
-  joins(:hero_teams).where('hero_teams.hero_id in (?)',  hero_ids).where('C
-    OUNT(hero_teams.hero_id = ?', 5).group('teams.id').count('hero_teams.hero_id')
-
+  # scope :with_heros, -> (hero_ids) { joins(:hero_teams).where('hero_teams.hero_id in (?)',  hero_ids).group('teams.id') }
+  scope :with_exact_heros, -> (hero_ids) { joins(:hero_teams).where('hero_teams.hero_id in (?)',  hero_ids).group('teams.id').count('hero_teams.hero_id') }
+  
   # ToDo: fix this. it will always return a team no matter what. fix hero id filters
   def self.first_or_create_by_heros(hero_ids)
-    matching_hero_team = joins(:hero_teams).where('hero_teams.hero_id' => hero_ids).uniq
-    if matching_hero_team.present?
-      matching_hero_team.first
+    team_size = Hero.find(hero_ids[0]).game.heroes_per_team
+    map_team_id_to_hero_count = with_exact_heros(hero_ids)
+    .select{ |team_id, hero_count| hero_count == team_size }
+    if map_team_id_to_hero_count.present?
+      # binding.pry
+      Team.find(map_team_id_to_hero_count.keys.first)
     else
-      team = Team.create()
-      binding.pry
-      team.hero_teams.build(
-        hero_id: hero_ids
-      )
-      team.save
-      team
+      Team.create(hero_ids: hero_ids)
     end
   end
   
