@@ -34,6 +34,8 @@ class TeamsController < ApplicationController
   end
 
   def show
+    # @team = Team.find team_params[:id]
+    @team = Team.find params[:id]
   end
 
   # returns a team
@@ -59,7 +61,7 @@ class TeamsController < ApplicationController
 
   def team_params
     # todo: find out why hero ids are not permitted
-    params.require(:team).permit( :hero_ids )
+    params.require(:team).permit( hero_ids: [] )
   end
 
 end

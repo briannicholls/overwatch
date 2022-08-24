@@ -1,2 +1,10 @@
 <h1>Teams#show</h1>
 <p>Find me in app/views/teams/show.html.erb</p>
+
+<div class="row">
+
+  <% @team.heros.each do |hero|%>
+    <%= render hero %>
+  <% end %>
+
+</div>
