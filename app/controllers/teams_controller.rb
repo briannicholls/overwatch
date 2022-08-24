@@ -36,6 +36,7 @@ class TeamsController < ApplicationController
   def show
     # @team = Team.find team_params[:id]
     @team = Team.find params[:id]
+    @counter_team = @team.optimal_counter_composition
   end
 
   # returns a team

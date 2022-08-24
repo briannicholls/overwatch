@@ -15,7 +15,6 @@ class Team < ApplicationRecord
     map_team_id_to_hero_count = with_exact_heros(hero_ids)
     .select{ |team_id, hero_count| hero_count == team_size }
     if map_team_id_to_hero_count.present?
-      # binding.pry
       Team.find(map_team_id_to_hero_count.keys.first)
     else
       Team.create(hero_ids: hero_ids)
@@ -56,7 +55,6 @@ class Team < ApplicationRecord
 
     # TEMP: remove
     return Hero.all.slice(0,6)
-    
   end
   
 end

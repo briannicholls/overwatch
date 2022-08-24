@@ -13,4 +13,12 @@
     <p>Best countered by:</p>
   </div>
 
+  <div class="row" id="team-hero-display">
+
+    <% @counter_team.each do |hero|%>
+      <%= render hero %>
+    <% end %>
+
+  </div>
+
 </div>
