@@ -1,10 +1,16 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<div class="container">
+  <h2>View Team</h2>
 
-<div class="row">
+  <div class="row" id="team-hero-display">
 
-  <% @team.heros.each do |hero|%>
-    <%= render hero %>
-  <% end %>
+    <% @team.heros.each do |hero|%>
+      <%= render hero %>
+    <% end %>
+
+  </div>
+
+  <div class="row">
+    <p>Best countered by:</p>
+  </div>
 
 </div>
