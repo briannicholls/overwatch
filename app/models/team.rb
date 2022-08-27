@@ -50,6 +50,7 @@ class Team < ApplicationRecord
     # array of arrays
     all_hero_counters = heros.map(&:advantage_heros)
     
+# binding.pry
 
     # sample the hero counters and return a Team
 

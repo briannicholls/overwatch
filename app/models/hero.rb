@@ -42,6 +42,7 @@ class Hero < ApplicationRecord
     # 1. If this hero uses a beam weapon and other hero has no shield (if tank)
   end
 
+  # create hard counters by ids
   def advantage_hero_ids=(ids)
     ids.each do |id|
       HardCounter.find_or_create_by(hero_id: self.id, advantage_hero_id: id)

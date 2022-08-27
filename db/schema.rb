@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_20_211033) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_27_215953) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,12 +105,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_20_211033) do
   end
 
   create_table "hard_counters", force: :cascade do |t|
-    t.bigint "advantage_hero_id", null: false
+    t.bigint "versus_hero_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "hero_id"
-    t.index ["advantage_hero_id"], name: "index_hard_counters_on_advantage_hero_id"
+    t.float "strength"
     t.index ["hero_id"], name: "index_hard_counters_on_hero_id"
+    t.index ["versus_hero_id"], name: "index_hard_counters_on_versus_hero_id"
   end
 
   create_table "hero_teams", force: :cascade do |t|
@@ -186,7 +187,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_20_211033) do
   end
 
   add_foreign_key "abilities", "heros"
-  add_foreign_key "hard_counters", "heros", column: "advantage_hero_id"
+  add_foreign_key "hard_counters", "heros", column: "versus_hero_id"
   add_foreign_key "hero_teams", "heros"
   add_foreign_key "hero_teams", "teams"
   add_foreign_key "heros", "games"
