@@ -36,10 +36,6 @@ class Hero < ApplicationRecord
   
   # return true if this hero instance counters given hero
   def is_advantage_hero(hero)
-    # todo: calculate an advantage hero based on several factors
-
-    # 
-    # 1. If this hero uses a beam weapon and other hero has no shield (if tank)
   end
 
   # create hard counters by ids
@@ -81,6 +77,15 @@ class Hero < ApplicationRecord
 
   def ultimate_cost
     ultimate_ability.ultimate_cost
+  end
+
+  # todo: calculate an advantage hero based on several factors
+  # and create/update counter relationship
+  def compare(test_hero)
+    hero_hero = HardCounter.find_or_create_by(advantage_hero_id: test_hero.id)
+
+    # 1. If this hero uses a beam weapon and other hero has no shield (if tank)
+
   end
   
 end
