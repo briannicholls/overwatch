@@ -6,13 +6,13 @@ class Ability < ApplicationRecord
   # return abilities that do any damage
   scope :damage_dealing, ->() { where(
     <<-SQL
-      damage_over_time >= 0 and
-      max_aoe_damage >= 0 and
-      max_beam_damage >= 0 and
-      max_damage_per_projectile >= 0 and
+      damage_over_time >= 0 or
+      max_aoe_damage >= 0 or
+      max_beam_damage >= 0 or
+      max_damage_per_projectile >= 0 or
       max_melee_damage >= 0
     SQL
-    ) }
+  ) }
 
   def deals_damage
     [damage_over_time, max_aoe_damage, max_beam_damage, max_damage_per_projectile, max_melee_damage].any?{|x| x > 0}
