@@ -15,7 +15,12 @@ class Ability < ApplicationRecord
   ) }
 
   def deals_damage
-    [damage_over_time, max_aoe_damage, max_beam_damage, max_damage_per_projectile, max_melee_damage].any?{|x| x > 0}
+    begin
+      [damage_over_time, max_aoe_damage, max_beam_damage, max_damage_per_projectile, max_melee_damage].compact.any?{|x| x > 0}
+    rescue
+      binding.pry
+      raise "#{hero.name}: #{name} (#{keybinding}) can not calculate DPS. Check damage values. (ID: #{id})"
+    end
   end
 
   def is_escape_move
@@ -24,12 +29,7 @@ class Ability < ApplicationRecord
 
   # Damage per second. For non-primary fire, returns DPS for the duration they are active.
   def dps
-    [damage_over_time, max_aoe_damage, max_beam_damage, max_projectile_dps, max_melee_damage].sum
-    # if is_projectile
-    #   calculate_max_projectile_dps
-    # elsif is_beam
-    #   max_beam_damage
-    # end
+    [damage_over_time, max_aoe_damage, max_beam_damage, max_projectile_dps, max_melee_damage].compact.sum
   end
 
   def damage_per_shot
@@ -54,12 +54,10 @@ class Ability < ApplicationRecord
     begin
       max_damage_per_projectile * projectiles_per_shot * fire_rate
     rescue NoMethodError
-      puts ""
       puts "*************************"
       puts "#{hero.name}'s ability \"#{name}\" is missing one of the following attributes: max_damage_per_projectile, projectiles_per_shot, fire_rate"
       puts "#{{max_damage_per_projectile: max_damage_per_projectile, projectiles_per_shot: projectiles_per_shot, fire_rate: fire_rate}.inspect}"
       puts "*************************"
-      puts ""
       throw NoMethodError
     end
   end
