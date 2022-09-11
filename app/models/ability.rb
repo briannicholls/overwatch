@@ -14,13 +14,17 @@ class Ability < ApplicationRecord
     SQL
   ) }
 
+  # instance method version of scope method damage_dealing
   def deals_damage
-    begin
-      [damage_over_time, max_aoe_damage, max_beam_damage, max_damage_per_projectile, max_melee_damage].compact.any?{|x| x > 0}
-    rescue
-      binding.pry
-      raise "#{hero.name}: #{name} (#{keybinding}) can not calculate DPS. Check damage values. (ID: #{id})"
-    end
+      [
+        damage_over_time,
+        max_aoe_damage,
+        max_beam_damage,
+        max_damage_per_projectile,
+        max_melee_damage
+      ]
+      .compact # remove nil values
+      .any?{|x| x > 0}
   end
 
   def is_escape_move
@@ -53,12 +57,12 @@ class Ability < ApplicationRecord
     return 0 if is_beam || !deals_damage
     begin
       max_damage_per_projectile * projectiles_per_shot * fire_rate
-    rescue NoMethodError
-      puts "*************************"
-      puts "#{hero.name}'s ability \"#{name}\" is missing one of the following attributes: max_damage_per_projectile, projectiles_per_shot, fire_rate"
+    rescue => e
+      puts ""; puts "***************************";
+      puts "#{hero.name}'s ability \"#{name}\" (#{keybinding}) is missing one of the following attributes (ID #{id}):"
       puts "#{{max_damage_per_projectile: max_damage_per_projectile, projectiles_per_shot: projectiles_per_shot, fire_rate: fire_rate}.inspect}"
-      puts "*************************"
-      throw NoMethodError
+      puts "***************************"; puts "";
+      raise e
     end
   end
   
