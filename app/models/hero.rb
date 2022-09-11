@@ -16,7 +16,10 @@ class Hero < ApplicationRecord
   accepts_nested_attributes_for :hard_counters
   accepts_nested_attributes_for :abilities
 
-  # validates
+  # return hero with the highest counter rating against this hero
+  def strongest_counter
+    hard_counters.order(strength: :desc).first
+  end
 
   def file_friendly_name
     name.downcase.underscore.gsub(/[\. ]/, '_')

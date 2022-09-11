@@ -48,7 +48,7 @@ class Team < ApplicationRecord
 
     # get counters for each hero
     # array of arrays
-    all_hero_counters = heros.map(&:advantage_heros)
+    all_hero_counters = heros.map(&:strongest_counter)
     
 # binding.pry
 
