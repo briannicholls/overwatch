@@ -16,6 +16,8 @@ class Hero < ApplicationRecord
   accepts_nested_attributes_for :hard_counters
   accepts_nested_attributes_for :abilities
 
+  # connects_to database: { writing: :abilities, reading: :abilities_replica }
+
   # return hero with the highest counter rating against this hero
   def strongest_counter
     hard_counters.order(strength: :desc).first

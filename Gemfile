@@ -58,6 +58,9 @@ group :development, :test do
   # use RSpec for testing
   # gem "rspec"
   gem 'rspec-rails', '~> 6.0.0.rc1' # for rails 6 + 7
+
+  gem 'pry'
+  gem 'pry-nav'
 end
 
 group :development do
@@ -68,9 +71,6 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-
-  gem 'pry'
-  gem 'pry-nav'
 end
 
 group :test do
