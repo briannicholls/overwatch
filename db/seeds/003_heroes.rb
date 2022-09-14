@@ -17,7 +17,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: true,
 #     provides_shield: true,
 #     provides_damage_boost: false,
@@ -178,7 +178,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: true,
 #     provides_damage_boost: false,
@@ -381,7 +381,7 @@
 #     aoe_heal: false,
 #     aoe_primary: true,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: true,
 #     provides_damage_boost: false,
@@ -516,7 +516,7 @@
 #         is_projectile: true,
 #         projectile_speed: 25,
 #         max_damage_per_projectile: 100,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: nil,
 #         hp: nil,
 #         is_ultimate: false,
@@ -585,7 +585,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: true,
 #     provides_damage_boost: false,
@@ -729,7 +729,7 @@
 #         is_projectile: true,
 #         projectile_speed: 37.5,
 #         max_damage_per_projectile: 70,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: nil,
 #         hp: nil,
 #         is_ultimate: false,
@@ -797,7 +797,7 @@
 #     aoe_heal: false,
 #     aoe_primary: true,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: true,
 #     provides_damage_boost: false,
@@ -906,7 +906,7 @@
 #         is_projectile: false,
 #         projectile_speed: nil,
 #         max_damage_per_projectile: nil,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: nil,
 #         hp: 700,
 #         is_ultimate: false,
@@ -1122,7 +1122,7 @@
 #         is_projectile: false,
 #         projectile_speed: nil,
 #         max_damage_per_projectile: nil,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: nil,
 #         hp: nil,
 #         is_ultimate: false,
@@ -1160,7 +1160,7 @@
 #         is_projectile: false,
 #         projectile_speed: nil,
 #         max_damage_per_projectile: nil,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: nil,
 #         hp: nil,
 #         is_ultimate: false,
@@ -1229,7 +1229,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: true,
 #     provides_damage_boost: false,
@@ -1379,7 +1379,7 @@
 #         is_projectile: false,
 #         projectile_speed: nil,
 #         max_damage_per_projectile: nil,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: 30,
 #         hp: 200,
 #         is_ultimate: false,
@@ -1417,7 +1417,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -1487,7 +1487,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -1638,7 +1638,7 @@
 #         is_projectile: true,
 #         projectile_speed: 25,
 #         max_damage_per_projectile: nil,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: nil,
 #         hp: nil,
 #         is_ultimate: false,
@@ -1676,7 +1676,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -1747,7 +1747,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -1899,7 +1899,7 @@
 #         is_projectile: true,
 #         projectile_speed: 30,
 #         max_damage_per_projectile: 25,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: 7,
 #         hp: nil,
 #         is_ultimate: false,
@@ -1937,7 +1937,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -2009,7 +2009,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -2240,7 +2240,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -2316,7 +2316,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: true,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -2512,7 +2512,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -2588,7 +2588,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -2784,7 +2784,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -2860,7 +2860,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -3063,7 +3063,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -3139,7 +3139,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -3292,7 +3292,7 @@
 #         is_projectile: true,
 #         projectile_speed: 10,
 #         max_damage_per_projectile: nil,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: nil,
 #         hp: 100,
 #         is_ultimate: false,
@@ -3330,7 +3330,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -3404,7 +3404,7 @@
 #     aoe_heal: false,
 #     aoe_primary: true,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: true,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -3524,7 +3524,7 @@
 #         is_projectile: true,
 #         projectile_speed: 60,
 #         max_damage_per_projectile: 0,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: nil,
 #         hp: nil,
 #         is_ultimate: false,
@@ -3562,7 +3562,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -3636,7 +3636,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -3789,7 +3789,7 @@
 #         is_projectile: true,
 #         projectile_speed: 25,
 #         max_damage_per_projectile: nil,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: nil,
 #         hp: 5,
 #         is_ultimate: false,
@@ -3827,7 +3827,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -3901,7 +3901,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -4056,7 +4056,7 @@
 #         is_projectile: false,
 #         projectile_speed: nil,
 #         max_damage_per_projectile: nil,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: nil,
 #         hp: 50,
 #         shields: 250,
@@ -4095,7 +4095,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -4170,7 +4170,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -4286,7 +4286,7 @@
 #         number_of_projectiles: nil,
 #         projectiles_fired_per_second: 4,
 #         max_range: 40,
-#         is_turret: true,
+#         is_turret: true, 
 #         max_melee_damage: nil,
 #         hp: 250,
 #         is_ultimate: false,
@@ -4328,7 +4328,7 @@
 #         is_projectile: false,
 #         projectile_speed: nil,
 #         max_damage_per_projectile: nil,
-#         projectiles_fired_per_second: nil,
+#         projectiles_fired_per_second: nil, 
 #         max_range: nil,
 #         hp: nil,
 #         shields: nil,
@@ -4368,7 +4368,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -4443,7 +4443,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -4643,7 +4643,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -4719,7 +4719,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -4925,7 +4925,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -5002,7 +5002,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: true,
@@ -5204,7 +5204,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -5281,7 +5281,7 @@
 #     aoe_heal: true,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: true,
@@ -5530,7 +5530,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -5608,7 +5608,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: true,
 #     provides_shield: false,
 #     provides_damage_boost: true,
@@ -5812,7 +5812,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -5890,7 +5890,7 @@
 #     aoe_heal: true,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -6185,7 +6185,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -6263,7 +6263,7 @@
 #     aoe_heal: true,
 #     aoe_primary: true,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -6279,8 +6279,8 @@
 #         has_aoe_effect: true,
 #         aoe_effect_radius: 20,
 #         aoe_effect_types: ['healing'],
-#         base_beam_damage: nil,
-#         max_beam_damage: nil,
+#         base_beam_damage: nil, 
+#         max_beam_damage: nil,  
 #         applies_damage_over_time: false,
 #         applies_speed_boost: false,
 #         applies_stun: false,
@@ -6565,7 +6565,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -6643,7 +6643,7 @@
 #     aoe_heal: true,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -6859,7 +6859,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -6937,7 +6937,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -7201,7 +7201,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -7279,7 +7279,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -7546,7 +7546,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -7625,7 +7625,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: false,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -7937,7 +7937,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -8016,7 +8016,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -8284,7 +8284,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -8364,7 +8364,7 @@
 #     aoe_heal: false,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -8631,7 +8631,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
@@ -8711,7 +8711,7 @@
 #     aoe_heal: true,
 #     aoe_primary: false,
 #     has_escape_ability: true,
-#     # movement_speed:
+#     # movement_speed: 
 #     can_fly: false,
 #     provides_shield: false,
 #     provides_damage_boost: false,
@@ -8978,7 +8978,7 @@
 #       #   is_projectile: false,
 #       #   projectile_speed: nil,
 #       #   max_damage_per_projectile: nil,
-#       #   projectiles_fired_per_second: nil,
+#       #   projectiles_fired_per_second: nil, 
 #       #   max_range: nil,
 #       #   hp: nil,
 #       #   is_ultimate: false,
