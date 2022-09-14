@@ -3,7 +3,7 @@ require 'pry'
 RSpec.describe Ability, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
 
-  describe "dps" do
+  describe "#dps" do
     context "for Abilities that deal damage"
     it "should calculate a valid DPS value" do
       @abilities = Ability.non_ultimates.damage_dealing

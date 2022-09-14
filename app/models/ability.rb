@@ -36,7 +36,7 @@ class Ability < ApplicationRecord
 
   # Damage per second. For non-primary fire, returns DPS for the duration they are active.
   def dps
-    [damage_over_time, max_aoe_damage, max_beam_damage, max_projectile_dps, max_melee_damage]
+    [damage_over_time, max_aoe_damage, max_beam_damage, max_projectile_dps, max_melee_dps]
     .compact.sum
   end
 
@@ -57,8 +57,13 @@ class Ability < ApplicationRecord
     [base_beam_damage, max_beam_damage].sum / 2.0
   end
 
+  def max_melee_dps
+    return 0 unless max_melee_damage
+    max_melee_damage * fire_rate
+  end
+
   def max_projectile_dps
-    return 0 if is_beam || !deals_damage
+    return 0 if !deals_damage || !is_projectile
     begin
       max_damage_per_projectile * projectiles_per_shot * fire_rate
     rescue => e
