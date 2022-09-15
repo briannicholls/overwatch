@@ -4,8 +4,8 @@
 
 desc "Creates counter relationship for all heros (takes a long time)"
 task :build_counters do
+  HardCounter.delete_all
   ow1_heros = Hero.where game_id: 1
-
   ow1_heros do |hero|
     ow1_heros do |test_hero|
 

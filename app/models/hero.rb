@@ -88,7 +88,7 @@ class Hero < ApplicationRecord
   # and create/update counter relationship
   def compare(test_hero)
     # TODO: when checking for .any abilities. if there are multiple, that should multiply strength bonus
-
+    
     hero_hero = HardCounter.find_or_create_by(hero_id: id, versus_hero_id: test_hero.id)
     strength = 0   # my offensive strength against you
 
