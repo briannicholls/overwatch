@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_15_171301) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_15_213241) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -138,7 +138,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_171301) do
     t.integer "hp"
     t.integer "shield"
     t.integer "armor"
-    t.boolean "has_shield", default: false
     t.integer "shield_hp"
     t.boolean "melee_primary_fire", default: false
     t.integer "cc_range"
