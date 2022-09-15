@@ -87,10 +87,40 @@ class Hero < ApplicationRecord
   # todo: calculate an advantage hero based on several factors
   # and create/update counter relationship
   def compare(test_hero)
-    hero_hero = HardCounter.find_or_create_by(advantage_hero_id: test_hero.id)
+    # TODO: when checking for .any abilities. if there are multiple, that should multiply strength bonus
 
-    # 1. If this hero uses a beam weapon and other hero has no shield (if tank)
+    hero_hero = HardCounter.find_or_create_by(hero_id: id, versus_hero_id: test_hero.id)
+    strength = 0   # my offensive strength against you
 
+    # If this hero uses a beam weapon and other hero has no shield (if tank)
+    strength += 1 if self.primary_fire.is_beam && !test_hero.has_barrier
+
+    # If hero has a barrier but primary fire ignores it
+    strength += 1 if self.primary_fire.ignores_barriers && test_hero.has_barrier
+
+    # if hero can be one-shotted
+    binding.pry
+    strength += 1 if self.abilities.any?(&:can_one_shot(test_hero))
+
+    # if I have CC and you have no escape move
+    if self.abilities.any?(&:applies_stun) && !test_hero.has_escape_move
+      strength += 1
+    elsif self.abilities.any?(&:applies_stun) && !test_hero.abilities.any?(&:applies_stun)
+      strength += 0.2
+    end
+
+    # if you have armor and my primary fire shoots many pellets
+    strength -= 0.8 if test_hero.armor > 0 && self.primary_fire.projectiles_fired_per_second > 10
+
+    # if I have CC and you have an ability with high ult cost
+    strength += 0.5 if self.abilities.any?(&:applies_stun) && test_hero.ultimate_cost_percentile > 80
+
+    hero_hero.update(strength: strength)
+
+  end
+
+  def has_barrier
+    abilities.find_by(is_barrier: true).present?
   end
   
 end
