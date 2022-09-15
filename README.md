@@ -1,6 +1,10 @@
 # Overwatch API
 - [Overwatch API](#overwatch-api)
   - [The Data](#the-data)
+    - [Hero](#hero)
+      - [`hp`](#hp)
+      - [`shield`](#shield)
+      - [`armor`](#armor)
     - [Ability](#ability)
       - [`fire_rate`](#fire_rate)
       - [`projectiles_per_shot`](#projectiles_per_shot)
@@ -17,9 +21,19 @@
 
 All times (durations) are measured in milliseconds. Rates are measured as a float, *x* per second.
 
+### Hero
+#### `hp`
+*integer* Starting points, not including `armor` and `shield`
+
+#### `shield`
+*integer* Starting shields
+
+#### `armor`
+*integer* Starting armor
+
 ### Ability
 #### `fire_rate`
-Maximum rate of fire for this ability while it is active. Used in claculating DPS if ability `is_primary_fire`.
+*integer* Maximum rate of fire for this ability while it is active. Used in claculating DPS if ability `is_primary_fire`.
 Note that this is the rate of fire for the weapon, i.e. "gun blasts" per second. A single gun blast may shoot multiple projectiles - see `projectiles_per_shot` (only for abilities with `is_projectile`)
 
 #### `projectiles_per_shot`
