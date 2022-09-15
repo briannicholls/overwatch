@@ -6,12 +6,16 @@
       - [`projectiles_per_shot`](#projectiles_per_shot)
       - [`projectiles_fired_per_second`](#projectiles_fired_per_second)
       - [`projectiles_fired_per_second`](#projectiles_fired_per_second-1)
+      - [`cast_time`](#cast_time)
+      - [`recovery_time`](#recovery_time)
+      - [`cast_animation_time`](#cast_animation_time)
   - [Heroes](#heroes)
       - [GET /hero](#get-hero)
-  - [Abilities](#abilities)
   - [Teams](#teams)
 
 ## The Data
+
+Note: All times (durations) are measured in milliseconds.
 
 ### Ability
 #### `fire_rate` `float`
@@ -27,14 +31,18 @@ Note that this is the rate of fire for the weapon, i.e. "gun blasts" per second.
 #### `projectiles_fired_per_second`
 *float* How many total projectiles leave the weapon per second (only for abilities with `is_projectile`)
 
-##
+#### `cast_time`
+*integer* Amount of time it takes for ability to be cast. The Hero can be stunned out of casting the ability during this time, in contrast to `cooldown_timer_delay`, `reovery_time`, and `cast_animation_time` (see below)
+
+#### `recovery_time`
+*integer* Amount of time after using ability in which the hero may not perform any other actions
+
+#### `cast_animation_time`
+*integer* Amount of time after using the ability until it takes effect (since ability is deployed, it can not be stun canceled at this point)
 
 ## Heroes
 
 #### GET /hero
-
-
-## Abilities
 
 
 ## Teams
