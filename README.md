@@ -8,6 +8,7 @@
       - [`cast_time`](#cast_time)
       - [`recovery_time`](#recovery_time)
       - [`cast_animation_time`](#cast_animation_time)
+      - [`cooldown_timer_delay`](#cooldown_timer_delay)
   - [Heroes](#heroes)
       - [GET /hero](#get-hero)
   - [Teams](#teams)
@@ -35,6 +36,9 @@ Note that this is the rate of fire for the weapon, i.e. "gun blasts" per second.
 
 #### `cast_animation_time`
 *integer* Amount of time after using the ability until it takes effect (since ability is deployed, it can not be stun canceled at this point)
+
+#### `cooldown_timer_delay`
+*integer* Amount of time after triggering the ability until the cooldown timer begins
 
 ## Heroes
 
