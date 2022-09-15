@@ -112,8 +112,8 @@ class Hero < ApplicationRecord
     # if you have armor and my primary fire shoots many pellets
     strength -= 0.8 if test_hero.armor > 0 && self.primary_fire.projectiles_fired_per_second > 10
 
-    # if I have CC and you have an ability with high ult cost
-    strength += 0.5 if self.abilities.any?(&:applies_stun) && test_hero.ultimate_cost_percentile > 80
+    # if I have CC and you have an ability with high ult cost (I can canel it)
+    strength += 0.5 if self.abilities.any?(&:applies_stun) && test_hero.ultimate_cost_percentile > 80 && test_hero.ultimate_ability.can_be_cancelled
 
     hero_hero.update(strength: strength)
 
