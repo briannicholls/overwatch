@@ -93,3 +93,6 @@ gem "importmap-rails", "~> 1.1"
 
 # Record DB changes
 gem 'paper_trail'
+
+# Todo: this breaks activerecord
+# gem 'descriptive_statistics'

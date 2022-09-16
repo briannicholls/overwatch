@@ -18,6 +18,10 @@ class Hero < ApplicationRecord
 
   # validates :has_primary_fire
 
+  # def initialize(params={})
+  #   super(params)
+  # end
+  
   def has_primary_fire
     abilities.any?(&:is_primary_fire)
   end
@@ -94,7 +98,8 @@ class Hero < ApplicationRecord
   # and create/update counter relationship
   def compare(test_hero)
     # TODO: when checking for .any abilities. if there are multiple, that should multiply strength bonus
-    
+    require 'descriptive_statistics'
+
     hero_hero = HardCounter.find_or_create_by(hero_id: id, versus_hero_id: test_hero.id)
     strength = 0   # my offensive strength against you
 
@@ -116,14 +121,30 @@ class Hero < ApplicationRecord
     end
 
     # if you have armor and my primary fire shoots many pellets
-    strength -= 0.8 if test_hero.armor > 0 && self.primary_fire.projectiles_fired_per_second > 10
+    strength -= 0.8 if test_hero.armor > 0 && self.primary_fire.is_projectile && self.primary_fire.projectiles_fired_per_second > 10
 
     # if I have CC and you have an ability with high ult cost (I can canel it)
-    strength += 0.5 if self.abilities.any?(&:applies_stun) && test_hero.ultimate_cost_percentile > 80 && test_hero.ultimate_ability.can_be_cancelled
+    strength += 0.5 if self.abilities.any?(&:applies_stun) && test_hero.ultimate_ability.can_be_cancelled && test_hero.ultimate_cost > Hero.all.map(&:ultimate_cost).percentile(80)
 
     hero_hero.update(strength: strength)
 
   end
+
+  # todo: refactor into general _percentile method
+  def ultimate_cost_percentile
+    ult_costs = Hero.all.map(&:ultimate_cost)
+    ult_costs.max
+  end
+
+  # def percentile(values, percentile)
+  #   values_sorted = values.compact.sort
+  #   k = (percentile*(values_sorted.length-1)+1).floor - 1
+  #   f = (percentile*(values_sorted.length-1)+1).modulo(1)
+  #   if values_sorted[k].nil?
+  #     binding.pry
+  #   end
+  #   return values_sorted[k] + (f * (values_sorted[k+1] - values_sorted[k]))
+  # end
 
   def has_barrier
     abilities.find_by(is_barrier: true).present?
