@@ -9,7 +9,8 @@ All times (durations) are measured in milliseconds. Rates are measured as a floa
 
 ## Hero
 
-`GET /hero`
+`GET /hero`  
+
 __`hp`__  
 *integer* Starting points, not including `armor` and `shield`
 
@@ -38,7 +39,7 @@ __`recovery_time`__
 *integer* Amount of time after using ability in which the hero may not perform any other actions
 
 __`cast_animation_time`__  
-*integer* Amount of time after using the ability until it takes effect (since ability is deployed, it can not be stun canceled at this point)
+*integer* Amount of time after using the ability until it takes effect (since ability is deployed, it can not be stun canceled at this point). Synonomous to a "fuse" like D.Va's Self-Destruct
 
 __`cooldown_timer_delay`__  
 *integer* Amount of time after triggering the ability until the cooldown timer begins

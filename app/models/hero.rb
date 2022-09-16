@@ -16,6 +16,12 @@ class Hero < ApplicationRecord
   accepts_nested_attributes_for :hard_counters
   accepts_nested_attributes_for :abilities
 
+  # validates :has_primary_fire
+
+  def has_primary_fire
+    abilities.any?(&:is_primary_fire)
+  end
+
   # connects_to database: { writing: :abilities, reading: :abilities_replica }
 
   # return hero with the highest counter rating against this hero
@@ -93,14 +99,14 @@ class Hero < ApplicationRecord
     strength = 0   # my offensive strength against you
 
     # If this hero uses a beam weapon and other hero has no shield (if tank)
+    raise "Hero #{name} has no primary fire!" if !self.primary_fire
     strength += 1 if self.primary_fire.is_beam && !test_hero.has_barrier
 
     # If hero has a barrier but primary fire ignores it
     strength += 1 if self.primary_fire.ignores_barriers && test_hero.has_barrier
 
     # if hero can be one-shotted
-    binding.pry
-    strength += 1 if self.abilities.any?(&:can_one_shot(test_hero))
+    strength += 1 if self.abilities.any?{|ab| ab.can_one_shot_kill(test_hero) }
 
     # if I have CC and you have no escape move
     if self.abilities.any?(&:applies_stun) && !test_hero.has_escape_move

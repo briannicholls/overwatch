@@ -3,11 +3,12 @@
 # of the counter with the join table hard_counters
 
 desc "Creates counter relationship for all heros (takes a long time)"
-task :build_counters do
+task :build_counters => [:environment] do
   HardCounter.delete_all
   ow1_heros = Hero.where game_id: 1
-  ow1_heros do |hero|
-    ow1_heros do |test_hero|
+  # for each hero, compare against each other hero
+  ow1_heros.each do |hero|
+    ow1_heros.each do |test_hero|
 
       hero.compare(test_hero)
 

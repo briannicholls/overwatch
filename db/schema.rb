@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_15_213241) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_16_004048) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,7 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_213241) do
     t.integer "reload_time"
     t.float "fire_rate"
     t.float "beam_width"
-    t.boolean "applies_self_movement_penalty", default: false
     t.float "initial_falloff_distance"
     t.float "spread_angle"
     t.float "final_falloff_disance"

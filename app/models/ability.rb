@@ -1,7 +1,7 @@
 class Ability < ApplicationRecord
   belongs_to :hero
 
-  validates_presence_of :name, :can_be_cancelled
+  validates_presence_of :name #, :can_be_cancelled
 
   # connects_to database: { writing: :abilities, reading: :abilities_replica }
 
@@ -41,6 +41,8 @@ class Ability < ApplicationRecord
   end
 
   def damage_per_shot
+    return 0 if !deals_damage || !is_projectile
+    raise "Null value error: projectiles_per_shot, max_damage_per_projectile for #{id} #{name}" if [projectiles_per_shot, max_damage_per_projectile].any?(&:nil?)
     projectiles_per_shot * max_damage_per_projectile
   end
 
