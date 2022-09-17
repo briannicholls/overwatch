@@ -11,7 +11,6 @@ task :build_counters => [:environment] do
     ow1_heros.shuffle.each do |test_hero|
       puts "Comparing #{hero.name} vs. #{test_hero.name}"
       hero.compare(test_hero)
-
     end
   end
 end
