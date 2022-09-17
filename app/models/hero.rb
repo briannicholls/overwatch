@@ -124,7 +124,7 @@ class Hero < ApplicationRecord
 
     # if I have CC and you have an ability with high ult cost (I can canel it)
     # percentile_ult_cost = Hero.all.map(&:ultimate_cost).percentile(80)
-
+    
     # Percentile = (number of values below score) ÷ (total number of scores) x 100 = (7) ÷ (42) x 100 = 0.17 x 100 = 17
     ult_costs = Ability.ultimates.pluck(:ultimate_cost)
     number_of_values_below_score = ult_costs.select{ |cost| cost < test_hero.ultimate_cost }.length
@@ -132,8 +132,8 @@ class Hero < ApplicationRecord
     percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
 
     # binding.pry
-    strength += 0.5 if self.abilities.any?(&:applies_stun) &&
-      test_hero.ultimate_ability.can_be_cancelled &&
+    strength += 0.5 if self.abilities.any?(&:applies_stun) && 
+      test_hero.ultimate_ability.can_be_cancelled && 
       percentile > 80
 
     hero_hero.update(strength: strength)
