@@ -98,7 +98,6 @@ class Hero < ApplicationRecord
   # and create/update counter relationship
   def compare(test_hero)
     # TODO: when checking for .any abilities. if there are multiple, that should multiply strength bonus
-    require 'descriptive_statistics'
 
     hero_hero = HardCounter.find_or_create_by(hero_id: id, versus_hero_id: test_hero.id)
     strength = 0   # my offensive strength against you
@@ -124,17 +123,28 @@ class Hero < ApplicationRecord
     strength -= 0.8 if test_hero.armor > 0 && self.primary_fire.is_projectile && self.primary_fire.projectiles_fired_per_second > 10
 
     # if I have CC and you have an ability with high ult cost (I can canel it)
-    strength += 0.5 if self.abilities.any?(&:applies_stun) && test_hero.ultimate_ability.can_be_cancelled && test_hero.ultimate_cost > Hero.all.map(&:ultimate_cost).percentile(80)
+    # percentile_ult_cost = Hero.all.map(&:ultimate_cost).percentile(80)
+
+    # Percentile = (number of values below score) ÷ (total number of scores) x 100 = (7) ÷ (42) x 100 = 0.17 x 100 = 17
+    ult_costs = Ability.ultimates.pluck(:ultimate_cost)
+    number_of_values_below_score = ult_costs.select{ |cost| cost < test_hero.ultimate_cost }.length
+    total_number_of_scores       = ult_costs.length
+    percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
+
+    # binding.pry
+    strength += 0.5 if self.abilities.any?(&:applies_stun) &&
+      test_hero.ultimate_ability.can_be_cancelled &&
+      percentile > 80
 
     hero_hero.update(strength: strength)
 
   end
 
   # todo: refactor into general _percentile method
-  def ultimate_cost_percentile
-    ult_costs = Hero.all.map(&:ultimate_cost)
-    ult_costs.max
-  end
+  # def ultimate_cost_percentile
+  #   ult_costs = Hero.all.map(&:ultimate_cost)
+  #   ult_costs.max
+  # end
 
   # def percentile(values, percentile)
   #   values_sorted = values.compact.sort

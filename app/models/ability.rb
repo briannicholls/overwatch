@@ -15,6 +15,7 @@ class Ability < ApplicationRecord
       max_melee_damage >= 0
     SQL
   ) }
+  scope :ultimates, ->() {where(is_ultimate: true)}
   scope :non_ultimates, ->() {where(is_ultimate: false)}
 
   # instance method version of scope method damage_dealing
@@ -36,7 +37,7 @@ class Ability < ApplicationRecord
 
   # Damage per second. For non-primary fire, returns DPS for the duration they are active.
   def dps
-    [damage_over_time, max_aoe_damage, max_beam_damage, max_projectile_dps, max_melee_dps]
+    [(damage_over_time * (duration * 0.001)), max_aoe_damage, max_beam_damage, max_projectile_dps, max_melee_dps]
     .compact.sum
   end
 
