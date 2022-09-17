@@ -8,10 +8,12 @@ namespace :db do
     role_attributes    = Role.all.map(&:attributes)
     hero_attributes    = Hero.all.map(&:attributes)
     ability_attributes = Ability.all.map(&:attributes)
+    hard_counters      = HardCounter.all.map(&:attributes)
     
     ActiveRecord::Base.establish_connection :test
 
     # Remove existing data before inserting new data
+    HardCounter.delete_all
     Ability.delete_all
     Hero.delete_all
     Game.delete_all
@@ -31,6 +33,11 @@ namespace :db do
     ability_attributes.each do |ability|
       puts "Updating Ability: #{ability['name']}"
       Ability.new(ability).save!
+    end
+
+    hard_counters.each do |counter|
+      puts "Updating HardCounter: #{counter['id']}"
+      HardCounter.new(counter).save!
     end
 
   end
