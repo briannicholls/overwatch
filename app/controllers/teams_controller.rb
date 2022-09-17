@@ -19,7 +19,6 @@ class TeamsController < ApplicationController
   def create
     hero_ids = params[:team][:hero_ids].compact_blank
     @team = Team.first_or_create_by_heros(hero_ids)
-    # binding.pry
     
     respond_to do |format|
       if @team.persisted?
@@ -34,7 +33,6 @@ class TeamsController < ApplicationController
   end
 
   def show
-    # @team = Team.find team_params[:id]
     @team = Team.find params[:id]
     @counter_team = @team.optimal_counter_composition
   end
@@ -47,7 +45,6 @@ class TeamsController < ApplicationController
   private
 
   def set_team
-    # binding.pry
     if !params[:hero_ids]
       # render json: status: 404
       return

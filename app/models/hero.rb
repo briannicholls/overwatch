@@ -16,21 +16,18 @@ class Hero < ApplicationRecord
   accepts_nested_attributes_for :hard_counters
   accepts_nested_attributes_for :abilities
 
-  # validates :has_primary_fire
-
-  # def initialize(params={})
-  #   super(params)
-  # end
-  
   def has_primary_fire
     abilities.any?(&:is_primary_fire)
   end
 
-  # connects_to database: { writing: :abilities, reading: :abilities_replica }
-
   # return hero with the highest counter rating against this hero
   def strongest_counter
-    hard_counters.order(strength: :desc).first
+    counters_by_strength_desc = hard_counters.where.not(versus_hero_id: id).order(strength: :desc)
+    if counters_by_strength_desc.present?
+      counters_by_strength_desc.first.versus_hero
+    else
+      self
+    end
   end
 
   def file_friendly_name
@@ -136,6 +133,14 @@ class Hero < ApplicationRecord
       test_hero.ultimate_ability.can_be_cancelled && 
       percentile > 80
 
+    # if your primary fire (or other abilities) give you a movement speed penalty,
+    # and I am in 80th percentile p.f. range or damage per shot
+    if versus_hero.primary_fire.applies_speed_penalty_self
+
+
+
+    end
+
     hero_hero.update(strength: strength)
 
   end
@@ -146,15 +151,12 @@ class Hero < ApplicationRecord
   #   ult_costs.max
   # end
 
-  # def percentile(values, percentile)
-  #   values_sorted = values.compact.sort
-  #   k = (percentile*(values_sorted.length-1)+1).floor - 1
-  #   f = (percentile*(values_sorted.length-1)+1).modulo(1)
-  #   if values_sorted[k].nil?
-  #     binding.pry
-  #   end
-  #   return values_sorted[k] + (f * (values_sorted[k+1] - values_sorted[k]))
-  # end
+  def percentile(score, scores_array)
+    number_of_values_below_score = scores_array.select{ |val| val < score }.length
+    total_number_of_scores       = scores_array.length
+    percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
+
+  end
 
   def has_barrier
     abilities.find_by(is_barrier: true).present?

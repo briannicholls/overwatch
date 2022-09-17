@@ -17,6 +17,7 @@ class Ability < ApplicationRecord
   ) }
   scope :ultimates, ->() {where(is_ultimate: true)}
   scope :non_ultimates, ->() {where(is_ultimate: false)}
+  scope :primary_fires, ->() {where(primary_fire: true)}
 
   # instance method version of scope method damage_dealing
   def deals_damage

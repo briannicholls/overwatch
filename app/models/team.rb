@@ -50,12 +50,9 @@ class Team < ApplicationRecord
     # array of arrays
     all_hero_counters = heros.map(&:strongest_counter)
     
-# binding.pry
-
-    # sample the hero counters and return a Team
 
     # TEMP: remove
-    return Hero.all.slice(0,6)
+    return all_hero_counters
   end
   
 end
