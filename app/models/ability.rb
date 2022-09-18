@@ -18,6 +18,8 @@ class Ability < ApplicationRecord
   scope :ultimates, ->() {where(is_ultimate: true)}
   scope :non_ultimates, ->() {where(is_ultimate: false)}
   scope :primary_fires, ->() {where(primary_fire: true)}
+  scope :non_primary_fires, ->() {where(primary_fire: false)}
+  scope :applies_invulnerability_any, ->() { where("'damage'=ANY(aoe_effect_types) or applies_invulnerability = true or applies_invulnerability_self = true") }
 
   # instance method version of scope method damage_dealing
   def deals_damage
