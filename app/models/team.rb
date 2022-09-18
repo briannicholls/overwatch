@@ -44,12 +44,11 @@ class Team < ApplicationRecord
   end
 
   # returns Team of Heroes that counter this team
-  def optimal_counter_composition
+  def optimal_counter_composition(observe_roles=true)
 
     # get counters for each hero
     # array of arrays
     all_hero_counters = heros.map(&:strongest_counter)
-    
 
     # TEMP: remove
     return all_hero_counters

@@ -1,8 +1,16 @@
 namespace :db do
+
+  desc "Re-build counters then update DB and copy to test environment"
+  task :recalc => [:environment] do
+    start_time = Time.now
+    Rake::Task["build_counters"].execute
+    Rake::Task["db:copy_db"].execute
+    puts "Time elapsed: #{(Time.now - start_time).seconds}s"
+  end
+
   desc "Destroy test DB and replace with values from development DB"
   task :copy_db => [:environment] do
     return if Rails.env != 'development'
-    start_time = Time.now
 
     # ActiveRecord::Base.establish_connection :development
     game_attributes    = Game.all.map(&:attributes)
@@ -40,8 +48,6 @@ namespace :db do
       puts "Updating HardCounter: #{counter['id']}"
       HardCounter.new(counter).save!
     end
-
-    puts "Time elapsed: #{(Time.now - start_time).seconds}s"
 
   end
 end

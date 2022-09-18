@@ -57,14 +57,19 @@ class Hero < ApplicationRecord
     end
   end
 
-  # returns list of hero names that counter this hero
-  def countered_by_heroes
-    advantage_heros.pluck(:name)
+  def counters_heroes
+    hard_counters.where('strength > 0')
+      .order(strength: :desc)
+      .map(&:versus_hero)
+      .map(&:name)
   end
 
-  # returns list of hero names that this hero counters
-  def counters_heroes
-    disadvantage_heros.pluck(:name)
+  # returns list of hero names that counter this hero
+  def countered_by_heroes
+    countering_hero_ids = HardCounter.where(versus_hero_id: id)
+      .where('strength > 0')
+      .order(strength: :desc)
+      .pluck(:hero_id)
   end
 
   def role_name
@@ -95,6 +100,7 @@ class Hero < ApplicationRecord
   # and create/update counter relationship
   def compare(test_hero)
     # TODO: when checking for .any abilities. if there are multiple, that should multiply strength bonus
+    # TODO: when ability affecting the calculation is an ultimate, perhaps scale it less
 
     hero_hero = HardCounter.find_or_create_by(hero_id: id, versus_hero_id: test_hero.id)
     strength = 0   # my offensive strength against you
@@ -118,9 +124,6 @@ class Hero < ApplicationRecord
 
     # if you have armor and my primary fire shoots many pellets
     strength -= 0.8 if test_hero.armor > 0 && self.primary_fire.is_projectile && self.primary_fire.projectiles_fired_per_second > 10
-
-    # if I have CC and you have an ability with high ult cost (I can canel it)
-    # percentile_ult_cost = Hero.all.map(&:ultimate_cost).percentile(80)
     
     # Percentile = (number of values below score) ÷ (total number of scores) x 100 = (7) ÷ (42) x 100 = 0.17 x 100 = 17
     ult_costs = Ability.ultimates.pluck(:ultimate_cost)
@@ -128,17 +131,25 @@ class Hero < ApplicationRecord
     total_number_of_scores       = ult_costs.length
     percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
 
-    # binding.pry
+    # if I have CC and you have an ability with high ult cost (I can canel it)
     strength += 0.5 if self.abilities.any?(&:applies_stun) && 
       test_hero.ultimate_ability.can_be_cancelled && 
       percentile > 80
 
     # if your primary fire (or other abilities) give you a movement speed penalty,
     # and I am in 80th percentile p.f. range or damage per shot
-    if versus_hero.primary_fire.applies_speed_penalty_self
+    if test_hero.primary_fire.applies_speed_penalty_self && (
+      abilities.any?(&:has_high_burst_damage)
+    )
+      strength += 0.5
+    end
 
-
-
+    # if I have invulnerability and you have high and ability with high burst damage
+    if test_hero.abilities.any?(&:has_high_burst_damage)
+      # TODO: scale with duration and AOE application (multiple targets)
+      if abilities.applies_invulnerability_any.present?
+        strength += 0.5
+      end
     end
 
     hero_hero.update(strength: strength)
@@ -155,7 +166,6 @@ class Hero < ApplicationRecord
     number_of_values_below_score = scores_array.select{ |val| val < score }.length
     total_number_of_scores       = scores_array.length
     percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
-
   end
 
   def has_barrier
