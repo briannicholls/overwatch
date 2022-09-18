@@ -130,7 +130,7 @@ class Hero < ApplicationRecord
     number_of_values_below_score = ult_costs.select{ |cost| cost < test_hero.ultimate_cost }.length
     total_number_of_scores       = ult_costs.length
     percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
-
+    
     # if I have CC and you have an ability with high ult cost (I can canel it)
     strength += 0.5 if self.abilities.any?(&:applies_stun) && 
       test_hero.ultimate_ability.can_be_cancelled && 
@@ -143,7 +143,7 @@ class Hero < ApplicationRecord
     )
       strength += 0.5
     end
-
+    
     # if I have invulnerability and you have high and ability with high burst damage
     if test_hero.abilities.any?(&:has_high_burst_damage)
       # TODO: scale with duration and AOE application (multiple targets)
