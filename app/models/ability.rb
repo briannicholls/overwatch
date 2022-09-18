@@ -1,9 +1,6 @@
 class Ability < ApplicationRecord
   belongs_to :hero
-
   validates_presence_of :name #, :can_be_cancelled
-
-  # connects_to database: { writing: :abilities, reading: :abilities_replica }
 
   # return abilities that do any damage
   scope :damage_dealing, ->() { where(
