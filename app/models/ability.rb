@@ -39,9 +39,15 @@ class Ability < ApplicationRecord
   end
 
   # Damage per second. For non-primary fire, returns DPS for the duration they are active.
+  # TODO: convert this to SQL
   def dps
-    [(damage_over_time * (duration * 0.001)), max_aoe_damage, max_beam_damage, max_projectile_dps, max_melee_dps]
+    [ total_damage_over_time, max_aoe_damage, max_beam_damage, max_projectile_dps, max_melee_dps]
     .compact.sum
+  end
+
+  def total_damage_over_time
+    return 0 if !damage_over_time || !duration
+    damage_over_time * (duration * 0.001)
   end
 
   def damage_per_shot
@@ -57,6 +63,13 @@ class Ability < ApplicationRecord
     damage_per_shot >= hero_total_health
   end
 
+  # todo: this can be SQL
+  def has_high_burst_damage
+    threshold_percent = 80
+    dps_values = Ability.damage_dealing.map(&:dps)
+    percentile(dps, dps_values) > threshold_percent
+  end
+
   private
 
   def average_beam_dps
@@ -65,11 +78,11 @@ class Ability < ApplicationRecord
 
   def max_melee_dps
     return 0 unless max_melee_damage
-    max_melee_damage * fire_rate
+    max_melee_damage * (fire_rate ? fire_rate : 1)
   end
 
   def max_projectile_dps
-    return 0 if !deals_damage || !is_projectile
+    return 0 if !deals_damage || !is_projectile || (is_ultimate && !fire_rate)
     begin
       max_damage_per_projectile * projectiles_per_shot * fire_rate
     rescue => e
@@ -79,6 +92,12 @@ class Ability < ApplicationRecord
       puts "***************************"; puts "";
       raise e
     end
+  end
+
+  def percentile(score, scores_array)
+    number_of_values_below_score = scores_array.select{ |val| val < score }.length
+    total_number_of_scores       = scores_array.length
+    percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
   end
   
 end
