@@ -3,6 +3,7 @@
   - [Hero](#hero)
   - [Ability](#ability)
   - [Teams](#teams)
+- [Rake Tasks](#rake-tasks)
 
 
 All times (durations) are measured in milliseconds. Rates are measured as a float, *x* per second.
@@ -46,3 +47,14 @@ __`cooldown_timer_delay`__
 
 
 ## Teams
+
+# Rake Tasks
+
+To build the counter relationships:
+`rake build_counters`
+
+To also copy the data to your test DB:
+`rake db:recalc`
+
+To only copy the Development DB to your test DB:
+`rake db:copy_db`
