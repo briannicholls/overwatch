@@ -1,4 +1,6 @@
 class Ability < ApplicationRecord
+  include Percentile # allows for calculation of percentile on qualifying attributes
+
   belongs_to :hero
   validates_presence_of :name #, :can_be_cancelled
 

@@ -157,11 +157,6 @@ class Hero < ApplicationRecord
   end
 
   # todo: refactor into general _percentile method
-  # def ultimate_cost_percentile
-  #   ult_costs = Hero.all.map(&:ultimate_cost)
-  #   ult_costs.max
-  # end
-
   def percentile(score, scores_array)
     number_of_values_below_score = scores_array.select{ |val| val < score }.length
     total_number_of_scores       = scores_array.length
