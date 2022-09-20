@@ -18,19 +18,19 @@ class Ability < ApplicationRecord
   scope :non_ultimates, ->() {where(is_ultimate: false)}
   scope :primary_fires, ->() {where(primary_fire: true)}
   scope :non_primary_fires, ->() {where(primary_fire: false)}
-  scope :applies_invulnerability_any, ->() { where("'damage'=ANY(aoe_effect_types) or applies_invulnerability = true or applies_invulnerability_self = true") }
+  scope :applies_invulnerability_any, ->() { where("'invulnerability'=ANY(aoe_effect_types) or applies_invulnerability_self = true") }
 
   # instance method version of scope method damage_dealing
   def deals_damage
-      [
-        damage_over_time,
-        max_aoe_damage,
-        max_beam_damage,
-        max_damage_per_projectile,
-        max_melee_damage
-      ]
-      .compact # remove nil values
-      .any?{|x| x > 0}
+    [
+      damage_over_time,
+      max_aoe_damage,
+      max_beam_damage,
+      max_damage_per_projectile,
+      max_melee_damage
+    ]
+    .compact # remove nil values
+    .any?{|x| x > 0}
   end
 
   def is_escape_move
@@ -94,9 +94,15 @@ class Ability < ApplicationRecord
   end
 
   def percentile(score, scores_array)
-    number_of_values_below_score = scores_array.select{ |val| val < score }.length
-    total_number_of_scores       = scores_array.length
-    percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
+    return 0 if !score
+    begin
+      number_of_values_below_score = scores_array.select{ |val| val < score }.length
+      total_number_of_scores       = scores_array.length
+      percentile                   = number_of_values_below_score.to_f / total_number_of_scores.to_f * 100.0
+    rescue ArgumentError => e
+      binding.pry
+      raise "Incompatible values #{[score, scores_array]}.inspect}"
+    end
   end
   
 end

@@ -101,7 +101,9 @@ class Hero < ApplicationRecord
   def compare(test_hero)
     # TODO: when checking for .any abilities. if there are multiple, that should multiply strength bonus
     # TODO: when ability affecting the calculation is an ultimate, perhaps scale it less
-
+    if id == 15
+      binding.pry
+    end
     hero_hero = HardCounter.find_or_create_by(hero_id: id, versus_hero_id: test_hero.id)
     strength = 0   # my offensive strength against you
 
@@ -116,9 +118,10 @@ class Hero < ApplicationRecord
     strength += 1 if self.abilities.any?{|ab| ab.can_one_shot_kill(test_hero) }
 
     # if I have CC and you have no escape move
-    if self.abilities.any?(&:applies_stun) && !test_hero.has_escape_move
+    i_have_cc = self.abilities.any?(&:applies_stun)
+    if i_have_cc && !test_hero.has_escape_move
       strength += 1
-    elsif self.abilities.any?(&:applies_stun) && !test_hero.abilities.any?(&:applies_stun)
+    elsif i_have_cc && !test_hero.abilities.any?(&:applies_stun)
       strength += 0.2
     end
 
@@ -132,7 +135,7 @@ class Hero < ApplicationRecord
     percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
     
     # if I have CC and you have an ability with high ult cost (I can canel it)
-    strength += 0.5 if self.abilities.any?(&:applies_stun) && 
+    strength += 0.5 if i_have_cc &&
       test_hero.ultimate_ability.can_be_cancelled && 
       percentile > 80
 
@@ -144,12 +147,23 @@ class Hero < ApplicationRecord
       strength += 0.5
     end
     
-    # if I have invulnerability and you have high and ability with high burst damage
+    # if I have invulnerability and you have an ability with high burst damage
     if test_hero.abilities.any?(&:has_high_burst_damage)
       # TODO: scale with duration and AOE application (multiple targets)
-      if abilities.applies_invulnerability_any.present?
-        strength += 0.5
+      if abilities.any?(&:aoe_effect_types)
+        strength += 0.6
+      elsif abilities.any?(&:applies_invulnerability_self)
+        strength += 0.4
       end
+    end
+
+    # if you can fly and I can snipe u
+    if test_hero.can_fly && (
+      (primary_fire.max_range_percentile > 80 || primary_fire.max_range == -1 ) &&
+      (primary_fire.projectile_speed == -1 || primary_fire.is_hitscan)
+    )
+      # scale with dps
+      strength += 1 + (primary_fire.dps_percentile / 100)
     end
 
     hero_hero.update(strength: strength)
