@@ -101,32 +101,38 @@ class Hero < ApplicationRecord
   def compare(test_hero)
     # TODO: when checking for .any abilities. if there are multiple, that should multiply strength bonus
     # TODO: when ability affecting the calculation is an ultimate, perhaps scale it less
-    if id == 15
-      binding.pry
-    end
+
+    # test pharah:
+    # if test_hero.id == 15
+    #   binding.pry
+    # end
+
     hero_hero = HardCounter.find_or_create_by(hero_id: id, versus_hero_id: test_hero.id)
     strength = 0   # my offensive strength against you
 
+    my_primary_fire = self.primary_fire
+    # test_hero.primary_fire
+
+    raise "Hero #{name} has no primary fire!" if !my_primary_fire
     # If this hero uses a beam weapon and other hero has no shield (if tank)
-    raise "Hero #{name} has no primary fire!" if !self.primary_fire
-    strength += 1 if self.primary_fire.is_beam && !test_hero.has_barrier
+    strength += 1 if my_primary_fire.is_beam && !test_hero.has_barrier
 
     # If hero has a barrier but primary fire ignores it
-    strength += 1 if self.primary_fire.ignores_barriers && test_hero.has_barrier
+    strength += 1 if my_primary_fire.ignores_barriers && test_hero.has_barrier
 
     # if hero can be one-shotted
-    strength += 1 if self.abilities.any?{|ab| ab.can_one_shot_kill(test_hero) }
+    strength += 0.8 if primary_fire.can_one_shot_kill(test_hero)
 
     # if I have CC and you have no escape move
     i_have_cc = self.abilities.any?(&:applies_stun)
     if i_have_cc && !test_hero.has_escape_move
-      strength += 1
+      strength += 0.7
     elsif i_have_cc && !test_hero.abilities.any?(&:applies_stun)
       strength += 0.2
     end
 
     # if you have armor and my primary fire shoots many pellets
-    strength -= 0.8 if test_hero.armor > 0 && self.primary_fire.is_projectile && self.primary_fire.projectiles_fired_per_second > 10
+    strength -= 0.8 if test_hero.armor > 0 && my_primary_fire.is_projectile && my_primary_fire.projectiles_fired_per_second > 10
     
     # Percentile = (number of values below score) ÷ (total number of scores) x 100 = (7) ÷ (42) x 100 = 0.17 x 100 = 17
     ult_costs = Ability.ultimates.pluck(:ultimate_cost)
