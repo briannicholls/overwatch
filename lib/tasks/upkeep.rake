@@ -5,7 +5,7 @@ namespace :db do
     start_time = Time.now
     Rake::Task["build_counters"].execute
     Rake::Task["db:copy_db"].execute
-    puts "Time elapsed: #{(Time.now - start_time).seconds}s"
+    puts "Time elapsed: #{(Time.now - start_time).seconds.round(2)}s"
   end
 
   desc "Destroy test DB and replace with values from development DB"

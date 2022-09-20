@@ -4,7 +4,7 @@
 
 desc "Creates counter relationship for all heros (takes a long time)"
 task :build_counters => [:environment] do
-  HardCounter.delete_all
+  # HardCounter.delete_all
   ow1_heros = Hero.where game_id: 1
   # for each hero, compare against each other hero
   ow1_heros.shuffle.each do |hero|

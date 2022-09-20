@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_16_004048) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_19_234111) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,7 +81,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_004048) do
     t.boolean "applies_armor", default: false
     t.integer "armor_provided"
     t.integer "charges"
-    t.boolean "applies_invulnerability", default: false
     t.text "aoe_effect_types", default: [], array: true
     t.integer "single_charge_regeneration_duration"
     t.boolean "applies_healing", default: false

@@ -135,7 +135,7 @@ class Hero < ApplicationRecord
     percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
     
     # if I have CC and you have an ability with high ult cost (I can canel it)
-    strength += 0.5 if i_have_cc &&
+    strength += 0.5 if i_have_cc && 
       test_hero.ultimate_ability.can_be_cancelled && 
       percentile > 80
 
@@ -171,7 +171,7 @@ class Hero < ApplicationRecord
   end
 
   # todo: refactor into general _percentile method
-  def percentile(score, scores_array)
+  def percentile(score, scores_array) 
     number_of_values_below_score = scores_array.select{ |val| val < score }.length
     total_number_of_scores       = scores_array.length
     percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
