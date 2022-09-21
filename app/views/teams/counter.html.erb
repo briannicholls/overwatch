@@ -2,9 +2,12 @@
 <h1>Team Counter Wizard</h1>
 
 <%= form_with model: @team do |(f, i)| %>
-  <%= collection_check_boxes(:team, :hero_ids, @heros, :id, :name, {}, { class: 'container hero-checkboxes-container'}) do |checkbox| %>
+  <% dps     = @heros.select{|hero| hero.role_id == 1} %>
+  <% tank    = @heros.select{|hero| hero.role_id == 2} %>
+  <% support = @heros.select{|hero| hero.role_id == 3} %>
+
+  <%= collection_check_boxes(:team, :hero_ids, dps, :id, :name, {}, { class: 'container hero-checkboxes-container'}) do |checkbox| %>
     <%= checkbox.label class: "col hero-checkbox", :"data-value" => checkbox.value do %>
-      
       <%# Hero portrait image %>
       <% this_hero = @heros.find{ |hero| hero.id == checkbox.value } %>
       <% if this_hero %>
@@ -15,5 +18,45 @@
       <%= checkbox.check_box %>
     <% end %>
   <% end %>
+
+  <br />
+
+  <%= collection_check_boxes(:team, :hero_ids, tank, :id, :name, {}, { class: 'container hero-checkboxes-container'}) do |checkbox| %>
+    <%= checkbox.label class: "col hero-checkbox", :"data-value" => checkbox.value do %>
+      <%# Hero portrait image %>
+      <% this_hero = @heros.find{ |hero| hero.id == checkbox.value } %>
+      <% if this_hero %>
+        <%= image_tag "#{this_hero.file_friendly_name}.png", class: 'hero-image'  %>
+      <% end %>
+
+      <%# Actual check box: may not be needed? %>
+      <%= checkbox.check_box %>
+    <% end %>
+  <% end %>
+
+  <br />
+
+  <%= collection_check_boxes(:team, :hero_ids, support, :id, :name, {}, { class: 'container hero-checkboxes-container'}) do |checkbox| %>
+    <%= checkbox.label class: "col hero-checkbox", :"data-value" => checkbox.value do %>
+      <%# Hero portrait image %>
+      <% this_hero = @heros.find{ |hero| hero.id == checkbox.value } %>
+      <% if this_hero %>
+        <%= image_tag "#{this_hero.file_friendly_name}.png", class: 'hero-image'  %>
+      <% end %>
+
+      <%# Actual check box: may not be needed? %>
+      <%= checkbox.check_box %>
+    <% end %>
+  <% end %>
+
+  <br />
+
+  <%= f.label :observe_roles, "Role Queue?" %>
+  <%= check_box :observe_roles, nil, checked: true %>
+
+  <br />
+
+  <%= f.label :minimum_required_healers, "Minimum number of healers" %>
+  <%= number_field :minimum_required_healers, nil, value: 2 %>
   <%= f.submit "Submit"%>
 <% end %>
