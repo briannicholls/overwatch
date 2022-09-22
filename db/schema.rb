@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_19_234111) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_22_233251) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -104,6 +104,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_19_234111) do
     t.datetime "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role_tank", default: 2
+    t.integer "role_support", default: 2
+    t.integer "role_dps", default: 2
   end
 
   create_table "hard_counters", force: :cascade do |t|
