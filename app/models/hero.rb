@@ -20,9 +20,21 @@ class Hero < ApplicationRecord
     abilities.any?(&:is_primary_fire)
   end
 
+  def strongest_counters(role=nil, limit=6)
+
+  end
+
   # return hero with the highest counter rating against this hero
-  def strongest_counter
-    counters_by_strength_desc = hard_counters.where.not(versus_hero_id: id).order(strength: :desc)
+  def strongest_counter(role_name=nil, hero_ids_to_exclude=[])
+    counters_by_strength_desc = hard_counters.where.not(versus_hero_id: [id, *hero_ids_to_exclude]).order(strength: :desc)
+    if role_name
+      role = Role.where('lower(name) = ?', role_name.to_s).first
+      if role
+        hero_ids_of_role = Hero.where(role_id: role.id).pluck(:id)
+        counters_by_strength_desc = counters_by_strength_desc.where(versus_hero_id: hero_ids_of_role)
+      end
+    end
+
     if counters_by_strength_desc.present?
       counters_by_strength_desc.first.versus_hero
     else
@@ -101,7 +113,7 @@ class Hero < ApplicationRecord
   def compare(test_hero)
     # TODO: when checking for .any abilities. if there are multiple, that should multiply strength bonus
     # TODO: when ability affecting the calculation is an ultimate, perhaps scale it less
-
+    
     # test pharah:
     # if test_hero.id == 15
     #   binding.pry

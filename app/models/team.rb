@@ -45,13 +45,48 @@ class Team < ApplicationRecord
 
   # returns Team of Heroes that counter this team
   def optimal_counter_composition(observe_roles=true)
+    heros_by_role = {
+      dps:     [],
+      tank:    [],
+      support: [],
+    }
+    game = heros.first.game
+    role_counts = {
+      dps: game.role_dps,
+      tank: game.role_tank,
+      support: game.role_support
+    }
+    # First add the strongest counters, and continue to add unique heroes after that
+    strongest_hero_counters = heros.map(&:strongest_counter).uniq
 
-    # get counters for each hero
-    # array of arrays
-    all_hero_counters = heros.map(&:strongest_counter)
+    # For each strongest hero, add them as long as role is not full
+    strongest_hero_counters.each do |hero|
+      role_name = hero.role.name.downcase
+      heros_by_role[role_name.to_sym].push hero unless heros_by_role[role_name.to_sym].length == hero.game.send("role_#{role_name}")
+    end
 
-    # TEMP: remove
-    return all_hero_counters
+    # for the remaining slots, add the strongest hero of that role
+    heros_by_role.each do |role_name, val_array|
+      heros_needed = role_counts[role_name] - val_array.length
+      if heros_needed > 0
+        new_heros_to_add = []
+        strongest_counters_of_role = heros.map do |hero|
+          new_hero = hero.strongest_counter(role_name)
+          if new_heros_to_add.any?{|h| h.id == new_hero.id}
+            new_hero = hero.strongest_counter(role_name, new_heros_to_add.map(&:id))
+            new_heros_to_add.push(new_hero)
+          else
+            new_heros_to_add.push(new_hero)
+          end
+        end
+        
+        heros_needed.times do |i|
+          heros_by_role[role_name.to_sym].push(strongest_counters_of_role.flatten[i])
+        end
+      end
+    end
+
+    return heros_by_role.values.uniq.flatten.compact
   end
   
 end

@@ -39,7 +39,7 @@ class TeamsController < ApplicationController
 
   # returns a team
   def get_optimal_counter_composition
-    
+    render json: @team.optimal_counter_composition
   end
 
   private

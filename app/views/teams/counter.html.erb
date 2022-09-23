@@ -21,7 +21,7 @@
     <% end %>
     <br />
   <% end %>
-
+  
   <%= f.label :observe_roles, "Role Queue?" %>
   <%= check_box :observe_roles, nil, checked: true %>
 
@@ -29,6 +29,6 @@
 
   <%= f.label :minimum_required_healers, "Minimum number of healers" %>
   <%= number_field :minimum_required_healers, nil, value: 2 %>
-
+  
   <%= f.submit "Submit"%>
 <% end %>
