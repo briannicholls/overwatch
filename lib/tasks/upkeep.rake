@@ -3,7 +3,10 @@ namespace :db do
   desc "Re-build counters then update DB and copy to test environment"
   task :recalc => [:environment] do
     start_time = Time.now
+    # puts "Preparing Test DB"
+    # Rake::Task["db:prepare"].execute
     Rake::Task["build_counters"].execute
+    puts "Finished building counters in #{(Time.now - start_time).seconds.round(2)}s"
     Rake::Task["db:copy_db"].execute
     puts "Time elapsed: #{(Time.now - start_time).seconds.round(2)}s"
   end
