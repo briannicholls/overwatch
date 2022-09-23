@@ -32,5 +32,12 @@ module Percentile
     total_number_of_scores       = scores_array.length
     percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
   end
+
+  # TODO
+  def percentile_sql(score, scores_array)
+    # number_of_values_below_score = scores_array.select{ |val| val < score }.length
+    # total_number_of_scores       = scores_array.length
+    # percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
+  end
   
 end

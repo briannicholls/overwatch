@@ -126,17 +126,20 @@ class Hero < ApplicationRecord
     # test_hero.primary_fire
 
     raise "Hero #{name} has no primary fire!" if !my_primary_fire
+
+    test_hero_has_barrier = test_hero.has_barrier
+    i_have_cc             = self.abilities.any?(&:applies_stun)
+
     # If this hero uses a beam weapon and other hero has no shield (if tank)
-    strength += 1 if my_primary_fire.is_beam && !test_hero.has_barrier
+    strength += 1 if my_primary_fire.is_beam && !test_hero_has_barrier
 
     # If hero has a barrier but primary fire ignores it
-    strength += 1 if my_primary_fire.ignores_barriers && test_hero.has_barrier
+    strength += 1 if my_primary_fire.ignores_barriers && test_hero_has_barrier
 
     # if hero can be one-shotted
     strength += 0.8 if primary_fire.can_one_shot_kill(test_hero)
 
     # if I have CC and you have no escape move
-    i_have_cc = self.abilities.any?(&:applies_stun)
     if i_have_cc && !test_hero.has_escape_move
       strength += 0.7
     elsif i_have_cc && !test_hero.abilities.any?(&:applies_stun)
@@ -147,15 +150,11 @@ class Hero < ApplicationRecord
     strength -= 0.8 if test_hero.armor > 0 && my_primary_fire.is_projectile && my_primary_fire.projectiles_fired_per_second > 10
     
     # Percentile = (number of values below score) ÷ (total number of scores) x 100 = (7) ÷ (42) x 100 = 0.17 x 100 = 17
-    ult_costs = Ability.ultimates.pluck(:ultimate_cost)
-    number_of_values_below_score = ult_costs.select{ |cost| cost < test_hero.ultimate_cost }.length
-    total_number_of_scores       = ult_costs.length
-    percentile                   = (number_of_values_below_score.to_f) / (total_number_of_scores.to_f) * 100.0
-    
+    test_hero_ult_cost_percentile = test_hero.ultimate_ability.ultimate_cost_percentile
     # if I have CC and you have an ability with high ult cost (I can canel it)
     strength += 0.5 if i_have_cc && 
       test_hero.ultimate_ability.can_be_cancelled && 
-      percentile > 80
+      test_hero_ult_cost_percentile > 80
 
     # if your primary fire (or other abilities) give you a movement speed penalty,
     # and I am in 80th percentile p.f. range or damage per shot
