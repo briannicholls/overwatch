@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # public API routes
   namespace :api do
     namespace :v1 do
+      resources :api_keys,  only: [ :index, :create, :destroy ]
       resources :heros,     only: [ :index, :show ]
       resources :abilities, only: [ :index, :show ]
       resources :teams,     only: [ :index, :show ]
