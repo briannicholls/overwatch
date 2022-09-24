@@ -61,6 +61,8 @@ group :development, :test do
 
   gem 'pry'
   gem 'pry-nav'
+
+  gem 'dotenv-rails'
 end
 
 group :development do
