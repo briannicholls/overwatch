@@ -5,7 +5,7 @@ class Api::V1::ApiKeysController < ApplicationController
   protect_from_forgery with: :null_session
 
   # Require token authentication for index                             
-  prepend_before_action :authenticate_with_api_key!, only: [:index] 
+  prepend_before_action :authenticate_with_api_key!, only: [:index, :destroy]
  
   def index
     render json: current_bearer.api_keys
@@ -25,7 +25,8 @@ class Api::V1::ApiKeysController < ApplicationController
   end
 
   def destroy
-    current_api_key&.destroy
+    api_key = current_bearer.api_keys.find(params[:id])
+    api_key.destroy
   end
   
 end
