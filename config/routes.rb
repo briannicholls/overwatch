@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-  root 'overwatch#index'
-  
-  resources :abilities
-
   # TODO: the below commented routes should be made private
+  # root 'overwatch#index'
+  # resources :abilities
   # get 'teams/counter', to: 'teams#counter'
   # resources :teams
   # resources :roles
-  # resources :heros do
+  # resources :heros do 
   #   resources :abilities
   # end
   # resources :hard_counters
