@@ -1,2 +1,33 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<% div_center_content_style = "display: flex; justify-content: space-around; align-items: center; text-align: center;" %>
+
+<div style="<%= div_center_content_style %>">
+  <%= link_to "View All Abilities", abilities_path %> |
+  <%= link_to "View All Heroes", heros_path %> |
+  <%= link_to "Back to Counter Wizard", teams_counter_path %>
+  <% #link_to "Destroy this hero", @hero, method: :delete %>
+</div>
+
+<div class="container">
+  <h2>Input Team:</h2>
+
+  <div class="row" id="team-hero-display">
+
+    <% @team.heros.each do |hero|%>
+      <%= render hero %>
+    <% end %>
+
+  </div>
+
+  <div class="row">
+    <p>Best countered by:</p>
+  </div>
+
+  <div class="row" id="team-hero-display">
+
+    <% @counter_team.each do |hero| %>
+      <%= render hero %>
+    <% end %>
+
+  </div>
+  
+</div>

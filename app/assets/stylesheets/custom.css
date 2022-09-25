@@ -8,21 +8,79 @@
   src: url('big_noodle_titling_oblique.ttf') format('truetype');
 }
 
-h2.hero-title {
+div.hero-title {
   font-family: 'big_noodle_titling_oblique';
   font-size: 2em;
   display: flex;
   justify-content:space-between;
   background-color: rgba(255, 255, 255, 0.7);
-  width: 100%;
-  min-width: 179px;
   position: relative;
   top: -45px;
+  align-self: center;
+  align-items: center;
+  /* border: 1px solid white; */
 }
 
-img {
-  width: 100%;
-  min-width: 179px;
+/* todo: add this class to hero images */
+.hero-img {
+  /* width: 100%; */
+  /* min-width: 179px; */
 }
+
+/* keep hero image and title the same width */
+.hero-img, div.hero-title {
+  width: 180px;
+}
+
+
+/* ** Team views ** */
+
+/* keep hero image and title the same width */
+#team-hero-display .hero-image, #team-hero-display div.hero-title {
+  width: 80px;
+}
+
+/* hero title bar while in teams view */
+#team-hero-display div.hero-title {
+  font-size: 1.3em;
+  top: -35px;
+}
+
+#team-hero-display .role-icon {
+  transform: scale(0.6);
+}
+
+#hero-team-select {
+  height: 100vh;
+  width: 300px;
+}
+
+/* ** End Team views ** */
+
+.hero-checkbox{
+  min-width: 60px;
+  width: 60px;
+  /* height: 100px; */
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* transform: scale(0.6); */
+}
+
+.hero-image, .hero-title-keypad {
+  /* width: 60px; */
+  width: 60px;
+
+  /* transform: scale(0.5); */
+}
+
+.hero-title-keypad {
+  /* transform: translate(0,-100); */
+}
+
+.hero-checkboxes-container {
+  /* transform: scale(0.2); */
+}
+
+
 
 /* * {background-color: red;} */

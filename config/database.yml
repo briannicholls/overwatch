@@ -20,11 +20,18 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: brian
+  password: <%= ENV["OVERWATCH_DATABASE_PASSWORD"] %>
 
 development:
   <<: *default
   database: overwatch_development
-
+# development_replica:
+#   <<: *default
+#   database: overwatch_development
+#   username: reporting
+#   password: Test1234
+#   replica: true
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -82,5 +89,3 @@ test:
 production:
   <<: *default
   database: overwatch_production
-  username: overwatch
-  password: <%= ENV["OVERWATCH_DATABASE_PASSWORD"] %>

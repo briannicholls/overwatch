@@ -8,7 +8,7 @@ class HerosController < ApplicationController
 
   # GET /heros/1 or /heros/1.json
   def show
-    @attributes_to_display = @hero.attributes.symbolize_keys.slice(:name, :hp, :shield, :armor,)
+    @attributes_to_display = @hero.attributes.symbolize_keys.slice(:name, :hp, :shield, :armor)
   end
 
   # GET /heros/new

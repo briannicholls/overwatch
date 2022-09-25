@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_11_003351) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_23_211847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,7 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_11_003351) do
     t.integer "reload_time"
     t.float "fire_rate"
     t.float "beam_width"
-    t.boolean "applies_self_movement_penalty", default: false
     t.float "initial_falloff_distance"
     t.float "spread_angle"
     t.float "final_falloff_disance"
@@ -82,7 +81,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_11_003351) do
     t.boolean "applies_armor", default: false
     t.integer "armor_provided"
     t.integer "charges"
-    t.boolean "applies_invulnerability", default: false
     t.text "aoe_effect_types", default: [], array: true
     t.integer "single_charge_regeneration_duration"
     t.boolean "applies_healing", default: false
@@ -91,7 +89,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_11_003351) do
     t.boolean "can_target_self"
     t.boolean "applies_invulnerability_self"
     t.boolean "applies_speed_boost_self"
+    t.boolean "applies_apeed_boost_target"
+    t.boolean "can_be_cancelled", default: false
+    t.integer "recovery_time"
+    t.integer "cooldown_timer_delay"
+    t.integer "cast_animation_time"
     t.index ["hero_id"], name: "index_abilities_on_hero_id"
+  end
+
+  create_table "api_keys", force: :cascade do |t|
+    t.integer "bearer_id", null: false
+    t.string "bearer_type", null: false
+    t.string "token_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bearer_id", "bearer_type"], name: "index_api_keys_on_bearer_id_and_bearer_type"
+    t.index ["token_digest"], name: "index_api_keys_on_token_digest", unique: true
   end
 
   create_table "games", force: :cascade do |t|
@@ -101,15 +114,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_11_003351) do
     t.datetime "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role_tank", default: 2
+    t.integer "role_support", default: 2
+    t.integer "role_dps", default: 2
   end
 
   create_table "hard_counters", force: :cascade do |t|
-    t.bigint "advantage_hero_id", null: false
+    t.bigint "versus_hero_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "hero_id"
-    t.index ["advantage_hero_id"], name: "index_hard_counters_on_advantage_hero_id"
+    t.float "strength"
     t.index ["hero_id"], name: "index_hard_counters_on_hero_id"
+    t.index ["versus_hero_id"], name: "index_hard_counters_on_versus_hero_id"
   end
 
   create_table "hero_teams", force: :cascade do |t|
@@ -132,7 +149,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_11_003351) do
     t.integer "hp"
     t.integer "shield"
     t.integer "armor"
-    t.boolean "has_shield", default: false
     t.integer "shield_hp"
     t.boolean "melee_primary_fire", default: false
     t.integer "cc_range"
@@ -154,8 +170,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_11_003351) do
     t.index ["role_id"], name: "index_heros_on_role_id"
   end
 
+  create_table "maps", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "system_settings", force: :cascade do |t|
+    t.string "name"
+    t.string "encrypted_value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -164,10 +193,29 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_11_003351) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "role_limit", default: true
+    t.integer "hero_teams_count"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object"
+    t.datetime "created_at"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
   add_foreign_key "abilities", "heros"
-  add_foreign_key "hard_counters", "heros", column: "advantage_hero_id"
+  add_foreign_key "hard_counters", "heros", column: "versus_hero_id"
   add_foreign_key "hero_teams", "heros"
   add_foreign_key "hero_teams", "teams"
   add_foreign_key "heros", "games"

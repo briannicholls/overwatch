@@ -1,11 +1,2 @@
 <%# TODO: rename to hero_counter_form %>
-<%= form_for @hero do |f| %>
-  <%= f.collection_check_boxes :advantage_hero_ids, @heros, :id, :name do |checkbox| %>
-    <%= checkbox.label class:"col-3" do %>
-      <%= checkbox.check_box + ' ' + checkbox.text%>
-    <%end%>
-  <% end %>
-  <br />
-  <%= f.submit %>
-<% end %>
 

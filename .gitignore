@@ -36,3 +36,7 @@
 /node_modules
 
 dotfiles
+
+.env
+
+notes.txt

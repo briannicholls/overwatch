@@ -31,13 +31,13 @@
   </ul>
 </div>
 
-<div>
+<div class="row">
   <strong>Heros that counter <%= @hero.name %>:</strong>
-  <ul class="list-group">
-    <% @hero.hard_counters.each do |hero| %>
-      <li class="list-group-item"><%= render hero %></li>
-    <% end %>
-  </ul>
+  <% @hero.hard_counters.order(strength: :desc).each do |counter| %>
+    <%#= render hero.versus_hero, counter: hero %>
+    <%= render counter %>
+  <% end %>
+
 </div>
 
 <%= render 'hero_form' %>

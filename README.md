@@ -1,40 +1,60 @@
 # Overwatch API
 - [Overwatch API](#overwatch-api)
-  - [The Data](#the-data)
-    - [Ability](#ability)
-      - [`fire_rate` `float`](#fire_rate-float)
-      - [`projectiles_per_shot`](#projectiles_per_shot)
-      - [`projectiles_fired_per_second`](#projectiles_fired_per_second)
-      - [`projectiles_fired_per_second`](#projectiles_fired_per_second-1)
-  - [Heroes](#heroes)
-      - [GET /hero](#get-hero)
-  - [Abilities](#abilities)
+  - [Hero](#hero)
+  - [Ability](#ability)
   - [Teams](#teams)
+- [Rake Tasks](#rake-tasks)
 
-## The Data
 
-### Ability
-#### `fire_rate` `float`
-Maximum rate of fire for this ability while it is active. Used in claculating DPS if ability `is_primary_fire`.
+All times (durations) are measured in milliseconds. Rates are measured as a float, *x* per second.
+
+## Hero
+
+`GET /hero`  
+
+__`hp`__  
+*integer* Starting points, not including `armor` and `shield`
+
+__`shield`__  
+*integer* Starting shields
+
+__`armor`__  
+*integer* Starting armor
+
+
+## Ability
+__`fire_rate`__  
+*integer* Maximum rate of fire for this ability while it is active. Used in claculating DPS if ability `is_primary_fire`.
 Note that this is the rate of fire for the weapon, i.e. "gun blasts" per second. A single gun blast may shoot multiple projectiles - see `projectiles_per_shot` (only for abilities with `is_projectile`)
 
-#### `projectiles_per_shot`
+__`projectiles_per_shot`__  
 *float* Number of projectiles fired from a single blast of this weapon (only for abilities with `is_projectile`)
 
-#### `projectiles_fired_per_second`
+__`projectiles_fired_per_second`__  
 *float* How many total projectiles leave the weapon per second (only for abilities with `is_projectile`)
 
-#### `projectiles_fired_per_second`
-*float* How many total projectiles leave the weapon per second (only for abilities with `is_projectile`)
+__`cast_time`__  
+*integer* Amount of time it takes for ability to be cast. The Hero can be stunned out of casting the ability during this time, in contrast to `cooldown_timer_delay`, `reovery_time`, and `cast_animation_time` (see below)
 
-##
+__`recovery_time`__  
+*integer* Amount of time after using ability in which the hero may not perform any other actions
 
-## Heroes
+__`cast_animation_time`__  
+*integer* Amount of time after using the ability until it takes effect (since ability is deployed, it can not be stun canceled at this point). Synonomous to a "fuse" like D.Va's Self-Destruct
 
-#### GET /hero
-
-
-## Abilities
+__`cooldown_timer_delay`__  
+*integer* Amount of time after triggering the ability until the cooldown timer begins
 
 
 ## Teams
+
+# Rake Tasks
+
+To build the counter relationships:
+`rake build_counters`
+
+To also copy the data to your test DB:
+`rake db:recalc`
+
+To only copy the Development DB to your test DB:
+`rake db:copy_db`
