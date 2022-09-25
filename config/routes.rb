@@ -3,13 +3,14 @@ Rails.application.routes.draw do
   
   resources :abilities
 
-  get 'teams/counter', to: 'teams#counter'
-  resources :teams
-  resources :roles
-  resources :heros do 
-    resources :abilities
-  end
-  resources :hard_counters
+  # TODO: the below commented routes should be made private
+  # get 'teams/counter', to: 'teams#counter'
+  # resources :teams
+  # resources :roles
+  # resources :heros do
+  #   resources :abilities
+  # end
+  # resources :hard_counters
 
   # public API routes
   namespace :api do
