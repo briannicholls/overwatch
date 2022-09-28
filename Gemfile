@@ -98,3 +98,5 @@ gem 'paper_trail'
 
 # Todo: this breaks activerecord  
 # gem 'descriptive_statistics'
+
+gem 'moesif_rack'
