@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Overwatch
   class Application < Rails::Application
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
@@ -19,6 +20,12 @@ module Overwatch
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     # config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+    # configure moesif for monetization and analytics
+    moesif_options = {
+      'application_id' => 'eyJhcHAiOiI5Nzk6NzMiLCJ2ZXIiOiIyLjAiLCJvcmciOiIxMDQ3OjQxIiwiaWF0IjoxNjYxOTkwNDAwfQ.lD-B0wn-h3MTMZCzWRP1vdLWREsPDAVrSRzpC2jl_6Y'
+    }
+    config.middleware.use MoesifRack::MoesifMiddleware, moesif_options
 
   end
 end
