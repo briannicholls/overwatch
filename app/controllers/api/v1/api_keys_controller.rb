@@ -2,7 +2,7 @@ class Api::V1::ApiKeysController < ApplicationController
   include ApiKeyAuthenticatable 
   
   # disable CSRF check for API
-  protect_from_forgery with: :null_session
+  # protect_from_forgery with: :null_session
 
   # Require token authentication for index                             
   prepend_before_action :authenticate_with_api_key!, only: [:index, :destroy]
