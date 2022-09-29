@@ -99,4 +99,5 @@ gem 'paper_trail'
 # Todo: this breaks activerecord  
 # gem 'descriptive_statistics'
 
-gem 'moesif_rack'
+# for API monetization
+# gem 'moesif_rack'
