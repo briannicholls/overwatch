@@ -11,11 +11,15 @@ module ApiKeyAuthenticatable
   # code when API key authentication fails
   def authenticate_with_api_key!
     @current_bearer = authenticate_or_request_with_http_token &method(:authenticator)
+    response.headers['X-Authorized-User'] = @current_bearer.id if @current_bearer
+    @current_bearer
   end
 
   # Use this for optional API key authentication
   def authenticate_with_api_key
     @current_bearer = authenticate_with_http_token &method(:authenticator)
+    response.headers['X-Authorized-User'] = @current_bearer.id if @current_bearer
+    @current_bearer
   end
 
   private
