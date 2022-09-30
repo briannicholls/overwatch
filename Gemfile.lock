@@ -98,8 +98,6 @@ GEM
       reline (>= 0.2.7)
     diff-lcs (1.5.0)
     digest (3.1.0)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -109,9 +107,6 @@ GEM
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    http-accept (1.7.0)
-    http-cookie (1.0.5)
-      domain_name (~> 0.5)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.5)
@@ -125,9 +120,6 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
-    json (2.6.2)
-    json_mapper (0.2.1)
-      json (>= 1.4.3)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -136,20 +128,8 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
-    mime-types (3.4.1)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
     minitest (5.15.0)
-    moesif_api (1.2.14)
-      json_mapper (~> 0.2, >= 0.2.1)
-      moesif_unirest (~> 1.1.6)
-    moesif_rack (1.4.17)
-      moesif_api (~> 1.2.14)
-    moesif_unirest (1.1.6)
-      addressable (~> 2.8, >= 2.8.0)
-      json (~> 2.6, >= 2.6.1)
-      rest-client (~> 2.1, >= 2.1.0)
     msgpack (1.5.2)
     net-imap (0.2.3)
       digest
@@ -165,7 +145,6 @@ GEM
       digest
       net-protocol
       timeout
-    netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
@@ -224,11 +203,6 @@ GEM
       io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
-    rest-client (2.1.0)
-      http-accept (>= 1.7.0, < 2.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
     rexml (3.2.5)
     rspec-core (3.11.0)
       rspec-support (~> 3.11.0)
@@ -283,9 +257,6 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.8.2)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -316,7 +287,6 @@ DEPENDENCIES
   importmap-rails (~> 1.1)
   jbuilder
   jsbundling-rails
-  moesif_rack
   paper_trail
   pg (~> 1.1)
   pry
