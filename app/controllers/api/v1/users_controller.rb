@@ -12,7 +12,7 @@ class Api::V1::UsersController < ApplicationController
     respond_to do |format|
       if @user.persisted?
         
-        format.json { render :show, status: :created }
+        format.json { render :show, status: :created, location: @user }
       else
         # format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors.full_messages.to_sentence, status: :unprocessable_entity }
