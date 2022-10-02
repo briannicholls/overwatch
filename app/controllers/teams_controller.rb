@@ -45,6 +45,7 @@ class TeamsController < ApplicationController
   private
 
   def set_team
+    puts ""
     if !params[:hero_ids]
       # render json: status: 404
       return
