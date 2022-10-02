@@ -18,6 +18,6 @@ json.counter_composition do
     :shield,
     :armor,
     :ultimate_cost
-  json.url team_url(team, format: :json)
+  # json.url team_url(team, format: :json)
 end
 
