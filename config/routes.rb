@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   # TODO: the below commented routes should be made private
-  root 'overwatch#index'
-  resources :abilities
-  get 'teams/counter', to: 'teams#counter'
-  resources :teams
-  resources :roles
-  resources :heros do 
+  unless Rails.env.production?
+    root 'overwatch#index'
     resources :abilities
+    get 'teams/counter', to: 'teams#counter'
+    resources :teams
+    resources :roles
+    resources :heros do 
+      resources :abilities
+    end
+    resources :hard_counters
   end
-  resources :hard_counters
 
   # public API routes
   namespace :api do
