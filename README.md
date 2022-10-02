@@ -10,7 +10,7 @@ All times (durations) are measured in milliseconds. Rates are measured as a floa
 
 ## Hero
 
-`GET /hero`  
+`GET /heros`
 
 __`hp`__  
 *integer* Starting points, not including `armor` and `shield`

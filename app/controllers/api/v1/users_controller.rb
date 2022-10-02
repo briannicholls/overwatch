@@ -1,8 +1,6 @@
 class Api::V1::UsersController < ApplicationController
 
   def create
-    # binding.pry
-    
     @user = User.create({
       email:    user_params[:email],
       password: user_params[:password],
@@ -12,19 +10,12 @@ class Api::V1::UsersController < ApplicationController
     respond_to do |format|
       if @user.persisted?
         
-        format.json { render :show, status: :created }
+        format.json { render :show, status: :created, location: @user }
       else
         # format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors.full_messages.to_sentence, status: :unprocessable_entity }
       end
     end
-
-    # if @user.persisted?
-    #   render json: @user, status: :created
-    # else
-    #   render json: @user.errors.full_messages.to_sentence, status: :unprocessable_entity
-    # end
-    
   end
 
   private
