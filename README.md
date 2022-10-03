@@ -1,16 +1,67 @@
 # Overwatch API
 - [Overwatch API](#overwatch-api)
+- [Get Started](#get-started)
+- [API Endpoints](#api-endpoints)
+  - [`GET /heros`](#get-heros)
+  - [`GET /heros/:id`](#get-herosid)
+  - [`GET /teams/:id`](#get-teamsid)
+  - [`POST /teams`](#post-teams)
+- [Data](#data)
   - [Hero](#hero)
   - [Ability](#ability)
   - [Teams](#teams)
 - [Rake Tasks](#rake-tasks)
 
+# Get Started
+
+To use the API, you just need to create a User for yourself, and then generate your personal API key for authorization.
+
+1. First you must create a user for yourself. Submit an HTTP POST to `/api/v1/users` with the following request body:
+  ```json
+  {
+    "email": "your_email",
+    "password": "your_password",
+    "password_confirmation": "your_password"
+  }
+  ```
+  Response will be your newly created User
+
+2. Using HTTP Basic Authorization, submit a POST to `/api/v1/api_keys` with your newly created email/password to receive your API Key as a string.
+3. Copy your API key and use it in all subsequent requests in the Authoriaation header. It should look like this:
+   `"Authorization": "Bearer YOUR_API_KEY"`
+  That's it! You should now be able to access any other endpoint. Note that if you generate a new API key, your old one will no longer work.
+
+# API Endpoints
+
+## `GET /heros`
+Returns *`Hero[]`*
+List all Heroes
+
+## `GET /heros/:id`
+Returns *Hero*
+Returns Hero with given `id`
+## `GET /teams/:id`
+Returns *Team*
+Returns Team with given `id`
+
+## `POST /teams`
+Returns *Team*
+Submit an array of Hero IDs to view their Team and the optimal counter composition for that Team.
+Request Body:
+```json
+{
+  "team": {
+    "hero_ids": [ 1,2,3,4,5,6 ]
+  }
+}
+```
+
+
+# Data
 
 All times (durations) are measured in milliseconds. Rates are measured as a float, *x* per second.
 
 ## Hero
-
-`GET /heros`
 
 __`hp`__  
 *integer* Starting points, not including `armor` and `shield`
