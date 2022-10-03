@@ -3,20 +3,26 @@ class Api::V1::UsersController < ApplicationController
   protect_from_forgery with: :null_session
 
   def create
-    @user = User.create({
-      email:    user_params[:email],
-      password: user_params[:password],
-      password_confirmation: user_params[:password_confirmation],
+    @user = User.find_or_create_by({
+      email:    user_params[:email]
     })
 
-    respond_to do |format|
-      if @user.persisted?
-        
-        format.json { render :show, status: :created, location: @user }
-      else
-        # format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors.full_messages.to_sentence, status: :unprocessable_entity }
+    if @user.persisted?
+      unless @user.authenticate password: user_params[:password]
+        render json: "Incorrect password", status: :unauthorized
+        return
       end
+    else
+      @user.update({
+        password: user_params[:password],
+        password_confirmation: user_params[:password_confirmation]
+      })
+    end
+
+    # render json: @user
+
+    respond_to do |format|
+      format.json { render :show, status: :created, location: api_v1_users_url(@user) }
     end
   end
 
