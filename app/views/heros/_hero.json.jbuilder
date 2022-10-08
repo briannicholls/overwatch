@@ -7,4 +7,4 @@ json.extract! hero,
   :armor,
   :ultimate_cost
 
-json.url hero_url(hero, format: :json)
+# json.url hero_url(hero, format: :json)
