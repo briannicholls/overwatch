@@ -8,6 +8,8 @@ class Team < ApplicationRecord
   # TODO: with_hero (singular)
   # scope :with_heros, -> (hero_ids) { joins(:hero_teams).where('hero_teams.hero_id in (?)',  hero_ids).group('teams.id') }
   scope :with_exact_heros, -> (hero_ids) { joins(:hero_teams).where('hero_teams.hero_id in (?)',  hero_ids).group('teams.id').count('hero_teams.hero_id') }
+
+  validates :hero_teams, length: { minimum: 5, maximum: 5 }
   
   # ToDo: fix this. it will always return a team no matter what. fix hero id filters
   def self.first_or_create_by_heros(hero_ids)
