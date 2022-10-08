@@ -21,7 +21,7 @@ class Api::V1::ApiKeysController < ApplicationController
           render json: user.api_keys.first.token, status: :created and return
         else
           api_key = user.api_keys.create! token: SecureRandom.hex
-          render json: api_key.token, status: :created and return
+          render json: api_key.token, status: :created and return 
         end
       end 
     end
