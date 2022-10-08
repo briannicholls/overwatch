@@ -22,7 +22,7 @@ namespace :db do
     ability_attributes = Ability.all.map(&:attributes)
     hard_counters      = HardCounter.all.map(&:attributes)
     # hero_teams         = HeroTeam.all.map(&:attributes)
-
+    
     
     ActiveRecord::Base.establish_connection :test
 

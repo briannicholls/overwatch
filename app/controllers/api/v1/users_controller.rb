@@ -1,7 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   # disable CSRF check for API
   protect_from_forgery with: :null_session
-
+  
   def create
     begin
       @user = User.create({
