@@ -17,19 +17,20 @@
 To use the API, you just need to create a User for yourself, and then generate your personal API key for authorization.
 
 1. First you must create a user for yourself. Submit an HTTP POST to `/api/v1/users` with the following request body:
-  ```json
-  {
-    "email": "your_email",
-    "password": "your_password",
-    "password_confirmation": "your_password"
-  }
-  ```
-  Response will be your newly created User
-
+```json
+{
+  "email": "your_email",
+  "password": "your_password",
+  "password_confirmation": "your_password"
+}
+```
+Response will be your newly created User
 2. Using HTTP Basic Authorization, submit a POST to `/api/v1/api_keys` with your newly created email/password to receive your API Key as a string.
 3. Copy your API key and use it in all subsequent requests in the Authoriaation header. It should look like this:
-   `"Authorization": "Bearer YOUR_API_KEY"`
-  That's it! You should now be able to access any other endpoint. Note that if you generate a new API key, your old one will no longer work.
+```json
+"Authorization": "Bearer YOUR_API_KEY"
+```
+That's it! You should now be able to access any other endpoint. Note that if you generate a new API key, your old one will no longer work.
 
 # API Endpoints
 
@@ -55,7 +56,6 @@ Request Body:
   }
 }
 ```
-
 
 # Data
 
