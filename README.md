@@ -8,7 +8,7 @@
   - [`POST /teams`](#post-teams)
 - [Data](#data)
   - [Hero](#hero)
-  - [Ability](#ability)
+  - [Ability (coming soon)](#ability-coming-soon)
   - [Teams](#teams)
 - [Rake Tasks](#rake-tasks)
 
@@ -16,46 +16,42 @@
 
 To use the API, you just need to create a User for yourself, and then generate your personal API key for authorization.
 
-1. First you must create a user for yourself. Submit an HTTP POST to `/api/v1/users` with the following request body:
-```json
-{
-  "email": "your_email",
-  "password": "your_password",
-  "password_confirmation": "your_password"
-}
-```
-Response will be your newly created User
-2. Using HTTP Basic Authorization, submit a POST to `/api/v1/api_keys` with your newly created email/password to receive your API Key as a string.
+1. First you must create a user for yourself. Submit an HTTP POST to `/api/v1/users` with the following request body. Response will be your newly created User.
+  ```json
+  {
+    "email": "your_email",
+    "password": "your_password",
+    "password_confirmation": "your_password"
+  }
+  ```
+2. Using HTTP Basic Authorization, submit a POST to `/api/v1/api_keys` with your newly created email/password. The Authorization header should look like this. Response will be your API Key as a string.
+   ```json
+   "Authorization": "Basic <your Base64 encoded email:password>"
+   ```
 3. Copy your API key and use it in all subsequent requests in the Authoriaation header. It should look like this:
-```json
-"Authorization": "Bearer YOUR_API_KEY"
-```
+  ```json
+  "Authorization": "Bearer YOUR_API_KEY"
+  ```
 That's it! You should now be able to access any other endpoint. Note that if you generate a new API key, your old one will no longer work.
 
 # API Endpoints
 
 ## `GET /heros`
-Returns *`Hero[]`*
 List all Heroes
-
 ## `GET /heros/:id`
-Returns *Hero*
 Returns Hero with given `id`
 ## `GET /teams/:id`
-Returns *Team*
 Returns Team with given `id`
-
 ## `POST /teams`
-Returns *Team*
 Submit an array of Hero IDs to view their Team and the optimal counter composition for that Team.
-Request Body:
-```json
-{
-  "team": {
-    "hero_ids": [ 1,2,3,4,5,6 ]
+Request Body Example:
+  ```json
+  {
+    "team": {
+      "hero_ids": [ 1,2,3,4,5,6 ]
+    }
   }
-}
-```
+  ```
 
 # Data
 
@@ -73,7 +69,8 @@ __`armor`__
 *integer* Starting armor
 
 
-## Ability
+## Ability (coming soon)
+
 __`fire_rate`__  
 *integer* Maximum rate of fire for this ability while it is active. Used in claculating DPS if ability `is_primary_fire`.
 Note that this is the rate of fire for the weapon, i.e. "gun blasts" per second. A single gun blast may shoot multiple projectiles - see `projectiles_per_shot` (only for abilities with `is_projectile`)

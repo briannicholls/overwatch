@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_29_214529) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_09_222609) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -143,28 +143,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_214529) do
     t.bigint "role_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "can_heal_self", default: false
-    t.float "heal_self_strength"
-    t.boolean "has_cc", default: false
     t.integer "hp"
     t.integer "shield"
     t.integer "armor"
-    t.integer "shield_hp"
-    t.boolean "melee_primary_fire", default: false
-    t.integer "cc_range"
     t.boolean "aoe_heal", default: false
-    t.boolean "aoe_primary", default: false
     t.boolean "has_escape_ability", default: false
     t.float "movement_speed", default: 5.5
     t.boolean "can_fly", default: false
-    t.boolean "provides_shield", default: false
     t.boolean "provides_damage_boost", default: false
-    t.boolean "provides_speed_boost", default: false
-    t.boolean "provides_armor", default: false
-    t.boolean "is_hitscan", default: false
     t.integer "cc_strength", default: 0
-    t.integer "reload_time"
-    t.boolean "has_secondary_fire", default: false
     t.bigint "game_id", null: false
     t.index ["game_id"], name: "index_heros_on_game_id"
     t.index ["role_id"], name: "index_heros_on_role_id"
