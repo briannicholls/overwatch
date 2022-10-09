@@ -26,10 +26,10 @@ class HerosController < ApplicationController
 
     respond_to do |format|
       if @hero.save
-        format.html { redirect_to hero_url(@hero), notice: "Hero was successfully created." }
+        # format.html { redirect_to hero_url(@hero), notice: "Hero was successfully created." }
         format.json { render :show, status: :created, location: @hero }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        # format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @hero.errors, status: :unprocessable_entity }
       end
     end
