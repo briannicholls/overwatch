@@ -11,6 +11,7 @@ namespace :db do
     puts "Time elapsed: #{(Time.now - start_time).seconds.round(2)}s"
   end
 
+  # TODO: make below work for production_clone DB from heroku pg:pull
   desc "Destroy test DB and replace with values from development DB"
   task :copy_db => [:environment] do
     return if Rails.env != 'development'
@@ -55,4 +56,6 @@ namespace :db do
     end
 
   end
+
+
 end
