@@ -26,6 +26,7 @@ default: &default
 development:
   <<: *default
   database: overwatch_development
+  # database: overwatch_production_clone
 # development_replica:
 #   <<: *default
 #   database: overwatch_development

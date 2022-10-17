@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_09_222609) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_11_234533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -94,6 +94,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_09_222609) do
     t.integer "recovery_time"
     t.integer "cooldown_timer_delay"
     t.integer "cast_animation_time"
+    t.boolean "inflicts_self_damage"
+    t.boolean "nullifies_projectiles"
     t.index ["hero_id"], name: "index_abilities_on_hero_id"
   end
 
