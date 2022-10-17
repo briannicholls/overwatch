@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_11_234533) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_17_162812) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -148,12 +148,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_234533) do
     t.integer "hp"
     t.integer "shield"
     t.integer "armor"
-    t.boolean "aoe_heal", default: false
     t.boolean "has_escape_ability", default: false
     t.float "movement_speed", default: 5.5
     t.boolean "can_fly", default: false
-    t.boolean "provides_damage_boost", default: false
-    t.integer "cc_strength", default: 0
     t.bigint "game_id", null: false
     t.index ["game_id"], name: "index_heros_on_game_id"
     t.index ["role_id"], name: "index_heros_on_role_id"
@@ -169,6 +166,109 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_234533) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "staging_abilities", id: false, force: :cascade do |t|
+    t.bigint "id"
+    t.bigint "hero_id"
+    t.string "keybinding"
+    t.integer "cooldown"
+    t.integer "duration"
+    t.boolean "has_aoe_effect"
+    t.integer "aoe_effect_radius"
+    t.integer "base_beam_damage"
+    t.boolean "applies_damage_over_time"
+    t.boolean "applies_speed_boost"
+    t.boolean "applies_stun"
+    t.boolean "applies_shield"
+    t.integer "cast_time"
+    t.boolean "applies_headshot_damage"
+    t.integer "damage_over_time"
+    t.boolean "is_projectile"
+    t.float "projectile_speed"
+    t.integer "max_damage_per_projectile"
+    t.float "projectiles_fired_per_second"
+    t.float "max_range"
+    t.integer "hp"
+    t.boolean "is_ultimate"
+    t.integer "ultimate_cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "name"
+    t.boolean "is_passive"
+    t.boolean "is_primary_fire"
+    t.boolean "is_secondary_fire"
+    t.boolean "is_beam"
+    t.integer "max_beam_damage"
+    t.integer "reload_time"
+    t.float "fire_rate"
+    t.float "beam_width"
+    t.float "initial_falloff_distance"
+    t.float "spread_angle"
+    t.float "final_falloff_disance"
+    t.float "min_damage_per_projectile"
+    t.boolean "applies_boop"
+    t.float "max_boop_distance"
+    t.integer "min_melee_damage"
+    t.boolean "applies_splash_damage"
+    t.float "splash_radius"
+    t.integer "max_aoe_damage"
+    t.integer "min_aoe_damage"
+    t.integer "ammo"
+    t.boolean "applies_self_damage_reduction"
+    t.boolean "applies_damage_boost"
+    t.float "percent_damage_reduction_self"
+    t.float "percent_damage_boost_self"
+    t.float "percent_damage_boost_aoe"
+    t.integer "max_melee_damage"
+    t.integer "stun_duration"
+    t.boolean "is_barrier"
+    t.boolean "applies_speed_penalty_self"
+    t.boolean "applies_speed_penalty_enemy"
+    t.float "min_boop_distance"
+    t.boolean "shares_ammo_with_primary"
+    t.boolean "ignores_barriers"
+    t.boolean "is_hitscan"
+    t.integer "shields"
+    t.boolean "obeys_gravity"
+    t.integer "recovery_rate"
+    t.boolean "is_turret"
+    t.boolean "applies_armor"
+    t.integer "armor_provided"
+    t.integer "charges"
+    t.text "aoe_effect_types", array: true
+    t.integer "single_charge_regeneration_duration"
+    t.boolean "applies_healing"
+    t.boolean "applies_healing_self"
+    t.float "projectiles_per_shot"
+    t.boolean "can_target_self"
+    t.boolean "applies_invulnerability_self"
+    t.boolean "applies_speed_boost_self"
+    t.boolean "applies_apeed_boost_target"
+    t.boolean "can_be_cancelled"
+    t.integer "recovery_time"
+    t.integer "cooldown_timer_delay"
+    t.integer "cast_animation_time"
+    t.boolean "inflicts_self_damage"
+    t.boolean "nullifies_projectiles"
+  end
+
+  create_table "staging_heros", id: false, force: :cascade do |t|
+    t.bigint "id"
+    t.string "name"
+    t.bigint "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "hp"
+    t.integer "shield"
+    t.integer "armor"
+    t.boolean "aoe_heal"
+    t.boolean "has_escape_ability"
+    t.float "movement_speed"
+    t.boolean "can_fly"
+    t.boolean "provides_damage_boost"
+    t.integer "cc_strength"
+    t.bigint "game_id"
   end
 
   create_table "system_settings", force: :cascade do |t|
