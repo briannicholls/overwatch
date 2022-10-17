@@ -43,6 +43,10 @@ class TeamsController < ApplicationController
     render json: @team.optimal_counter_composition
   end
 
+  def ultimate_impact
+    return 1 / ultimate_cost_percentile if is_ultimate
+  end
+
   private
 
   def set_team
