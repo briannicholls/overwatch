@@ -57,5 +57,32 @@ namespace :db do
 
   end
 
+  # TODO
+  desc "Update heros & abilites from values in staging tables"
+  task :update_from_staging => [:environment] do
+    # for every record in staging table, update master table
+
+  end
+
+  # SELECT setval('heros_id_seq', COALESCE((SELECT MAX(id)+1 FROM heros), 1), false);
+  # SELECT setval('abilities_id_seq', COALESCE((SELECT MAX(id)+1 FROM abilities), 1), false);
+
+  desc "Re-set staging tables from master values"
+  task :reset_staging => [:environment] do
+    ActiveRecord::Base.connection.execute("""
+      BEGIN;
+      DROP TABLE IF EXISTS staging_abilities;
+      DROP TABLE IF EXISTS staging_heros;
+      CREATE TABLE staging_heros AS
+      select *
+      from heros;
+      CREATE TABLE staging_abilities AS
+      select *
+      from abilities;
+      COMMIT;
+    """)
+  end
+
+
 
 end
