@@ -86,7 +86,7 @@ namespace :db do
 
   desc "Update master tables with values from staging tables"
   task :migrate_from_staging => [:environment] do
-
+    
     # Update Heros
     staging_heros = ActiveRecord::Base.connection.execute(
       "select * from staging_heros;"

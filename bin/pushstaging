@@ -1,0 +1,6 @@
+pg_dump --data-only --table=staging_heros overwatch_development > staging_heros.sql
+
+# heroku config --app overwatch-2-api | grep DATABASE_URL
+# heroku pg:credentials:url --app overwatch-2-api
+
+psql -h ec2-52-72-56-59.compute-1.amazonaws.com -p 5432 -U qjsyvvoigovfxs da2g4fv7jbmpoa < staging_heros.sql
