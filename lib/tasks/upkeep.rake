@@ -84,5 +84,29 @@ namespace :db do
   end
 
 
+  desc "Update master tables with values from staging tables"
+  task :migrate_from_staging => [:environment] do
+
+    # Update Heros
+    staging_heros = ActiveRecord::Base.connection.execute(
+      "select * from staging_heros;"
+    )
+    staging_heros.each do |staging_hero|
+      master_hero = Hero.find_or_create_by(id: staging_hero['id'])
+      puts "Updating #{master_hero.name || "new hero: #{staging_hero['name']}" }"
+      puts master_hero.update(staging_hero)
+    end
+
+    # Update Abilities
+    staging_abilities = ActiveRecord::Base.connection.execute(
+      "select * from staging_abilities;"
+    )
+    staging_abilities.each do |staging_ability|
+      master_ability = Ability.find_or_create_by(id: staging_ability['id'])
+      puts "Updating #{master_ability.name || "new ability: #{staging_ability['name']}" }"
+      puts master_ability.update(staging_ability)
+    end
+
+  end
 
 end
