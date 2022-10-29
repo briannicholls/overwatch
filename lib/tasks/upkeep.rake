@@ -64,11 +64,8 @@ namespace :db do
 
   end
 
-  # SELECT setval('heros_id_seq', COALESCE((SELECT MAX(id)+1 FROM heros), 1), false);
-  # SELECT setval('abilities_id_seq', COALESCE((SELECT MAX(id)+1 FROM abilities), 1), false);
-
-  desc "Re-set staging tables from master values"
-  task :reset_staging => [:environment] do
+  desc "Create staging tables from master values (drops existing staging tables) (for development)"
+  task :create_staging_tables => [:environment] do
     ActiveRecord::Base.connection.execute("""
       BEGIN;
       DROP TABLE IF EXISTS staging_abilities;
@@ -84,7 +81,7 @@ namespace :db do
   end
 
 
-  desc "Update master tables with values from staging tables"
+  desc "Update master tables with values from staging tables (for production)"
   task :migrate_from_staging => [:environment] do
     
     # Update Heros
