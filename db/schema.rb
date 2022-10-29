@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_162812) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_29_195929) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,18 +109,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_162812) do
     t.index ["token_digest"], name: "index_api_keys_on_token_digest", unique: true
   end
 
-  create_table "games", force: :cascade do |t|
-    t.string "name"
-    t.string "version"
-    t.integer "heroes_per_team"
-    t.datetime "release_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "role_tank", default: 2
-    t.integer "role_support", default: 2
-    t.integer "role_dps", default: 2
-  end
-
   create_table "hard_counters", force: :cascade do |t|
     t.bigint "versus_hero_id", null: false
     t.datetime "created_at", null: false
@@ -151,8 +139,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_162812) do
     t.boolean "has_escape_ability", default: false
     t.float "movement_speed", default: 5.5
     t.boolean "can_fly", default: false
-    t.bigint "game_id", null: false
-    t.index ["game_id"], name: "index_heros_on_game_id"
     t.index ["role_id"], name: "index_heros_on_role_id"
   end
 
@@ -262,12 +248,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_162812) do
     t.integer "hp"
     t.integer "shield"
     t.integer "armor"
-    t.boolean "aoe_heal"
     t.boolean "has_escape_ability"
     t.float "movement_speed"
     t.boolean "can_fly"
-    t.boolean "provides_damage_boost"
-    t.integer "cc_strength"
     t.bigint "game_id"
   end
 
@@ -310,7 +293,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_162812) do
   add_foreign_key "hard_counters", "heros", column: "versus_hero_id"
   add_foreign_key "hero_teams", "heros"
   add_foreign_key "hero_teams", "teams"
-  add_foreign_key "heros", "games"
   add_foreign_key "heros", "roles"
 
   create_view "heros_by_primary_weapon_dps", sql_definition: <<-SQL
