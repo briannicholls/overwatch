@@ -2,7 +2,6 @@ class Hero < ApplicationRecord
   has_paper_trail
   
   belongs_to :role
-  belongs_to :game
 
   has_many :hero_teams
   has_many :teams, through: :hero_teams
