@@ -1,6 +1,10 @@
+# create PG dump of staging tables to push to production DB
 pg_dump --data-only --table=staging_heros overwatch_development > staging_heros.sql
 
-# heroku config --app overwatch-2-api | grep DATABASE_URL
+# DATABASE_URL=heroku pg:credentials:url DATABASE --name analyst -a overwatch-2-api
+# DATABASE_NAME=TODO
+# DATABASE_PASSWORD=TODO
 # heroku pg:credentials:url --app overwatch-2-api
 
-psql -h ec2-52-72-56-59.compute-1.amazonaws.com -p 5432 -U qjsyvvoigovfxs da2g4fv7jbmpoa < staging_heros.sql
+# push the staging tables from development to production
+# psql -h $DATABASE_URL -p 5432 -U $DATABASE_NAME $DATABASE_PASSWORD < staging_heros.sql

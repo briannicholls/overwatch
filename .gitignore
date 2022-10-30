@@ -40,3 +40,7 @@ dotfiles
 .env
 
 notes.txt
+
+staging_heros.sql
+staging_abilities.sql
+staging_hard_counters.sql

@@ -108,8 +108,8 @@ class Hero < ApplicationRecord
     ultimate_ability.ultimate_cost
   end
 
-  # todo: calculate an advantage hero based on several factors
-  # and create/update counter relationship
+  # calculate counter relationship between two heroes
+  # creates or updates HardCounter (hero-hero join relationship)
   def compare(test_hero)
     # TODO: when checking for .any abilities. if there are multiple, that should multiply strength bonus
     # TODO: when ability affecting the calculation is an ultimate, perhaps scale it less
