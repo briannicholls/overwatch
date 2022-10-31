@@ -136,7 +136,7 @@ class Hero < ApplicationRecord
     strength += 1 if my_primary_fire.ignores_barriers && test_hero_has_barrier
 
     # if hero can be one-shotted
-    strength += 0.8 if primary_fire.can_one_shot_kill(test_hero)
+    strength += 1.6 if primary_fire.can_one_shot_kill(test_hero)
 
     # if I have CC and you have no escape move
     if i_have_cc && !test_hero.has_escape_move
