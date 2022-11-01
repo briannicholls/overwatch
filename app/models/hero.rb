@@ -42,7 +42,7 @@ class Hero < ApplicationRecord
   end
 
   def file_friendly_name
-    name.downcase.underscore.gsub(/[\. ]/, '_')
+    name.downcase.underscore.gsub(/[\. :]/, '_')
   end
 
   def has_escape_move

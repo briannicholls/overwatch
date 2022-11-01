@@ -57,10 +57,13 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
 
   # Suppress logger output for asset requests.
-  config.assets.quiet = true
+  config.assets.quiet = false
 
   config.log_level = :info
 
+  config.assets.cache_store = :null_store  # Disables the Asset cache
+  config.sass.cache = false  # Disable the SASS compiler cache
+  # config.assets.compile = true
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

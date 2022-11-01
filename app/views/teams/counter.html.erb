@@ -12,7 +12,7 @@
         <%# Hero portrait image %>
         <% this_hero = @heros.find{ |hero| hero.id == checkbox.value } %>
         <% if this_hero %>
-          <%= image_tag "#{this_hero.file_friendly_name}.png", class: 'hero-image'  %>
+          <%= image_tag "#{this_hero.file_friendly_name}.png?timestamp=#{Time.now}", class: 'hero-image'  %>
         <% end %>
 
         <%# Actual check box: may not be needed? %>
