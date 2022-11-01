@@ -2,6 +2,7 @@ class HerosController < ApplicationController
   before_action :set_hero, only: %i[ show edit update destroy ]
   before_action :set_heros, only: [:show, :index]
   layout 'application'
+
   # GET /heros or /heros.json
   def index
   end
