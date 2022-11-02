@@ -1,6 +1,6 @@
 <%# NOTE: Parent node must have class="row" %>
 <div class="col">
-  <%= link_to image_tag("/images/#{hero.name.downcase.underscore.gsub(/[\. ]/, '_')}.png", alt: hero.name, class: 'hero-image') , hero %>
+  <%= link_to image_tag("/images/#{hero.name.downcase.underscore.gsub(/[\. ]/, '_')}.png?timestamp=#{Time.now}", alt: hero.name, class: 'hero-image') , hero %>
   <div class="hero-title">
     <div><%= render "heros/icon_#{hero.role.name.downcase}" %></div>
     <div style="text-align: center;"><%= hero.name %>&nbsp;</div>

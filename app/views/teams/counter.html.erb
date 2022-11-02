@@ -7,6 +7,7 @@
   <% support = @heros.select{|hero| hero.role_id == 3} %>
 
   <% [dps, tank, support].each do |heros| %>
+    <h3><%= heros.first.role.name.titleize %></h3>
     <%= collection_check_boxes(:team, :hero_ids, heros, :id, :name, {}, { class: 'container hero-checkboxes-container'}) do |checkbox| %>
       <%= checkbox.label class: "col hero-checkbox", :"data-value" => checkbox.value do %>
         <%# Hero portrait image %>
