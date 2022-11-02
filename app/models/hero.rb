@@ -2,7 +2,6 @@ class Hero < ApplicationRecord
   has_paper_trail
   
   belongs_to :role
-  belongs_to :game
 
   has_many :hero_teams
   has_many :teams, through: :hero_teams
@@ -43,7 +42,7 @@ class Hero < ApplicationRecord
   end
 
   def file_friendly_name
-    name.downcase.underscore.gsub(/[\. ]/, '_')
+    name.downcase.underscore.gsub(/[\. :]/, '_')
   end
 
   def has_escape_move
@@ -108,8 +107,8 @@ class Hero < ApplicationRecord
     ultimate_ability.ultimate_cost
   end
 
-  # todo: calculate an advantage hero based on several factors
-  # and create/update counter relationship
+  # calculate counter relationship between two heroes
+  # creates or updates HardCounter (hero-hero join relationship)
   def compare(test_hero)
     # TODO: when checking for .any abilities. if there are multiple, that should multiply strength bonus
     # TODO: when ability affecting the calculation is an ultimate, perhaps scale it less
@@ -137,7 +136,7 @@ class Hero < ApplicationRecord
     strength += 1 if my_primary_fire.ignores_barriers && test_hero_has_barrier
 
     # if hero can be one-shotted
-    strength += 0.8 if primary_fire.can_one_shot_kill(test_hero)
+    strength += 1.6 if primary_fire.can_one_shot_kill(test_hero)
 
     # if I have CC and you have no escape move
     if i_have_cc && !test_hero.has_escape_move

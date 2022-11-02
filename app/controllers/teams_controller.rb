@@ -22,11 +22,11 @@ class TeamsController < ApplicationController
     
     respond_to do |format|
       if @team.persisted?
-        # format.html { redirect_to @team, notice: "Team counter found." }
+        format.html { redirect_to @team, notice: "Team counter found." }
         # format.json { render :show, status: :created, location: @team }
         format.json { render :show, status: :created }
       else
-        # format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end

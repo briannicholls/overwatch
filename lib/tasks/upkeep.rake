@@ -57,5 +57,53 @@ namespace :db do
 
   end
 
+  # TODO
+  desc "Update heros & abilites from values in staging tables"
+  task :update_from_staging => [:environment] do
+    # for every record in staging table, update master table
+
+  end
+
+  desc "Create staging tables from master values (drops existing staging tables) (for development)"
+  task :create_staging_tables => [:environment] do
+    ActiveRecord::Base.connection.execute("""
+      BEGIN;
+      DROP TABLE IF EXISTS staging_abilities;
+      DROP TABLE IF EXISTS staging_heros;
+      CREATE TABLE staging_heros AS
+      select *
+      from heros;
+      CREATE TABLE staging_abilities AS
+      select *
+      from abilities;
+      COMMIT;
+    """)
+  end
+
+
+  desc "Update master tables with values from staging tables (for production)"
+  task :migrate_from_staging => [:environment] do
+    
+    # Update Heros
+    staging_heros = ActiveRecord::Base.connection.execute(
+      "select * from staging_heros;"
+    )
+    staging_heros.each do |staging_hero|
+      master_hero = Hero.find_or_create_by(id: staging_hero['id'])
+      puts "Updating #{master_hero.name || "new hero: #{staging_hero['name']}" }"
+      puts master_hero.update(staging_hero)
+    end
+
+    # Update Abilities
+    staging_abilities = ActiveRecord::Base.connection.execute(
+      "select * from staging_abilities;"
+    )
+    staging_abilities.each do |staging_ability|
+      master_ability = Ability.find_or_create_by(id: staging_ability['id'])
+      puts "Updating #{master_ability.name || "new ability: #{staging_ability['name']}" }"
+      puts master_ability.update(staging_ability)
+    end
+
+  end
 
 end
