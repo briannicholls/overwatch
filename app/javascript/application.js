@@ -2,9 +2,9 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 // import "controllers"
-import "./components"
+// import "./components"
 
-import 'react'
-import 'react-dom'
+// import 'react'
+// import 'react-dom'
 
 console.log('loaded application.js')

@@ -15,6 +15,10 @@ class Hero < ApplicationRecord
   accepts_nested_attributes_for :hard_counters
   accepts_nested_attributes_for :abilities
 
+
+
+
+
   def has_primary_fire
     abilities.any?(&:is_primary_fire)
   end
@@ -146,7 +150,7 @@ class Hero < ApplicationRecord
     end
 
     # if you have armor and my primary fire shoots many pellets
-    strength -= 0.8 if test_hero.armor > 0 && my_primary_fire.is_projectile && my_primary_fire.projectiles_fired_per_second > 10
+    strength -= 0.8 if test_hero.armor > 0 && my_primary_fire.is_projectile && my_primary_fire.deals_damage && my_primary_fire.projectiles_fired_per_second > 10
     
     # Percentile = (number of values below score) ÷ (total number of scores) x 100 = (7) ÷ (42) x 100 = 0.17 x 100 = 17
     test_hero_ult_cost_percentile = test_hero.ultimate_ability.ultimate_cost_percentile

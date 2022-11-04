@@ -42,7 +42,12 @@ namespace :db do
     end
     ability_attributes.each do |ability|
       puts "Updating Ability: #{ability['name']}"
-      Ability.new(ability).save!
+      ability = Ability.new(ability)
+      if !ability.valid?
+        puts ability.id
+        puts ability.errors.full_messages.to_sentence
+      end
+      ability.save!
     end
 
     hard_counters.each do |counter|
