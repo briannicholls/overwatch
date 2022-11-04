@@ -13,7 +13,6 @@ class Team < ApplicationRecord
   
   # ToDo: fix this. it will always return a team no matter what. fix hero id filters
   def self.first_or_create_by_heros(hero_ids)
-    # team_size = Hero.find(hero_ids[0]).game.heroes_per_team
     team_size = 5
     map_team_id_to_hero_count = with_exact_heros(hero_ids)
     .select{ |team_id, hero_count| hero_count == team_size }
@@ -53,7 +52,6 @@ class Team < ApplicationRecord
       tank:    [],
       support: [],
     }
-    # game = heros.first.game
     role_counts = {
       dps:     2,
       tank:    1,
