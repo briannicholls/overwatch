@@ -3,7 +3,6 @@ import "@hotwired/turbo-rails"
 // import "./controllers"
 // import "controllers"
 // import "./components"
-// import "components"
 
 // import 'react'
 // import 'react-dom'

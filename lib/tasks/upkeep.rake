@@ -17,7 +17,6 @@ namespace :db do
     return if Rails.env != 'development'
 
     # ActiveRecord::Base.establish_connection :development
-    game_attributes    = Game.all.map(&:attributes)
     role_attributes    = Role.all.map(&:attributes)
     hero_attributes    = Hero.all.map(&:attributes)
     ability_attributes = Ability.all.map(&:attributes)
@@ -31,15 +30,11 @@ namespace :db do
     HardCounter.delete_all
     Ability.delete_all
     Hero.delete_all
-    Game.delete_all
     Role.delete_all
     
     # insert data from development DB
-    game_attributes.each do |ability|
-      Game.new(ability).save! # using save! will overwrite ID
-    end
-    role_attributes.each do |ability|
-      Role.new(ability).save!
+    role_attributes.each do |role|
+      Role.new(role).save!
     end
     hero_attributes.each do |hero|
       puts "Updating Hero: #{hero['name']}"
@@ -47,7 +42,12 @@ namespace :db do
     end
     ability_attributes.each do |ability|
       puts "Updating Ability: #{ability['name']}"
-      Ability.new(ability).save!
+      ability = Ability.new(ability)
+      if !ability.valid?
+        puts ability.id
+        puts ability.errors.full_messages.to_sentence
+      end
+      ability.save!
     end
 
     hard_counters.each do |counter|

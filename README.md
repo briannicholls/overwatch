@@ -11,6 +11,7 @@
   - [Ability (coming soon)](#ability-coming-soon)
   - [Teams](#teams)
 - [Rake Tasks](#rake-tasks)
+  - [Updating values on production from local DB](#updating-values-on-production-from-local-db)
 
 # Get Started
 
@@ -106,3 +107,21 @@ To also copy the data to your test DB:
 
 To only copy the Development DB to your test DB:
 `rake db:copy_db`
+
+## Updating values on production from local DB
+
+Make sure new counters have been generated with the most up to date data by running the rake task `rake db:recalc`
+Also, we need to make sure the table columns are exactly the same, i.e. run all necessary migrations on both databases
+
+Then we must do a few things:
+
+1. Create the `staging_x` tables locally from master data (new data) on development with `rake db:create_staging_tables`
+2. Back up those tables in order to restore them to the production DB:
+   ```bash
+   pg_dump --data-only --table=staging_heros overwatch_development > staging_heros.sql
+   pg_dump --data-only --table=staging_abilities overwatch_development > staging_abilities.sql
+   ```
+3. Update the master values on production from the newly updated staging tables using a Rake task
+   1. Check credentials with `heroku pg:credentials DATABASE -a overwatch-2-api`
+   2. Restore the target tables with `psql` using your credentials:
+      1. `psql -h [host] -p 5432 -U [username] [password] < products.sql`, etc.
