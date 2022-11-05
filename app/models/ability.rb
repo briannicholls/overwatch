@@ -57,7 +57,7 @@ class Ability < ApplicationRecord
             :cooldown_timer_delay          )
         end
       elsif charges
-        calculated_fire_rate = charges + ( 1 / single_charge_regeneration_duration)
+        calculated_fire_rate = charges + ( 1 / single_charge_regeneration_duration) 
       end
 
     else # if fire_rate is present, modify value to include reload time unless it is 0
