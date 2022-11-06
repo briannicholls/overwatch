@@ -7,7 +7,7 @@ namespace :db do
     # Rake::Task["db:prepare"].execute
     Rake::Task["build_counters"].execute
     puts "Finished building counters in #{(Time.now - start_time).seconds.round(2)}s"
-    Rake::Task["db:copy_db"].execute
+    Rake::Task["db:copy_db"].execute unless Rails.env.production?
     puts "Time elapsed: #{(Time.now - start_time).seconds.round(2)}s"
   end
 

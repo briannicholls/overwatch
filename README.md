@@ -140,3 +140,4 @@ Then we must do a few things:
       3. Delete generated sql files when finished
 4. Update the master values on production from the newly updated staging tables
    1. `heroku run --remote production rails db:migrate_from_staging`
+5. Re-calculate counters after updating: `heroku run --remote production rails db:recalc`
