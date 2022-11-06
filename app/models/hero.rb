@@ -15,10 +15,6 @@ class Hero < ApplicationRecord
   accepts_nested_attributes_for :hard_counters
   accepts_nested_attributes_for :abilities
 
-
-
-
-
   def has_primary_fire
     abilities.any?(&:is_primary_fire)
   end

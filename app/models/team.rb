@@ -39,6 +39,11 @@ class Team < ApplicationRecord
   end
 
   def total_hp
+    heros.sum(:hp)
+  end
+
+  def total_shields
+    heros.sum(:shield)
   end
 
   def standard_comp
