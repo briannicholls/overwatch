@@ -110,12 +110,16 @@ To only copy the Development DB to your test DB:
 
 ## Updating values on production from local DB
 
-Make sure new counters have been generated with the most up to date data: `rake db:recalc`
-Make sure the table columns are exactly the same, i.e. run all necessary migrations on both databases.
+1. Make sure new counters have been generated with the most up to date data: `rake db:recalc`
+2. Make sure the table columns are exactly the same. This means not only running all necessary migrations on both databases, but dropping and re-creating the staging tables on both before doing so.
+
+To drop staging tables and re-create:
+`rails db:create_staging_tables`
+`heroku run --remote production rails db:create_staging_tables`
+
 To run migrations on production:
 ```bash
 heroku git:remote --app overwatch-2-api --remote production
-git push production
 heroku run --remote production rails db:migrate
 ```
 
@@ -127,10 +131,12 @@ Then we must do a few things:
    pg_dump --data-only --table=staging_heros overwatch_development > staging_heros.sql
    pg_dump --data-only --table=staging_abilities overwatch_development > staging_abilities.sql
    ```
-3. Update the master values on production from the newly updated staging tables using a Rake task
+3. Push the local staging tables to the staging tables on production
    1. Check credentials with `heroku pg:credentials:url DATABASE -a overwatch-2-api`
    2. Restore the target tables with `psql` using your credentials:
       1. Delete the staging tables on production if existing
          1. todo: make rake task for this
       2. `psql -h DB_HOST_ADDRESS -p 5432 -d DATABASE_NAME -U USER_NAME < staging_heros.sql`
       3. Delete generated sql files when finished
+4. Update the master values on production from the newly updated staging tables
+   1. `heroku run --remote production rails db:migrate_from_staging`
