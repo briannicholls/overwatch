@@ -112,6 +112,12 @@ To only copy the Development DB to your test DB:
 
 Make sure new counters have been generated with the most up to date data: `rake db:recalc`
 Make sure the table columns are exactly the same, i.e. run all necessary migrations on both databases.
+To run migrations on production:
+```bash
+heroku git:remote --app overwatch-2-api --remote production
+git push production
+heroku run --remote production rails db:migrate
+```
 
 Then we must do a few things:
 
@@ -122,6 +128,9 @@ Then we must do a few things:
    pg_dump --data-only --table=staging_abilities overwatch_development > staging_abilities.sql
    ```
 3. Update the master values on production from the newly updated staging tables using a Rake task
-   1. Check credentials with `heroku pg:credentials DATABASE -a overwatch-2-api`
+   1. Check credentials with `heroku pg:credentials:url DATABASE -a overwatch-2-api`
    2. Restore the target tables with `psql` using your credentials:
-      1. `psql -h [host] -p 5432 -U [username] [password] < products.sql`, etc.
+      1. Delete the staging tables on production if existing
+         1. todo: make rake task for this
+      2. `psql -h DB_HOST_ADDRESS -p 5432 -d DATABASE_NAME -U USER_NAME < staging_heros.sql`
+      3. Delete generated sql files when finished
