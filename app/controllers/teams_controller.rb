@@ -18,6 +18,9 @@ class TeamsController < ApplicationController
 
   def create
     hero_ids = params[:team][:hero_ids].compact_blank
+    if hero_ids.length != 5
+      render json: 'Team must have 5 heroes. Please submit exactly five hero IDs.', status: 400
+    end
     @team = Team.first_or_create_by_heros(hero_ids)
     
     respond_to do |format|
@@ -30,7 +33,6 @@ class TeamsController < ApplicationController
         format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   def show

@@ -110,8 +110,8 @@ To only copy the Development DB to your test DB:
 
 ## Updating values on production from local DB
 
-Make sure new counters have been generated with the most up to date data by running the rake task `rake db:recalc`
-Also, we need to make sure the table columns are exactly the same, i.e. run all necessary migrations on both databases
+Make sure new counters have been generated with the most up to date data: `rake db:recalc`
+Make sure the table columns are exactly the same, i.e. run all necessary migrations on both databases.
 
 Then we must do a few things:
 
