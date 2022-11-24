@@ -112,11 +112,6 @@ class Hero < ApplicationRecord
   def compare(test_hero)
     # TODO: when checking for .any abilities. if there are multiple, that should multiply strength bonus
     # TODO: when ability affecting the calculation is an ultimate, perhaps scale it less
-    
-    # test pharah:
-    # if test_hero.id == 15
-    #   binding.pry
-    # end
 
     hero_hero = HardCounter.find_or_create_by(hero_id: id, versus_hero_id: test_hero.id)
     strength = 0   # my offensive strength against you
